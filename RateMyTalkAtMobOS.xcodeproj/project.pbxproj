@@ -12,6 +12,10 @@
 		430B658619DDC14C001CD271 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B658119DDC14C001CD271 /* ViewController.swift */; };
 		430B658719DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 430B658319DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld */; };
 		430B659019DDC16B001CD271 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430B658A19DDC16B001CD271 /* Images.xcassets */; };
+		430B65AC19DDC90C001CD271 /* _RMTParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65AA19DDC90C001CD271 /* _RMTParent.swift */; };
+		430B65AD19DDC90C001CD271 /* _RMTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65AB19DDC90C001CD271 /* _RMTSession.swift */; };
+		430B65B119DDC92B001CD271 /* RMTParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65AF19DDC92B001CD271 /* RMTParent.swift */; };
+		430B65B219DDC92B001CD271 /* RMTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65B019DDC92B001CD271 /* RMTSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,10 @@
 		430B658419DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RateMyTalkAtMobOS.xcdatamodel; sourceTree = "<group>"; };
 		430B658A19DDC16B001CD271 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		430B659419DDC1B3001CD271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		430B65AA19DDC90C001CD271 /* _RMTParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _RMTParent.swift; sourceTree = "<group>"; };
+		430B65AB19DDC90C001CD271 /* _RMTSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _RMTSession.swift; sourceTree = "<group>"; };
+		430B65AF19DDC92B001CD271 /* RMTParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTParent.swift; sourceTree = "<group>"; };
+		430B65B019DDC92B001CD271 /* RMTSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,8 @@
 		430B658219DDC14C001CD271 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				430B65A919DDC8F7001CD271 /* Base */,
+				430B65AE19DDC910001CD271 /* Entities */,
 				430B658319DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld */,
 			);
 			path = Model;
@@ -155,6 +165,24 @@
 				430B659419DDC1B3001CD271 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		430B65A919DDC8F7001CD271 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				430B65AA19DDC90C001CD271 /* _RMTParent.swift */,
+				430B65AB19DDC90C001CD271 /* _RMTSession.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		430B65AE19DDC910001CD271 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				430B65AF19DDC92B001CD271 /* RMTParent.swift */,
+				430B65B019DDC92B001CD271 /* RMTSession.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430B65B219DDC92B001CD271 /* RMTSession.swift in Sources */,
+				430B65AD19DDC90C001CD271 /* _RMTSession.swift in Sources */,
 				430B658619DDC14C001CD271 /* ViewController.swift in Sources */,
 				430B658519DDC14C001CD271 /* AppDelegate.swift in Sources */,
+				430B65B119DDC92B001CD271 /* RMTParent.swift in Sources */,
 				430B658719DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld in Sources */,
+				430B65AC19DDC90C001CD271 /* _RMTParent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +468,7 @@
 				430B656E19DDBFA3001CD271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		430B656F19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalkAtMobOSTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +477,7 @@
 				430B657119DDBFA3001CD271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
