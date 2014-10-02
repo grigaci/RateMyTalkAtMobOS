@@ -1,0 +1,21 @@
+PODS:
+  - CJALog (1.1.0)
+  - DACircularProgress (2.2.0)
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core
+  - MagicalRecord/Core (2.2)
+  - MBProgressHUD (0.9)
+
+DEPENDENCIES:
+  - CJALog (~> 1.1.0)
+  - DACircularProgress (~> 2.2.0)
+  - MagicalRecord (~> 2.2)
+  - MBProgressHUD (~> 0.8)
+
+SPEC CHECKSUMS:
+  CJALog: a80d588116a3b545ab7d649f9b77be41f6c92225
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+
+COCOAPODS: 0.34.1

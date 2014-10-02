@@ -23,6 +23,7 @@
 		430B65C519DDD152001CD271 /* RMTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C019DDD152001CD271 /* RMTSession.swift */; };
 		430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C119DDD152001CD271 /* RMTSpeaker.swift */; };
 		430B65C919DDD3D0001CD271 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430B65C819DDD3D0001CD271 /* CloudKit.framework */; };
+		77F1C848734F2B985B2CE088 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B692353CDC1C3CC8265A0171 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,12 @@
 		430B65BF19DDD152001CD271 /* RMTRatingCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTRatingCategory.swift; sourceTree = "<group>"; };
 		430B65C019DDD152001CD271 /* RMTSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTSession.swift; sourceTree = "<group>"; };
 		430B65C119DDD152001CD271 /* RMTSpeaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTSpeaker.swift; sourceTree = "<group>"; };
-		430B65C719DDD3C9001CD271 /* RateMyTalkAtMobOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RateMyTalkAtMobOS.entitlements; sourceTree = "<group>"; };
+		430B65C719DDD3C9001CD271 /* RateMyTalkAtMobOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = RateMyTalkAtMobOS.entitlements; path = ../RateMyTalkAtMobOS.entitlements; sourceTree = "<group>"; };
 		430B65C819DDD3D0001CD271 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RateMyTalkAtMobOS-Bridging-Header.h"; path = "Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B692353CDC1C3CC8265A0171 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B65C919DDD3D0001CD271 /* CloudKit.framework in Frameworks */,
+				77F1C848734F2B985B2CE088 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +87,11 @@
 		430B654119DDBFA3001CD271 = {
 			isa = PBXGroup;
 			children = (
-				430B65C819DDD3D0001CD271 /* CloudKit.framework */,
 				430B654C19DDBFA3001CD271 /* RateMyTalkAtMobOS */,
 				430B656519DDBFA3001CD271 /* RateMyTalkAtMobOSTests */,
 				430B654B19DDBFA3001CD271 /* Products */,
+				B928B4FA1D2C350E1217BD32 /* Pods */,
+				60D6635258C7A1413DA03BC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,7 +107,6 @@
 		430B654C19DDBFA3001CD271 /* RateMyTalkAtMobOS */ = {
 			isa = PBXGroup;
 			children = (
-				430B65C719DDD3C9001CD271 /* RateMyTalkAtMobOS.entitlements */,
 				430B657E19DDC14C001CD271 /* Classes */,
 				430B658819DDC16B001CD271 /* Resources */,
 				430B659319DDC1B3001CD271 /* SupportingFiles */,
@@ -131,6 +137,7 @@
 				430B657F19DDC14C001CD271 /* AppDelegate.swift */,
 				430B658019DDC14C001CD271 /* GUI */,
 				430B658219DDC14C001CD271 /* Model */,
+				430B65CA19DDDED9001CD271 /* Helpers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -180,6 +187,7 @@
 		430B659319DDC1B3001CD271 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				430B65C719DDD3C9001CD271 /* RateMyTalkAtMobOS.entitlements */,
 				430B659419DDC1B3001CD271 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -209,6 +217,40 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		430B65CA19DDDED9001CD271 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				430B65CB19DDDEF3001CD271 /* ObjCBridging */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		430B65CB19DDDEF3001CD271 /* ObjCBridging */ = {
+			isa = PBXGroup;
+			children = (
+				430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */,
+			);
+			name = ObjCBridging;
+			sourceTree = "<group>";
+		};
+		60D6635258C7A1413DA03BC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B692353CDC1C3CC8265A0171 /* libPods.a */,
+				430B65C819DDD3D0001CD271 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B928B4FA1D2C350E1217BD32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */,
+				901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 430B656C19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalkAtMobOS" */;
 			buildPhases = (
+				4AEEC6134E3895B3A987C8D1 /* Check Pods Manifest.lock */,
 				430B654619DDBFA3001CD271 /* Sources */,
 				430B654719DDBFA3001CD271 /* Frameworks */,
 				430B654819DDBFA3001CD271 /* Resources */,
+				DA106E769810E2342B1F59FB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,6 +351,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4AEEC6134E3895B3A987C8D1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA106E769810E2342B1F59FB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		430B654619DDBFA3001CD271 /* Sources */ = {
@@ -429,6 +506,7 @@
 		};
 		430B656D19DDBFA3001CD271 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/RateMyTalkAtMobOS.entitlements;
@@ -438,11 +516,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RateMyTalkAtMobOS/Classes/Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		430B656E19DDBFA3001CD271 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/RateMyTalkAtMobOS.entitlements;
@@ -452,6 +532,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RateMyTalkAtMobOS/Classes/Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h";
 			};
 			name = Release;
 		};
