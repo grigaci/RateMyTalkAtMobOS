@@ -23,6 +23,8 @@
 		430B65C519DDD152001CD271 /* RMTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C019DDD152001CD271 /* RMTSession.swift */; };
 		430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C119DDD152001CD271 /* RMTSpeaker.swift */; };
 		430B65C919DDD3D0001CD271 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430B65C819DDD3D0001CD271 /* CloudKit.framework */; };
+		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
+		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
 		77F1C848734F2B985B2CE088 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B692353CDC1C3CC8265A0171 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		430B65C719DDD3C9001CD271 /* RateMyTalkAtMobOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = RateMyTalkAtMobOS.entitlements; path = ../RateMyTalkAtMobOS.entitlements; sourceTree = "<group>"; };
 		430B65C819DDD3D0001CD271 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RateMyTalkAtMobOS-Bridging-Header.h"; path = "Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
+		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
 		901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B692353CDC1C3CC8265A0171 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 		430B65CA19DDDED9001CD271 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4383B89519DEE8E700CE0120 /* Starters */,
 				430B65CB19DDDEF3001CD271 /* ObjCBridging */,
 			);
 			name = Helpers;
@@ -231,6 +236,15 @@
 				430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */,
 			);
 			name = ObjCBridging;
+			sourceTree = "<group>";
+		};
+		4383B89519DEE8E700CE0120 /* Starters */ = {
+			isa = PBXGroup;
+			children = (
+				4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */,
+				4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */,
+			);
+			name = Starters;
 			sourceTree = "<group>";
 		};
 		60D6635258C7A1413DA03BC7 /* Frameworks */ = {
@@ -392,6 +406,8 @@
 			files = (
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
 				430B65C219DDD152001CD271 /* RMTParent.swift in Sources */,
+				4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */,
+				4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */,
 				430B65C519DDD152001CD271 /* RMTSession.swift in Sources */,
 				430B65BA19DDD143001CD271 /* _RMTRatingCategory.swift in Sources */,
 				430B65BC19DDD143001CD271 /* _RMTSpeaker.swift in Sources */,
