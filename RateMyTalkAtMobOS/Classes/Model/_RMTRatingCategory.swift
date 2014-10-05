@@ -14,7 +14,7 @@ enum RMTRatingCategoryRelationships: String {
 }
 
 @objc
-class _RMTRatingCategory: RMTParent {
+class _RMTRatingCategory: RMTCloudKit {
 
     // MARK: - Class methods
 

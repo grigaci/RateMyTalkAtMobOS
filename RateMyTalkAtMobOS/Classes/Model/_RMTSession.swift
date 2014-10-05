@@ -13,7 +13,7 @@ enum RMTSessionRelationships: String {
 }
 
 @objc
-class _RMTSession: RMTParent {
+class _RMTSession: RMTCloudKit {
 
     // MARK: - Class methods
 

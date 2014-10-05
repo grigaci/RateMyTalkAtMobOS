@@ -12,7 +12,7 @@ enum RMTSpeakerRelationships: String {
 }
 
 @objc
-class _RMTSpeaker: RMTParent {
+class _RMTSpeaker: RMTCloudKit {
 
     // MARK: - Class methods
 

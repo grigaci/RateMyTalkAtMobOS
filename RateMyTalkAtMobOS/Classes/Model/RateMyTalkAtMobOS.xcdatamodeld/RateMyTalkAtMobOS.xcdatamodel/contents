@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A361c" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="RMTCloudKit" representedClassName="RMTCloudKit" parentEntity="RMTParent" syncable="YES">
+        <attribute name="ckRecordID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="RMTParent" representedClassName="RMTParent" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="RMTRating" representedClassName="RMTRating" parentEntity="RMTParent" syncable="YES">
+    <entity name="RMTRating" representedClassName="RMTRating" parentEntity="RMTCloudKit" syncable="YES">
         <attribute name="stars" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="ratingCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RMTRatingCategory" inverseName="ratings" inverseEntity="RMTRatingCategory" syncable="YES"/>
     </entity>
-    <entity name="RMTRatingCategory" representedClassName="RMTRatingCategory" parentEntity="RMTParent" syncable="YES">
+    <entity name="RMTRatingCategory" representedClassName="RMTRatingCategory" parentEntity="RMTCloudKit" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ratings" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RMTRating" inverseName="ratingCategory" inverseEntity="RMTRating" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RMTSession" inverseName="ratingCategories" inverseEntity="RMTSession" syncable="YES"/>
     </entity>
-    <entity name="RMTSession" representedClassName="RMTSession" parentEntity="RMTParent" syncable="YES">
+    <entity name="RMTSession" representedClassName="RMTSession" parentEntity="RMTCloudKit" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ratingCategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RMTRatingCategory" inverseName="sessions" inverseEntity="RMTRatingCategory" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RMTSpeaker" inverseName="sessions" inverseEntity="RMTSpeaker" syncable="YES"/>
     </entity>
-    <entity name="RMTSpeaker" representedClassName="RMTSpeaker" parentEntity="RMTParent" syncable="YES">
+    <entity name="RMTSpeaker" representedClassName="RMTSpeaker" parentEntity="RMTCloudKit" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RMTSession" inverseName="speaker" inverseEntity="RMTSession" syncable="YES"/>
     </entity>
     <elements>
         <element name="RMTParent" positionX="-54" positionY="0" width="128" height="90"/>
+        <element name="RMTRating" positionX="0" positionY="72" width="128" height="73"/>
+        <element name="RMTRatingCategory" positionX="-18" positionY="54" width="128" height="103"/>
         <element name="RMTSession" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="RMTSpeaker" positionX="-36" positionY="36" width="128" height="73"/>
-        <element name="RMTRatingCategory" positionX="-18" positionY="54" width="128" height="103"/>
-        <element name="RMTRating" positionX="0" positionY="72" width="128" height="73"/>
+        <element name="RMTCloudKit" positionX="-27" positionY="54" width="128" height="60"/>
     </elements>
 </model>

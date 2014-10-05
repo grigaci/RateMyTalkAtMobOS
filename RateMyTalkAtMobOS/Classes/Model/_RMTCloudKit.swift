@@ -1,23 +1,19 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to RMTRating.swift instead.
+// Make changes to RMTCloudKit.swift instead.
 
 import CoreData
 
-enum RMTRatingAttributes: String {
-    case stars = "stars"
-}
-
-enum RMTRatingRelationships: String {
-    case ratingCategory = "ratingCategory"
+enum RMTCloudKitAttributes: String {
+    case ckRecordID = "ckRecordID"
 }
 
 @objc
-class _RMTRating: RMTCloudKit {
+class _RMTCloudKit: RMTParent {
 
     // MARK: - Class methods
 
     override class func entityName () -> String {
-        return "RMTRating"
+        return "RMTCloudKit"
     }
 
     override class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -31,23 +27,18 @@ class _RMTRating: RMTCloudKit {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _RMTRating.entity(managedObjectContext)
+        let entity = _RMTCloudKit.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
     @NSManaged
-    var stars: NSNumber?
+    var ckRecordID: String?
 
-    // func validateStars(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCkRecordID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
-
-    @NSManaged
-    var ratingCategory: RMTRatingCategory?
-
-    // func validateRatingCategory(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 
