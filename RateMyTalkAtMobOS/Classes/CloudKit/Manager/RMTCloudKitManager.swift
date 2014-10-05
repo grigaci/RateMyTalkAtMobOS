@@ -1,0 +1,45 @@
+//
+//  RMTCloudKitManager.swift
+//  RateMyTalkAtMobOSMaster
+//
+//  Created by Bogdan Iusco on 10/4/14.
+//  Copyright (c) 2014 Grigaci. All rights reserved.
+//
+
+import Foundation
+import CloudKit
+
+class RMTCloudKitManager {
+    
+    // Our own custom container
+    private let publicDB = CKContainer(identifier: "iCloud.RateMyTalkAtMobOS").publicCloudDatabase
+
+    class var sharedInstance : RMTCloudKitManager {
+    struct Static {
+        static var onceToken : dispatch_once_t = 0
+        static var instance : RMTCloudKitManager? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = RMTCloudKitManager()
+        }
+        return Static.instance!
+    }
+
+    func downloadAll(finishedCallback: () -> Void) {
+        downloadRecordType(RMTSpeaker.ckRecordName, finishedCallback: { (successul : Bool) -> Void in
+            finishedCallback()
+        })
+    }
+
+    func downloadRecordType(type: NSString, finishedCallback: (Bool) -> Void) {
+        let downloadOperation = RMTCloudKitOperationDownloadAll.downloadAll(type)
+
+        downloadOperation.queryCompletionBlock = { (cursor : CKQueryCursor!, error : NSError!) in
+            println("download error \(error) for \(type)")
+            finishedCallback((error != nil))
+        }
+
+        publicDB.addOperation(downloadOperation)
+    }
+    
+}
