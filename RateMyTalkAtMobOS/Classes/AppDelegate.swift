@@ -17,10 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         runStarters()
-        
-        RMTCloudKitManager.sharedInstance.downloadAll { () -> Void in
-            RMTLogCoreData.printAllSessions()
-        }
+
+        // Create window
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.makeKeyAndVisible()
+
+        // Set root view controller
+        RMTGUIManager.sharedInstance.window = window
+
         return true
     }
 
