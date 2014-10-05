@@ -25,4 +25,35 @@ extension RMTRatingCategory {
         get { return "RMTRatingCategory"}
     }
     
+    
+    class func create(record: CKRecord) -> RMTRatingCategory {
+        let moc = NSManagedObjectContext.MR_defaultContext()
+        let ratingCategory = RMTRatingCategory(entity: RMTRatingCategory.entity(moc), insertIntoManagedObjectContext: moc)
+        ratingCategory.ckRecordID = record.recordID.recordName
+        
+        let title = record.objectForKey(RMTRatingCategoryCKAttributes.title.toRaw()) as? NSString
+        ratingCategory.title = title
+        
+        let detail = record.objectForKey(RMTRatingCategoryCKAttributes.detail.toRaw()) as? NSString
+        ratingCategory.detail = detail
+
+        let ratingCategoryToSessionRelation = record.objectForKey(RMTRatingCategoryCKRelation.session.toRaw()) as? CKReference
+        if ratingCategoryToSessionRelation != nil {
+            let sessionRecordID = ratingCategoryToSessionRelation?.recordID.recordName
+            let session: RMTSession? = RMTSession.sessionWithRecordID(sessionRecordID!)
+            if session != nil {
+                session?.addRatingCategoriesObject(ratingCategory)
+            }
+        }
+    
+        return ratingCategory
+    }
+    
+    class func ratingCategoryWithRecordID(recordID: NSString) -> RMTRatingCategory? {
+        let moc = NSManagedObjectContext.MR_defaultContext()
+        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
+        let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRatingCategory
+        return existingObject
+    }
+
 }

@@ -28,19 +28,16 @@ extension RMTSpeaker {
         speaker.ckRecordID = record.recordID.recordName
         
         let name: AnyObject! = record.valueForKey(RMTSpeakerCKAttributes.name.toRaw())
-        if name != nil {
-            speaker.name = name  as NSString
-        }
+        speaker.name = name  as NSString
 
         return speaker;
     }
     
     class func speakerWithRecordID(recordID: NSString) -> RMTSpeaker? {
+        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
-        var existingRecords = RMTSpeaker.MR_findAllWithPredicate(predicate)
-        let firstObject: RMTSpeaker? = existingRecords.first as? RMTSpeaker
-        return firstObject
+        var existingObject: RMTSpeaker? = RMTSpeaker.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTSpeaker
+        return existingObject
     }
-    
-    
+
 }

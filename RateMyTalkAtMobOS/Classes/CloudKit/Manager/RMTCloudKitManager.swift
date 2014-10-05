@@ -26,8 +26,27 @@ class RMTCloudKitManager {
     }
 
     func downloadAll(finishedCallback: () -> Void) {
-        downloadRecordType(RMTSpeaker.ckRecordName, finishedCallback: { (successul : Bool) -> Void in
+        
+        let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName]
+        downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
+            let moc = NSManagedObjectContext.MR_defaultContext()
+            moc.MR_saveToPersistentStoreAndWait()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                finishedCallback()
+            })
+        }
+    }
+
+    func downloadRecursive(allTypes: [NSString], currentIndex: Int, finishedCallback: () -> Void) {
+        if currentIndex == allTypes.count {
             finishedCallback()
+            return
+        }
+
+        let currentType = allTypes[currentIndex] as NSString
+        downloadRecordType(currentType, finishedCallback: { (successul : Bool) -> Void in
+            self.downloadRecursive(allTypes, currentIndex: currentIndex + 1, finishedCallback: finishedCallback)
         })
     }
 
@@ -41,5 +60,5 @@ class RMTCloudKitManager {
 
         publicDB.addOperation(downloadOperation)
     }
-    
+
 }

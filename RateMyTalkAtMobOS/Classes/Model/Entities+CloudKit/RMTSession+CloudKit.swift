@@ -23,4 +23,31 @@ extension RMTSession {
     {
         get { return "RMTSession"}
     }
+    
+    class func create(record: CKRecord) -> RMTSession {
+        
+        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+        let session: RMTSession = RMTSession(entity: RMTSession.entity(moc), insertIntoManagedObjectContext: moc)
+        session.ckRecordID = record.recordID.recordName
+
+        let title = record.valueForKey(RMTSessionCKAttributes.title.toRaw()) as? NSString
+        session.title = title
+
+        let sessionToSpeakerReference = record.objectForKey(RMTSessionCKRelations.speaker.toRaw()) as? CKReference
+        if sessionToSpeakerReference != nil {
+            let speakerRecordID = sessionToSpeakerReference?.recordID.recordName
+            let speaker = RMTSpeaker.speakerWithRecordID(speakerRecordID!)
+            session.speaker = speaker
+        }
+
+        return session;
+    }
+    
+    class func sessionWithRecordID(recordID: NSString) -> RMTSession? {
+        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
+        let existingObject = RMTSession.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTSession
+        return existingObject
+    }
+
 }

@@ -32,6 +32,10 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
         switch self.recordType {
         case RMTSpeaker.ckRecordName:
             handleRecordSpeaker(record)
+        case RMTSession.ckRecordName:
+            handleRecordSession(record)
+        case RMTRatingCategory.ckRecordName:
+            handleRecordRatingCategory(record)
         default:
             println("Unhandled case in RMTCloudKitOperationQuery::handleRecord")
         }
@@ -43,4 +47,19 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
             RMTSpeaker.create(record)
         }
     }
+    
+    private func handleRecordSession(record: CKRecord) {
+        let existingSession: RMTSession? = RMTSession.sessionWithRecordID(record.recordID.recordName)
+        if existingSession == nil {
+            RMTSession.create(record)
+        }
+    }
+    
+    private func handleRecordRatingCategory(record: CKRecord) {
+        let existingRatingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(record.recordID.recordName)
+        if existingRatingCategory == nil {
+            RMTRatingCategory.create(record)
+        }
+    }
+
 }
