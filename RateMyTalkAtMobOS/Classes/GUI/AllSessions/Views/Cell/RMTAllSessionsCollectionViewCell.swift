@@ -14,6 +14,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.contentView.addSubview(titleLabel!)
         self.contentView.addSubview(speakerLabel!)
+        self.contentView.addSubview(lineView!)
         setupConstraints()
     }
 
@@ -23,8 +24,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     
     var session: RMTSession? {
         didSet{
-            titleLabel?.text = "Title: \(session?.title)"
-            speakerLabel?.text = "Speaker: \(session?.speaker?.name)"
+            let title = (session?.title != nil) ? session?.title : ""
+            let speaker = session?.speaker?.name != nil ? session?.speaker?.name : ""
+            titleLabel!.text = "Title: \(title!)"
+            speakerLabel!.text = "Speaker: \(speaker!)"
         }
     }
 
@@ -40,18 +43,30 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var lineView: UIView? = {
+        let view = UIView(frame: CGRectZero)
+        view.backgroundColor = UIColor.blueColor()
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        return view
+    }()
+
     func setupConstraints() {
         let viewsDictionary = ["titleLabel":titleLabel!,
-                             "speakerLabel":speakerLabel!]
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleLabel]|",
+                             "speakerLabel":speakerLabel!,
+                                 "lineView":lineView!]
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[titleLabel]-|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
 
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[speakerLabel]|",
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[speakerLabel]-|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
-        
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-[speakerLabel]-|",
+
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[lineView]|",
+            options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        self.contentView.addConstraints(constraints)
+
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-[speakerLabel]-[lineView(==1)]|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
     }

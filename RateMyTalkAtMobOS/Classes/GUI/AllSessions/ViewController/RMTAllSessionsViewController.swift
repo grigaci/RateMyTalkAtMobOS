@@ -9,14 +9,28 @@
 import Foundation
 
 class RMTAllSessionsViewController: UICollectionViewController {
+    let flowLayout: UICollectionViewFlowLayout
+    var sessionDatasource : RMTAllSessionsDatasource?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         let layout = UICollectionViewFlowLayout()
+        self.flowLayout = layout
         super.init(collectionViewLayout: layout)
         self.title = "MOBOS"
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100.0)
     }
 }
