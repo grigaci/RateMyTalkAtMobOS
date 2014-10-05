@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         runStarters()
         
         RMTCloudKitManager.sharedInstance.downloadAll { () -> Void in
+            RMTLogCoreData.printAllSpeakers()
         }
         return true
     }
