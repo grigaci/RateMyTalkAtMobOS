@@ -7,3 +7,4 @@
 //
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MBProgressHUD/MBProgressHUD.h>
