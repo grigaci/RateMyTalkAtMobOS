@@ -133,7 +133,6 @@
 		430B654C19DDBFA3001CD271 /* RateMyTalkAtMobOS */ = {
 			isa = PBXGroup;
 			children = (
-				65D2488E19E12DD500F37C78 /* RateMyTalkAtMobOS.entitlements */,
 				430B657E19DDC14C001CD271 /* Classes */,
 				430B658819DDC16B001CD271 /* Resources */,
 				430B659319DDC1B3001CD271 /* SupportingFiles */,
@@ -218,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				430B659419DDC1B3001CD271 /* Info.plist */,
+				65D2488E19E12DD500F37C78 /* RateMyTalkAtMobOS.entitlements */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -657,7 +657,7 @@
 			baseConfigurationReference = F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/RateMyTalkAtMobOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/SupportingFiles/RateMyTalkAtMobOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RateMyTalkAtMobOS/SupportingFiles/Info.plist;
@@ -673,7 +673,7 @@
 			baseConfigurationReference = 901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/RateMyTalkAtMobOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RateMyTalkAtMobOS/SupportingFiles/RateMyTalkAtMobOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RateMyTalkAtMobOS/SupportingFiles/Info.plist;
