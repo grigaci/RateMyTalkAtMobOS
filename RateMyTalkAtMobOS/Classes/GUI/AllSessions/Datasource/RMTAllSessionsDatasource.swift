@@ -11,6 +11,9 @@ import UIKit
 class RMTAllSessionsDatasource: NSObject, NSFetchedResultsControllerDelegate, UICollectionViewDataSource {
     let fetchedResultsController: NSFetchedResultsController
     let collectionView: UICollectionView
+    lazy var objectChanges: [NSMutableDictionary] = {
+        return [NSMutableDictionary]()
+    }()
 
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
@@ -40,5 +43,64 @@ class RMTAllSessionsDatasource: NSObject, NSFetchedResultsControllerDelegate, UI
         cell.session = session
 
         return cell
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        var change: NSMutableDictionary = NSMutableDictionary()
+        let typeNumber: NSNumber = NSNumber(unsignedLong: type.toRaw())
+        switch type {
+        case .Insert:
+            change.setObject([newIndexPath!], forKey: typeNumber)
+        case .Delete:
+            change.setObject([indexPath!], forKey: typeNumber)
+        case .Update:
+            change.setObject([indexPath!], forKey: typeNumber)
+        case .Move:
+            change.setObject([indexPath!, newIndexPath!], forKey: typeNumber)
+        default:
+            println("error in didChangeObject")
+        }
+
+        self.objectChanges.append(change)
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        if self.objectChanges.count != 0 {
+            self.insertChangesIntoCollectionView()
+        }
+    }
+
+    func insertChangesIntoCollectionView() {
+        self.collectionView.performBatchUpdates({ () -> Void in
+            for changeObj in self.objectChanges {
+                let change: NSMutableDictionary = changeObj as NSMutableDictionary
+                let allKeys = change.allKeys as [UInt]
+                for numberObj in allKeys {
+                    let key: NSFetchedResultsChangeType = NSFetchedResultsChangeType.fromRaw(numberObj) as NSFetchedResultsChangeType!
+                    let indexPaths = change.objectForKey(numberObj) as [NSIndexPath]
+                    switch key {
+                    case .Insert:
+                        self.collectionView.insertItemsAtIndexPaths(indexPaths)
+                    case .Delete:
+                        self.collectionView.deleteItemsAtIndexPaths(indexPaths)
+                    case .Update:
+                        self.collectionView.reloadItemsAtIndexPaths(indexPaths)
+                    case .Move:
+                        self.collectionView.moveItemAtIndexPath(indexPaths[0], toIndexPath: indexPaths[1])
+                    default:
+                        println("error in insertChangesIntoCollectionView")
+                    }
+                }
+                
+            }
+            
+            self.resetFetchedResultControllerChanges()
+            }, completion: { (finished: Bool) -> Void in
+                self.resetFetchedResultControllerChanges()
+        })
+    }
+
+    func resetFetchedResultControllerChanges() {
+        self.objectChanges.removeAll(keepCapacity: true)
     }
 }
