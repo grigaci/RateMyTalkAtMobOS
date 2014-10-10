@@ -24,6 +24,10 @@
 		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
 		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
+		65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359E19E8156800A1BC0A /* RMTConstants.swift */; };
+		65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */; };
+		65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4362019E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift */; };
+		65A4362319E81B9700A1BC0A /* RMTSessionDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4362219E81B9700A1BC0A /* RMTSessionDatasource.swift */; };
 		65D2489019E12E2900F37C78 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2488F19E12E2900F37C78 /* CloudKit.framework */; };
 		65D2489319E1312900F37C78 /* _RMTCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2489219E1312900F37C78 /* _RMTCloudKit.swift */; };
 		65D2489519E1313C00F37C78 /* RMTCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2489419E1313C00F37C78 /* RMTCloudKit.swift */; };
@@ -73,6 +77,10 @@
 		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
 		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
+		65A4359E19E8156800A1BC0A /* RMTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTConstants.swift; path = Helpers/Constants/RMTConstants.swift; sourceTree = "<group>"; };
+		65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionViewController.swift; path = Session/ViewController/RMTSessionViewController.swift; sourceTree = "<group>"; };
+		65A4362019E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionCollectionViewCell.swift; path = Session/View/Cell/RMTSessionCollectionViewCell.swift; sourceTree = "<group>"; };
+		65A4362219E81B9700A1BC0A /* RMTSessionDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionDatasource.swift; path = Session/Datasource/RMTSessionDatasource.swift; sourceTree = "<group>"; };
 		65D2488E19E12DD500F37C78 /* RateMyTalkAtMobOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RateMyTalkAtMobOS.entitlements; sourceTree = "<group>"; };
 		65D2488F19E12E2900F37C78 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65D2489219E1312900F37C78 /* _RMTCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _RMTCloudKit.swift; sourceTree = "<group>"; };
@@ -174,6 +182,8 @@
 		430B658019DDC14C001CD271 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				65A435A019E8189000A1BC0A /* Session */,
+				65A4359A19E80EAC00A1BC0A /* Base */,
 				65D248A919E1668000F37C78 /* AllSessions */,
 				65D248B019E1675300F37C78 /* Manager */,
 			);
@@ -253,6 +263,7 @@
 		430B65CA19DDDED9001CD271 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				65A4359D19E8155000A1BC0A /* Constants */,
 				65D248A519E140E000F37C78 /* Logger */,
 				4383B89519DEE8E700CE0120 /* Starters */,
 				430B65CB19DDDEF3001CD271 /* ObjCBridging */,
@@ -292,6 +303,56 @@
 				65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		65A4359D19E8155000A1BC0A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				65A4359E19E8156800A1BC0A /* RMTConstants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		65A435A019E8189000A1BC0A /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				65A435A319E818BB00A1BC0A /* View */,
+				65A435A219E818AF00A1BC0A /* ViewController */,
+				65A435A119E818A300A1BC0A /* Datasource */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		65A435A119E818A300A1BC0A /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				65A4362219E81B9700A1BC0A /* RMTSessionDatasource.swift */,
+			);
+			name = Datasource;
+			sourceTree = "<group>";
+		};
+		65A435A219E818AF00A1BC0A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		65A435A319E818BB00A1BC0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65A4361F19E81B4D00A1BC0A /* Cell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		65A4361F19E81B4D00A1BC0A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				65A4362019E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		65D2489119E1301A00F37C78 /* CloudKit */ = {
@@ -536,14 +597,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
+				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
 				65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */,
+				65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */,
 				430B65C219DDD152001CD271 /* RMTParent.swift in Sources */,
 				4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */,
 				65D248AF19E1669C00F37C78 /* RMTAllSessionsViewController.swift in Sources */,
 				65D248B419E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift in Sources */,
 				4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */,
+				65A4362319E81B9700A1BC0A /* RMTSessionDatasource.swift in Sources */,
 				430B65C519DDD152001CD271 /* RMTSession.swift in Sources */,
+				65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */,
 				65D248A319E1327400F37C78 /* RMTSession+CloudKit.swift in Sources */,
 				430B65BA19DDD143001CD271 /* _RMTRatingCategory.swift in Sources */,
 				65D2489519E1313C00F37C78 /* RMTCloudKit.swift in Sources */,

@@ -10,7 +10,7 @@ enum RMTRatingCategoryAttributes: String {
 
 enum RMTRatingCategoryRelationships: String {
     case ratings = "ratings"
-    case sessions = "sessions"
+    case session = "session"
 }
 
 @objc
@@ -55,7 +55,9 @@ class _RMTRatingCategory: RMTCloudKit {
     var ratings: NSOrderedSet
 
     @NSManaged
-    var sessions: NSOrderedSet
+    var session: RMTSession?
+
+    // func validateSession(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 
@@ -83,34 +85,6 @@ extension _RMTRatingCategory {
         let mutable = self.ratings.mutableCopy() as NSMutableOrderedSet
         mutable.removeObject(value)
         self.ratings = mutable.copy() as NSOrderedSet
-    }
-
-}
-
-extension _RMTRatingCategory {
-
-    func addSessions(objects: NSOrderedSet) {
-        let mutable = self.sessions.mutableCopy() as NSMutableOrderedSet
-        mutable.unionOrderedSet(objects)
-        self.sessions = mutable.copy() as NSOrderedSet
-    }
-
-    func removeSessions(objects: NSOrderedSet) {
-        let mutable = self.sessions.mutableCopy() as NSMutableOrderedSet
-        mutable.minusOrderedSet(objects)
-        self.sessions = mutable.copy() as NSOrderedSet
-    }
-
-    func addSessionsObject(value: RMTSession!) {
-        let mutable = self.sessions.mutableCopy() as NSMutableOrderedSet
-        mutable.addObject(value)
-        self.sessions = mutable.copy() as NSOrderedSet
-    }
-
-    func removeSessionsObject(value: RMTSession!) {
-        let mutable = self.sessions.mutableCopy() as NSMutableOrderedSet
-        mutable.removeObject(value)
-        self.sessions = mutable.copy() as NSOrderedSet
     }
 
 }

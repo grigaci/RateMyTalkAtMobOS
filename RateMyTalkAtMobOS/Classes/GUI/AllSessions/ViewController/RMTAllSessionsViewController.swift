@@ -40,6 +40,14 @@ class RMTAllSessionsViewController: UICollectionViewController {
         super.viewDidLayoutSubviews()
         self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100.0)
     }
+
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let session = self.sessionDatasource?.fetchedResultsController.objectAtIndexPath(indexPath) as RMTSession
+        let viewController = RMTSessionViewController(nibName: nil, bundle: nil)
+        viewController.session = session
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
     private func downloadDataIfNeeded() {
         var allSession = RMTSession.MR_findAll().count
         if allSession != 0 {
