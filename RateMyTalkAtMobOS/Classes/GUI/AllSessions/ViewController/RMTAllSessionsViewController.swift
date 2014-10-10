@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Grigaci. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RMTAllSessionsViewController: UICollectionViewController {
     let flowLayout: UICollectionViewFlowLayout
@@ -26,6 +26,8 @@ class RMTAllSessionsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.delegate = self
+        self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
     }
 
@@ -38,7 +40,6 @@ class RMTAllSessionsViewController: UICollectionViewController {
         super.viewDidLayoutSubviews()
         self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100.0)
     }
-    
     private func downloadDataIfNeeded() {
         var allSession = RMTSession.MR_findAll().count
         if allSession != 0 {

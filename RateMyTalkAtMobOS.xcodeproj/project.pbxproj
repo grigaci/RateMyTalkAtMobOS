@@ -23,6 +23,7 @@
 		430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C119DDD152001CD271 /* RMTSpeaker.swift */; };
 		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
+		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
 		65D2489019E12E2900F37C78 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D2488F19E12E2900F37C78 /* CloudKit.framework */; };
 		65D2489319E1312900F37C78 /* _RMTCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2489219E1312900F37C78 /* _RMTCloudKit.swift */; };
 		65D2489519E1313C00F37C78 /* RMTCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2489419E1313C00F37C78 /* RMTCloudKit.swift */; };
@@ -71,6 +72,7 @@
 		430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RateMyTalkAtMobOS-Bridging-Header.h"; path = "Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
+		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
 		65D2488E19E12DD500F37C78 /* RateMyTalkAtMobOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RateMyTalkAtMobOS.entitlements; sourceTree = "<group>"; };
 		65D2488F19E12E2900F37C78 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65D2489219E1312900F37C78 /* _RMTCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _RMTCloudKit.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 				B692353CDC1C3CC8265A0171 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65A4359A19E80EAC00A1BC0A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		65D2489119E1301A00F37C78 /* CloudKit */ = {
@@ -527,6 +537,7 @@
 			files = (
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
+				65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */,
 				430B65C219DDD152001CD271 /* RMTParent.swift in Sources */,
 				4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */,
 				65D248AF19E1669C00F37C78 /* RMTAllSessionsViewController.swift in Sources */,
