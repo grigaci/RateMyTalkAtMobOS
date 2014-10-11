@@ -29,6 +29,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.collectionView?.delegate = self
         self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
+        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -38,7 +39,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100.0)
+        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

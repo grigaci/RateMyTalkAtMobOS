@@ -23,6 +23,7 @@
 		430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C119DDD152001CD271 /* RMTSpeaker.swift */; };
 		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
+		650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */; };
 		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
 		65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359E19E8156800A1BC0A /* RMTConstants.swift */; };
 		65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */; };
@@ -76,6 +77,7 @@
 		430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RateMyTalkAtMobOS-Bridging-Header.h"; path = "Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
+		650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTDisplayRatingView.swift; path = Common/RatingView/RMTDisplayRatingView.swift; sourceTree = "<group>"; };
 		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
 		65A4359E19E8156800A1BC0A /* RMTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTConstants.swift; path = Helpers/Constants/RMTConstants.swift; sourceTree = "<group>"; };
 		65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionViewController.swift; path = Session/ViewController/RMTSessionViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		430B658019DDC14C001CD271 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				650E2B9519E911A500F61020 /* Common */,
 				65A435A019E8189000A1BC0A /* Session */,
 				65A4359A19E80EAC00A1BC0A /* Base */,
 				65D248A919E1668000F37C78 /* AllSessions */,
@@ -295,6 +298,22 @@
 				B692353CDC1C3CC8265A0171 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		650E2B9519E911A500F61020 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				650E2B9819E923AD00F61020 /* RatingView */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		650E2B9819E923AD00F61020 /* RatingView */ = {
+			isa = PBXGroup;
+			children = (
+				650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */,
+			);
+			name = RatingView;
 			sourceTree = "<group>";
 		};
 		65A4359A19E80EAC00A1BC0A /* Base */ = {
@@ -597,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
+				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
 				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
 				65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */,
