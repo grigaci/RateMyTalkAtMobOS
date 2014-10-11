@@ -39,7 +39,7 @@ class RMTSessionViewController: UICollectionViewController {
         self.collectionView?.backgroundColor = UIColor.whiteColor()
         self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView!, session: self.session!)
-        
+        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
         self.collectionView?.addSubview(self.refreshControl!)
     }
 
@@ -49,7 +49,7 @@ class RMTSessionViewController: UICollectionViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100.0)
+        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
     }
 
     func updateData() {

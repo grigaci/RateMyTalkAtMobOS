@@ -56,6 +56,7 @@ class RMTDisplayRatingView: UIView {
             let imageView = UIImageView(image: UIImage(named: "star_none"))
             imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            imageView.userInteractionEnabled = true
             self.addSubview(imageView)
 
             self.imageViews += [imageView]

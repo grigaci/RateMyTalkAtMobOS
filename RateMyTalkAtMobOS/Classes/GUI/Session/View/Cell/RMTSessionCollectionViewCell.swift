@@ -14,6 +14,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.contentView.addSubview(titleLabel!)
         self.contentView.addSubview(detailLabel!)
+        self.contentView.addSubview(ratingView)
         self.contentView.addSubview(lineView!)
         setupConstraints()
     }
@@ -42,7 +43,12 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         return label
         }()
-    
+
+    lazy var ratingView: RMTEditRatingView = {
+        let ratingView = RMTEditRatingView(frame: CGRectZero)
+        return ratingView
+        }()
+
     lazy var lineView: UIView? = {
         let view = UIView(frame: CGRectZero)
         view.backgroundColor = UIColor.blueColor()
@@ -53,6 +59,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     func setupConstraints() {
         let viewsDictionary = ["titleLabel":titleLabel!,
             "detailLabel":detailLabel!,
+            "ratingView":ratingView,
             "lineView":lineView!]
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[titleLabel]-|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
@@ -61,12 +68,16 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[detailLabel]-|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
-        
+
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[ratingView]-10-|",
+            options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        self.contentView.addConstraints(constraints)
+
         constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[lineView]|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-[detailLabel]-[lineView(==1)]|",
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-[detailLabel]-[ratingView(==40)]-[lineView(==1)]|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
     }
