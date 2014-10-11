@@ -13,6 +13,7 @@ class RMTEditRatingView: RMTDisplayRatingView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addTapGestures()
+        self.addPanGesture()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -20,8 +21,35 @@ class RMTEditRatingView: RMTDisplayRatingView {
     }
 
     func handleTapGesture(tapGesture:UITapGestureRecognizer) {
-        let tappedImageView = tapGesture.view
-        let index = self.imageViews.find {$0 == tappedImageView}
+        let tappedImageView = tapGesture.view as? UIImageView
+        self.tapOnImageView(tappedImageView)
+    }
+
+    func handlePanGesture(panGesture: UIPanGestureRecognizer) {
+        switch panGesture.state {
+        case .Began, .Changed, .Ended:
+            self.handlePanGestureHighlight(panGesture)
+        default: ()
+        }
+    }
+
+    private func handlePanGestureHighlight(panGesture: UIPanGestureRecognizer) {
+        let point = panGesture.locationInView(self)
+        var touchedImageView: UIImageView? = nil
+        for imageView in self.imageViews {
+            let pointInView = imageView.convertPoint(point, fromView: self)
+            if imageView.pointInside(pointInView, withEvent: nil) {
+                touchedImageView = imageView
+                break
+            }
+        }
+        if touchedImageView != nil {
+            self.tapOnImageView(touchedImageView)
+        }
+    }
+
+    private func tapOnImageView(imageView: UIImageView?) {
+        let index = self.imageViews.find {$0 == imageView}
         if index != nil {
             let highlightValue = Float(index! + 1)
             self.highlightStars(highlightValue)
@@ -39,4 +67,8 @@ class RMTEditRatingView: RMTDisplayRatingView {
         imageView.addGestureRecognizer(tapGesture)
     }
 
+    private func addPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        self.addGestureRecognizer(panGesture)
+    }
 }
