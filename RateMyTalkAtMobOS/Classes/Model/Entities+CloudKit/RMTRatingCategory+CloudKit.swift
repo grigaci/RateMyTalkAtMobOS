@@ -48,12 +48,11 @@ extension RMTRatingCategory {
     
         return ratingCategory
     }
-    
+
     class func ratingCategoryWithRecordID(recordID: NSString) -> RMTRatingCategory? {
         let moc = NSManagedObjectContext.MR_defaultContext()
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
         let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRatingCategory
         return existingObject
     }
-
 }

@@ -25,10 +25,14 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     
     var session: RMTSession? {
         didSet{
-            let title = (session?.title != nil) ? session?.title : ""
-            let speaker = session?.speaker?.name != nil ? session?.speaker?.name : ""
-            titleLabel.text = "Title: \(title!)"
-            speakerLabel.text = "Speaker: \(speaker!)"
+            if let sessionObj = session {
+                let title = sessionObj.title
+                let speaker = sessionObj.speaker?.name != nil ? session?.speaker?.name : ""
+                titleLabel.text = "Title: \(title!)"
+                speakerLabel.text = "Speaker: \(speaker!)"
+
+                self.ratingView.highlightStars(sessionObj.totalRating())
+            }
         }
     }
 

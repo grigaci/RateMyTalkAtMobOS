@@ -24,6 +24,32 @@ class RMTDisplayRatingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func highlightStars(countHighlightedStars: Float) {
+        let countHighlightedStarsInt = Int(countHighlightedStars)
+        let countAllStars = self.imageViews.count
+        assert(countHighlightedStars > 0 || countHighlightedStarsInt >= 0, "Should be >= 0")
+        assert(countHighlightedStars < Float(countAllStars) || countHighlightedStarsInt <= countAllStars, "Should be <= \(countAllStars)")
+
+        let countFullStars = countHighlightedStarsInt > 0 ? countHighlightedStarsInt - 1 : 0
+        for index in 0...countFullStars {
+            self.updateStarImage(self.imageViews[index], imageName: "star_full")
+        }
+        
+        let pointValue = countHighlightedStars - Float(countHighlightedStarsInt)
+        var unhighlightedStarsIndex = countHighlightedStarsInt
+        if pointValue > 0 {
+            self.updateStarImage(self.imageViews[countHighlightedStarsInt], imageName: "star_half")
+            unhighlightedStarsIndex += 1
+        }
+
+        if unhighlightedStarsIndex < countAllStars {
+            let countEmptyStars = countAllStars - 1
+            for index in unhighlightedStarsIndex...countEmptyStars {
+                self.updateStarImage(self.imageViews[index], imageName: "star_none")
+            }
+        }
+    }
+
     private func addImageViews() {
         let count = 4
         for _ in 1...count {
@@ -92,4 +118,8 @@ class RMTDisplayRatingView: UIView {
         self.addConstraint(constraint)
     }
     
+    private func updateStarImage(imageView: UIImageView, imageName: String) {
+        let image = UIImage(named: imageName)
+        imageView.image = image
+    }
 }

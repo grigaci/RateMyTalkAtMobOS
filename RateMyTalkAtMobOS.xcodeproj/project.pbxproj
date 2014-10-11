@@ -24,6 +24,9 @@
 		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
 		650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */; };
+		650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */; };
+		650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9D19E9395500F61020 /* Float+Stars.swift */; };
+		650E2BA019E93B2200F61020 /* RMTSession+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */; };
 		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
 		65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359E19E8156800A1BC0A /* RMTConstants.swift */; };
 		65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */; };
@@ -78,6 +81,9 @@
 		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
 		650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTDisplayRatingView.swift; path = Common/RatingView/RMTDisplayRatingView.swift; sourceTree = "<group>"; };
+		650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTRatingCategory+Rating.swift"; path = "Rating/RMTRatingCategory+Rating.swift"; sourceTree = "<group>"; };
+		650E2B9D19E9395500F61020 /* Float+Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float+Stars.swift"; path = "Helpers/Extensions/Float+Stars.swift"; sourceTree = "<group>"; };
+		650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTSession+Rating.swift"; path = "Rating/RMTSession+Rating.swift"; sourceTree = "<group>"; };
 		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
 		65A4359E19E8156800A1BC0A /* RMTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTConstants.swift; path = Helpers/Constants/RMTConstants.swift; sourceTree = "<group>"; };
 		65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionViewController.swift; path = Session/ViewController/RMTSessionViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				430B65A919DDC8F7001CD271 /* Base */,
 				430B65AE19DDC910001CD271 /* Entities */,
 				65D2489E19E1327400F37C78 /* Entities+CloudKit */,
+				650E2B9919E9374A00F61020 /* Rating */,
 				430B658319DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld */,
 			);
 			path = Model;
@@ -266,6 +273,7 @@
 		430B65CA19DDDED9001CD271 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				650E2B9C19E9393D00F61020 /* Extensions */,
 				65A4359D19E8155000A1BC0A /* Constants */,
 				65D248A519E140E000F37C78 /* Logger */,
 				4383B89519DEE8E700CE0120 /* Starters */,
@@ -314,6 +322,23 @@
 				650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */,
 			);
 			name = RatingView;
+			sourceTree = "<group>";
+		};
+		650E2B9919E9374A00F61020 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */,
+				650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */,
+			);
+			name = Rating;
+			sourceTree = "<group>";
+		};
+		650E2B9C19E9393D00F61020 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				650E2B9D19E9395500F61020 /* Float+Stars.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		65A4359A19E80EAC00A1BC0A /* Base */ = {
@@ -619,6 +644,7 @@
 				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
 				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
+				650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */,
 				65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */,
 				65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */,
 				430B65C219DDD152001CD271 /* RMTParent.swift in Sources */,
@@ -630,6 +656,7 @@
 				430B65C519DDD152001CD271 /* RMTSession.swift in Sources */,
 				65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */,
 				65D248A319E1327400F37C78 /* RMTSession+CloudKit.swift in Sources */,
+				650E2BA019E93B2200F61020 /* RMTSession+Rating.swift in Sources */,
 				430B65BA19DDD143001CD271 /* _RMTRatingCategory.swift in Sources */,
 				65D2489519E1313C00F37C78 /* RMTCloudKit.swift in Sources */,
 				430B65BC19DDD143001CD271 /* _RMTSpeaker.swift in Sources */,
@@ -646,6 +673,7 @@
 				430B65B819DDD143001CD271 /* _RMTParent.swift in Sources */,
 				430B658719DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld in Sources */,
 				65D2489319E1312900F37C78 /* _RMTCloudKit.swift in Sources */,
+				650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */,
 				430B65B919DDD143001CD271 /* _RMTRating.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
