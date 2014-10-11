@@ -36,8 +36,10 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
             handleRecordSession(record)
         case RMTRatingCategory.ckRecordName:
             handleRecordRatingCategory(record)
+        case RMTRating.ckRecordName:
+            handleRecordRating(record)
         default:
-            println("Unhandled case in RMTCloudKitOperationQuery::handleRecord")
+            RMTLogError("default switch case", function: __FUNCTION__, line: __LINE__)
         }
     }
 
@@ -59,6 +61,13 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
         let existingRatingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(record.recordID.recordName)
         if existingRatingCategory == nil {
             RMTRatingCategory.create(record)
+        }
+    }
+
+    private func handleRecordRating(record: CKRecord) {
+        let existingRating: RMTRating? = RMTRating.ratingWithRecordID(record.recordID.recordName)
+        if existingRating == nil {
+            RMTRating.create(record)
         }
     }
 

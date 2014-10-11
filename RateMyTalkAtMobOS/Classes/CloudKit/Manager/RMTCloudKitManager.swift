@@ -27,11 +27,11 @@ class RMTCloudKitManager {
 
     func downloadAll(finishedCallback: () -> Void) {
         
-        let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName]
+        let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
-            
+
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 finishedCallback()
             })
@@ -54,7 +54,7 @@ class RMTCloudKitManager {
         let downloadOperation = RMTCloudKitOperationDownloadAll.downloadAll(type)
 
         downloadOperation.queryCompletionBlock = { (cursor : CKQueryCursor!, error : NSError!) in
-            println("download error \(error) for \(type)")
+            println("Download all for \(type) with error \(error)")
             finishedCallback((error != nil))
         }
 

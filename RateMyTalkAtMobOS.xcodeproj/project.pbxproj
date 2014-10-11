@@ -45,6 +45,7 @@
 		65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D248B119E1676100F37C78 /* RMTGUIManager.swift */; };
 		65D248B419E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D248B319E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift */; };
 		65D248B619E1704900F37C78 /* RMTAllSessionsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D248B519E1704900F37C78 /* RMTAllSessionsDatasource.swift */; };
+		65F4B96A19E9589600205595 /* RMTRating+CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4B96919E9589600205595 /* RMTRating+CloudKit.swift */; };
 		77F1C848734F2B985B2CE088 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B692353CDC1C3CC8265A0171 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		65D248B119E1676100F37C78 /* RMTGUIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTGUIManager.swift; sourceTree = "<group>"; };
 		65D248B319E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTAllSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		65D248B519E1704900F37C78 /* RMTAllSessionsDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTAllSessionsDatasource.swift; sourceTree = "<group>"; };
+		65F4B96919E9589600205595 /* RMTRating+CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RMTRating+CloudKit.swift"; sourceTree = "<group>"; };
 		901E08E2F2B0700C4F66CB8F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B692353CDC1C3CC8265A0171 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D28F70B3AE3B6BEBB5BF75 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -427,9 +429,10 @@
 		65D2489E19E1327400F37C78 /* Entities+CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				65D2489F19E1327400F37C78 /* RMTRatingCategory+CloudKit.swift */,
 				65D248A019E1327400F37C78 /* RMTSession+CloudKit.swift */,
 				65D248A119E1327400F37C78 /* RMTSpeaker+CloudKit.swift */,
+				65D2489F19E1327400F37C78 /* RMTRatingCategory+CloudKit.swift */,
+				65F4B96919E9589600205595 /* RMTRating+CloudKit.swift */,
 			);
 			path = "Entities+CloudKit";
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
+				65F4B96A19E9589600205595 /* RMTRating+CloudKit.swift in Sources */,
 				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
 				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
