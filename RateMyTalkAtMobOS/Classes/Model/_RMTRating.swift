@@ -5,6 +5,7 @@ import CoreData
 
 enum RMTRatingAttributes: String {
     case stars = "stars"
+    case userUUID = "userUUID"
 }
 
 enum RMTRatingRelationships: String {
@@ -41,6 +42,11 @@ class _RMTRating: RMTCloudKit {
     var stars: NSNumber?
 
     // func validateStars(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var userUUID: String?
+
+    // func validateUserUUID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

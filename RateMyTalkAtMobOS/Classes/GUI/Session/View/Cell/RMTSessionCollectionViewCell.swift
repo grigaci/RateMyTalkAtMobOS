@@ -18,20 +18,21 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(lineView!)
         setupConstraints()
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     var ratingCategory: RMTRatingCategory? {
         didSet{
             let title = (ratingCategory?.title != nil) ? ratingCategory?.title : ""
             let detail = ratingCategory?.detail != nil ? ratingCategory?.detail : ""
             titleLabel!.text = "Title: \(title!)"
             detailLabel!.text = "Detail: \(detail!)"
+            self.updateRating()
         }
     }
-    
+
     lazy var titleLabel: UILabel? = {
         let label = UILabel(frame: CGRectZero)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -82,4 +83,11 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         self.contentView.addConstraints(constraints)
     }
     
+    private func updateRating() {
+        if let myRating = self.ratingCategory?.myRating() {
+            if let stars = myRating.stars?.floatValue {
+                self.ratingView.highlightStars(stars)
+            }
+        }
+    }
 }
