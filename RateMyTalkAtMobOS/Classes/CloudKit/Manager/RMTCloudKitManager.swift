@@ -29,6 +29,7 @@ class RMTCloudKitManager {
         
         let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
+            RMTSession.calculateAllGeneralRatings()
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
 
@@ -65,6 +66,7 @@ class RMTCloudKitManager {
         
         let allTypes = [RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
+            RMTSession.calculateAllGeneralRatings()
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
 

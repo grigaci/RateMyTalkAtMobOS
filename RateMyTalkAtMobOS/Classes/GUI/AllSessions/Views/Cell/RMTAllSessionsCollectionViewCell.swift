@@ -31,7 +31,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
                 titleLabel.text = "Title: \(title!)"
                 speakerLabel.text = "Speaker: \(speaker!)"
 
-                self.ratingView.highlightStars(sessionObj.totalRating())
+                self.ratingView.highlightStars(sessionObj.generalRating!.floatValue)
             }
         }
     }

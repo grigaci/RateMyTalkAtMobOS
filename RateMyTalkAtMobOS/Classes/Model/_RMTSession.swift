@@ -4,6 +4,7 @@
 import CoreData
 
 enum RMTSessionAttributes: String {
+    case generalRating = "generalRating"
     case title = "title"
 }
 
@@ -37,6 +38,11 @@ class _RMTSession: RMTCloudKit {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var generalRating: NSNumber?
+
+    // func validateGeneralRating(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var title: String?

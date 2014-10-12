@@ -12,19 +12,28 @@ import CoreData
 extension RMTSession {
     
     class func saveAllMyRatings() {
-        if let allSessions = RMTSession.MR_findAll() as? [RMTSession] {
+        if let allSessions = RMTSession.MR_findAllInContext(NSManagedObjectContext.MR_defaultContext()) as? [RMTSession] {
             for session in allSessions {
                 session.saveMyRatings()
             }
         }
     }
 
-    func totalRating() -> Float {
+    class func calculateAllGeneralRatings() {
+        if let allSessions = RMTSession.MR_findAllInContext(NSManagedObjectContext.MR_defaultContext()) as? [RMTSession] {
+            for session in allSessions {
+                session.calculateGeneralRating()
+            }
+        }
+    }
+
+    func calculateGeneralRating() {
         var totalRating: Float = 0.0
         let allRatingCategories = self.ratingCategories
         let allRatingCategoriesCount = allRatingCategories.count
         if allRatingCategoriesCount == 0 {
-            return totalRating
+            self.generalRating = NSNumber(float: 0.0)
+            return
         }
 
         for index in 0...allRatingCategoriesCount - 1 {
@@ -35,7 +44,6 @@ extension RMTSession {
 
         totalRating = totalRating / Float(allRatingCategoriesCount)
         totalRating = totalRating.roundStars()
-        return totalRating
+        self.generalRating = NSNumber(float: totalRating)
     }
-
 }

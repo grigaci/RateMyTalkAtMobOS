@@ -76,9 +76,6 @@ class RMTAllSessionsViewController: UICollectionViewController {
             RMTCloudKitManager.sharedInstance.downloadAllRatings { () -> Void in
                 // Need to catch the result, otherwise we get an error
                 let result = MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
-                
-                // Just for testing at this point.
-                self.collectionView?.reloadData()
             }
         }
     }
