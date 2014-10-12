@@ -17,6 +17,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(ratingView)
         self.contentView.addSubview(lineView!)
         setupConstraints()
+        setupRatingListener()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -84,9 +85,25 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateRating() {
-        if let myRating = self.ratingCategory?.myRating() {
+        var defaultStars: Float = 0.0
+        if let myStars = self.ratingCategory?.myLocalRating?.floatValue {
+            defaultStars = myStars
+        }
+        else if let myRating = self.ratingCategory?.myRating() {
             if let stars = myRating.stars?.floatValue {
-                self.ratingView.highlightStars(stars)
+                defaultStars = stars
+                self.ratingCategory?.myLocalRating = NSNumber(float: stars)
+            }
+        }
+        
+        self.ratingView.highlightStars(defaultStars)
+    }
+
+    private func setupRatingListener() {
+        self.ratingView.valueChangedCallback = {(newValue: Float) -> () in
+            if self.ratingCategory?.myLocalRating?.floatValue != newValue {
+                self.ratingCategory?.myLocalRating = NSNumber(float: newValue)
+                NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
             }
         }
     }

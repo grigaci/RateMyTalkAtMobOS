@@ -49,6 +49,14 @@ extension RMTRatingCategory {
         return ratingCategory
     }
 
+    func createdCKRecord() -> CKRecord {
+        var ckRecord: CKRecord
+        let recordIDString = self.ckRecordID!
+        let recordID = CKRecordID(recordName: recordIDString)
+        ckRecord = CKRecord(recordType: RMTRating.ckRecordName, recordID: recordID)
+        return ckRecord;
+    }
+
     class func ratingCategoryWithRecordID(recordID: NSString) -> RMTRatingCategory? {
         let moc = NSManagedObjectContext.MR_defaultContext()
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)

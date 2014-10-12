@@ -61,4 +61,31 @@ class RMTCloudKitManager {
         publicDB.addOperation(downloadOperation)
     }
 
+    func downloadAllRatings(finishedCallback: () -> Void) {
+        
+        let allTypes = [RMTRating.ckRecordName]
+        downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
+            let moc = NSManagedObjectContext.MR_defaultContext()
+            moc.MR_saveToPersistentStoreAndWait()
+
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                finishedCallback()
+            })
+        }
+    }
+
+    func uploadAllMyRatings(finishedCallback: () -> Void) {
+        
+        let uploadOperation = RMTCloudKitOperationUploadRatings.uploadAllMyRatings()
+        
+        uploadOperation.modifyRecordsCompletionBlock = { (saved: [AnyObject]!, deleted: [AnyObject]!, error: NSError!) in
+            println ("Upload all my ratings complited with error \(error)")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                finishedCallback()
+            })
+        }
+
+        self.publicDB.addOperation(uploadOperation)
+    }
+
 }

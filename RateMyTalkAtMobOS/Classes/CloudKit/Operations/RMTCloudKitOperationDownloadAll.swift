@@ -68,6 +68,8 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
         let existingRating: RMTRating? = RMTRating.ratingWithRecordID(record.recordID.recordName)
         if existingRating == nil {
             RMTRating.create(record)
+        } else {
+            existingRating?.updateCK(record)
         }
     }
 

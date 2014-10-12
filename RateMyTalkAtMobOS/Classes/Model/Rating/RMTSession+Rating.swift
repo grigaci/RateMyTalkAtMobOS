@@ -10,6 +10,15 @@ import Foundation
 import CoreData
 
 extension RMTSession {
+    
+    class func saveAllMyRatings() {
+        if let allSessions = RMTSession.MR_findAll() as? [RMTSession] {
+            for session in allSessions {
+                session.saveMyRatings()
+            }
+        }
+    }
+
     func totalRating() -> Float {
         var totalRating: Float = 0.0
         let allRatingCategories = self.ratingCategories
@@ -28,4 +37,5 @@ extension RMTSession {
         totalRating = totalRating.roundStars()
         return totalRating
     }
+
 }

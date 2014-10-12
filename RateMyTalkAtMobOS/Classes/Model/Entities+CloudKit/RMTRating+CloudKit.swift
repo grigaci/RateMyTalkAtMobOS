@@ -39,11 +39,40 @@ extension RMTRating {
             let ratingCategoryID = ratingToRatingCategoryRelation?.recordID.recordName
             let ratingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(ratingCategoryID!)
             if ratingCategory != nil {
-                ratingCategory?.addRatingsObject(rating)
+                ratingCategory!.addRatingsObject(rating)
+                rating.ratingCategory = ratingCategory
             }
         }
-        
+
         return rating
+    }
+
+    func ckRecord() -> CKRecord? {
+
+        if self.stars == nil || self.stars?.floatValue == 0.0 {
+            return nil
+        }
+    
+        var ckRecord: CKRecord
+        if let recordIDString = self.ckRecordID {
+            let recordID = CKRecordID(recordName: recordIDString)
+            ckRecord = CKRecord(recordType: RMTRating.ckRecordName, recordID: recordID)
+        } else {
+            ckRecord = CKRecord(recordType: RMTRating.ckRecordName)
+            self.ckRecordID = ckRecord.recordID.recordName
+            NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
+        }
+
+        if let stars = self.stars {
+            ckRecord.setValue(stars.doubleValue, forKey: RMTRatingCKAttributes.stars.toRaw())
+        }
+
+        let ratingCategory = self.ratingCategory!
+        let ratingCategoryCK = ratingCategory.createdCKRecord()
+        let ratingToRatingCategoryReference = CKReference(record: ratingCategoryCK, action: CKReferenceAction.None)
+        ckRecord.setObject(ratingToRatingCategoryReference, forKey: RMTRatingCKRelations.ratingCategory.toRaw())
+
+        return ckRecord;
     }
 
     class func ratingWithRecordID(recordID: NSString) -> RMTRating? {
@@ -53,4 +82,14 @@ extension RMTRating {
         return existingObject
     }
 
+    func updateCK(ckRecord: CKRecord) {
+        let starsFloat = ckRecord.objectForKey(RMTRatingCKAttributes.stars.toRaw()) as? Float
+        if let stars = starsFloat {
+            self.stars = NSNumber(float: stars)
+            
+            if self.userUUID == NSUserDefaults.standardUserDefaults().userUUID {
+                self.ratingCategory?.myLocalRating = NSNumber(float: stars)
+            }
+        }
+    }
 }

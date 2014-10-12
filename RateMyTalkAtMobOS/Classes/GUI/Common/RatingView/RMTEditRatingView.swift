@@ -10,6 +10,8 @@ import UIKit
 
 class RMTEditRatingView: RMTDisplayRatingView {
 
+    var valueChangedCallback: ((newRating: Float) -> ())?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addTapGestures()
@@ -30,6 +32,13 @@ class RMTEditRatingView: RMTDisplayRatingView {
         case .Began, .Changed, .Ended:
             self.handlePanGestureHighlight(panGesture)
         default: ()
+        }
+    }
+
+    override func highlightStars(countHighlightedStars: Float) {
+        super.highlightStars(countHighlightedStars)
+        if self.valueChangedCallback != nil {
+            self.valueChangedCallback!(newRating: countHighlightedStars)
         }
     }
 

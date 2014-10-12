@@ -30,6 +30,8 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
         self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
+        
+        self.addSaveButton()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -49,6 +51,11 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
+    private func addSaveButton() {
+        let barButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "saveButtonPressed")
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+
     private func downloadDataIfNeeded() {
         var allSession = RMTSession.MR_findAll().count
         if allSession != 0 {
@@ -59,6 +66,20 @@ class RMTAllSessionsViewController: UICollectionViewController {
         RMTCloudKitManager.sharedInstance.downloadAll { () -> Void in
             // Need to catch the result, otherwise we get an error
             let result = MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
+        }
+    }
+    
+    func saveButtonPressed() {
+        MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
+        RMTSession.saveAllMyRatings()
+        RMTCloudKitManager.sharedInstance.uploadAllMyRatings { () -> Void in
+            RMTCloudKitManager.sharedInstance.downloadAllRatings { () -> Void in
+                // Need to catch the result, otherwise we get an error
+                let result = MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
+                
+                // Just for testing at this point.
+                self.collectionView?.reloadData()
+            }
         }
     }
 }
