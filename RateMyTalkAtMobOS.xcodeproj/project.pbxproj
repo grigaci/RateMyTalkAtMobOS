@@ -27,6 +27,7 @@
 		650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */; };
 		650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9D19E9395500F61020 /* Float+Stars.swift */; };
 		650E2BA019E93B2200F61020 /* RMTSession+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */; };
+		6515D5C319EC336A00540C20 /* RMTWindowBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D5C219EC336A00540C20 /* RMTWindowBase.swift */; };
 		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
 		65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359E19E8156800A1BC0A /* RMTConstants.swift */; };
 		65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */; };
@@ -89,6 +90,7 @@
 		650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTRatingCategory+Rating.swift"; path = "Rating/RMTRatingCategory+Rating.swift"; sourceTree = "<group>"; };
 		650E2B9D19E9395500F61020 /* Float+Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float+Stars.swift"; path = "Helpers/Extensions/Float+Stars.swift"; sourceTree = "<group>"; };
 		650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTSession+Rating.swift"; path = "Rating/RMTSession+Rating.swift"; sourceTree = "<group>"; };
+		6515D5C219EC336A00540C20 /* RMTWindowBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowBase.swift; path = Common/Dialogs/Base/RMTWindowBase.swift; sourceTree = "<group>"; };
 		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
 		65A4359E19E8156800A1BC0A /* RMTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTConstants.swift; path = Helpers/Constants/RMTConstants.swift; sourceTree = "<group>"; };
 		65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionViewController.swift; path = Session/ViewController/RMTSessionViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		650E2B9519E911A500F61020 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				6515D5C019EC334200540C20 /* Dialogs */,
 				650E2B9819E923AD00F61020 /* RatingView */,
 			);
 			name = Common;
@@ -352,6 +355,22 @@
 				65CCE2D719EA7A5B0002C675 /* NSUserDefaults+UUID.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		6515D5C019EC334200540C20 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				6515D5C119EC335100540C20 /* Base */,
+			);
+			name = Dialogs;
+			sourceTree = "<group>";
+		};
+		6515D5C119EC335100540C20 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6515D5C219EC336A00540C20 /* RMTWindowBase.swift */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		65A4359A19E80EAC00A1BC0A /* Base */ = {
@@ -655,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6515D5C319EC336A00540C20 /* RMTWindowBase.swift in Sources */,
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
 				65F4B96A19E9589600205595 /* RMTRating+CloudKit.swift in Sources */,
 				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
