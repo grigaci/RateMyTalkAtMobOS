@@ -33,6 +33,9 @@ extension RMTRating {
         let starsFloat = record.objectForKey(RMTRatingCKAttributes.stars.toRaw()) as? Float
         let stars = starsFloat != nil ? starsFloat : 0.0
         rating.stars = NSNumber(float: stars!)
+        if let userUUID = record.objectForKey(RMTRatingAttributes.userUUID.toRaw()) as? String {
+            rating.userUUID = userUUID
+        }
 
         let ratingToRatingCategoryRelation = record.objectForKey(RMTRatingCKRelations.ratingCategory.toRaw()) as? CKReference
         if ratingToRatingCategoryRelation != nil {
@@ -65,6 +68,10 @@ extension RMTRating {
 
         if let stars = self.stars {
             ckRecord.setValue(stars.doubleValue, forKey: RMTRatingCKAttributes.stars.toRaw())
+        }
+
+        if let userUUID = self.userUUID {
+            ckRecord.setValue(userUUID, forKey: RMTRatingAttributes.userUUID.toRaw())
         }
 
         let ratingCategory = self.ratingCategory!
