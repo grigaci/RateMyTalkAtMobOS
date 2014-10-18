@@ -28,6 +28,11 @@
 		650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9D19E9395500F61020 /* Float+Stars.swift */; };
 		650E2BA019E93B2200F61020 /* RMTSession+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */; };
 		6515D5C319EC336A00540C20 /* RMTWindowBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D5C219EC336A00540C20 /* RMTWindowBase.swift */; };
+		65449D0F19F2536C00F3DE6D /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D0E19F2536C00F3DE6D /* UIScreen+Size.swift */; };
+		65449D1119F2649700F3DE6D /* NSError+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1019F2649700F3DE6D /* NSError+App.swift */; };
+		65A2A66119F155B300314FB9 /* RMTWindowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66019F155B300314FB9 /* RMTWindowError.swift */; };
+		65A2A66319F1560C00314FB9 /* RMTWindowErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */; };
+		65A2A66519F156FA00314FB9 /* RMTWindowErrorViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */; };
 		65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */; };
 		65A4359F19E8156800A1BC0A /* RMTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4359E19E8156800A1BC0A /* RMTConstants.swift */; };
 		65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */; };
@@ -91,6 +96,11 @@
 		650E2B9D19E9395500F61020 /* Float+Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float+Stars.swift"; path = "Helpers/Extensions/Float+Stars.swift"; sourceTree = "<group>"; };
 		650E2B9F19E93B2200F61020 /* RMTSession+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTSession+Rating.swift"; path = "Rating/RMTSession+Rating.swift"; sourceTree = "<group>"; };
 		6515D5C219EC336A00540C20 /* RMTWindowBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowBase.swift; path = Common/Dialogs/Base/RMTWindowBase.swift; sourceTree = "<group>"; };
+		65449D0E19F2536C00F3DE6D /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+Size.swift"; path = "Helpers/Extensions/UIScreen+Size.swift"; sourceTree = "<group>"; };
+		65449D1019F2649700F3DE6D /* NSError+App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSError+App.swift"; path = "Helpers/Extensions/NSError+App.swift"; sourceTree = "<group>"; };
+		65A2A66019F155B300314FB9 /* RMTWindowError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowError.swift; path = Common/Dialogs/Error/RMTWindowError.swift; sourceTree = "<group>"; };
+		65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewController.swift; path = Common/Dialogs/Error/RMTWindowErrorViewController.swift; sourceTree = "<group>"; };
+		65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewContent.swift; path = Common/Dialogs/Error/RMTWindowErrorViewContent.swift; sourceTree = "<group>"; };
 		65A4359B19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTBaseCollectionViewDatasource.swift; path = Base/Datasource/RMTBaseCollectionViewDatasource.swift; sourceTree = "<group>"; };
 		65A4359E19E8156800A1BC0A /* RMTConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTConstants.swift; path = Helpers/Constants/RMTConstants.swift; sourceTree = "<group>"; };
 		65A4361D19E81B4600A1BC0A /* RMTSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTSessionViewController.swift; path = Session/ViewController/RMTSessionViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +363,8 @@
 				650E2B9D19E9395500F61020 /* Float+Stars.swift */,
 				65F4B96D19E9602B00205595 /* Array.swift */,
 				65CCE2D719EA7A5B0002C675 /* NSUserDefaults+UUID.swift */,
+				65449D0E19F2536C00F3DE6D /* UIScreen+Size.swift */,
+				65449D1019F2649700F3DE6D /* NSError+App.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -360,6 +372,7 @@
 		6515D5C019EC334200540C20 /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				65A2A65F19F1553900314FB9 /* Error */,
 				6515D5C119EC335100540C20 /* Base */,
 			);
 			name = Dialogs;
@@ -371,6 +384,16 @@
 				6515D5C219EC336A00540C20 /* RMTWindowBase.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		65A2A65F19F1553900314FB9 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				65A2A66019F155B300314FB9 /* RMTWindowError.swift */,
+				65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */,
+				65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */,
+			);
+			name = Error;
 			sourceTree = "<group>";
 		};
 		65A4359A19E80EAC00A1BC0A /* Base */ = {
@@ -674,18 +697,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A2A66119F155B300314FB9 /* RMTWindowError.swift in Sources */,
 				6515D5C319EC336A00540C20 /* RMTWindowBase.swift in Sources */,
 				430B65C319DDD152001CD271 /* RMTRating.swift in Sources */,
 				65F4B96A19E9589600205595 /* RMTRating+CloudKit.swift in Sources */,
 				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
 				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
+				65A2A66519F156FA00314FB9 /* RMTWindowErrorViewContent.swift in Sources */,
 				650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */,
 				65A4359C19E80EF600A1BC0A /* RMTBaseCollectionViewDatasource.swift in Sources */,
 				65A4361E19E81B4600A1BC0A /* RMTSessionViewController.swift in Sources */,
+				65A2A66319F1560C00314FB9 /* RMTWindowErrorViewController.swift in Sources */,
 				430B65C219DDD152001CD271 /* RMTParent.swift in Sources */,
 				65F4B96E19E9602B00205595 /* Array.swift in Sources */,
 				4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */,
+				65449D1119F2649700F3DE6D /* NSError+App.swift in Sources */,
 				65D248AF19E1669C00F37C78 /* RMTAllSessionsViewController.swift in Sources */,
 				65D248B419E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift in Sources */,
 				4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */,
@@ -715,6 +742,7 @@
 				650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */,
 				430B65B919DDD143001CD271 /* _RMTRating.swift in Sources */,
 				65F4B96C19E95E6700205595 /* RMTEditRatingView.swift in Sources */,
+				65449D0F19F2536C00F3DE6D /* UIScreen+Size.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

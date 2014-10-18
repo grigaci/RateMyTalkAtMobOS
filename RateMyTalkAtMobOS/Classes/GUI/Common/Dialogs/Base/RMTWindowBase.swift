@@ -11,26 +11,16 @@ import UIKit
 class RMTWindowBase: UIWindow {
     var lastWindow: UIWindow?
 
-    override init() {
-        let frame = UIScreen.mainScreen().bounds
-        super.init(frame: frame)
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-    }
-
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     init(viewController: UIViewController) {
-        super.init()
+        super.init(frame: UIScreen.mainScreen().bounds)
         self.rootViewController = viewController
+        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
     }
-    
+
     func show() {
         self.lastWindow = UIApplication.sharedApplication().keyWindow
         self.windowLevel = self.lastWindow!.windowLevel + 1.0
