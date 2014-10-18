@@ -25,7 +25,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.appBackgroundColor()
+        self.collectionView?.backgroundColor = UIColor(fullRed: 243.0, fullGreen: 243.0, fullBlue: 243.0)
         self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
     }
@@ -51,7 +51,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             let width = CGRectGetWidth(self.collectionView!.bounds)
-            return CGSizeMake(width, 120.0)
+            return CGSizeMake(width, 160.0)
     }
 
     func collectionView(collectionView: UICollectionView,

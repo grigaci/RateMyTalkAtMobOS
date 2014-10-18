@@ -32,6 +32,7 @@
 		65449D1119F2649700F3DE6D /* NSError+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1019F2649700F3DE6D /* NSError+App.swift */; };
 		65449D1319F29C4600F3DE6D /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1219F29C4600F3DE6D /* UIColor+Extra.swift */; };
 		65449D1619F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1519F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift */; };
+		65449D1919F2CA6A00F3DE6D /* NSAttributedString+AllSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1819F2CA6A00F3DE6D /* NSAttributedString+AllSessions.swift */; };
 		65A2A66119F155B300314FB9 /* RMTWindowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66019F155B300314FB9 /* RMTWindowError.swift */; };
 		65A2A66319F1560C00314FB9 /* RMTWindowErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */; };
 		65A2A66519F156FA00314FB9 /* RMTWindowErrorViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */; };
@@ -102,6 +103,7 @@
 		65449D1019F2649700F3DE6D /* NSError+App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSError+App.swift"; path = "Helpers/Extensions/NSError+App.swift"; sourceTree = "<group>"; };
 		65449D1219F29C4600F3DE6D /* UIColor+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extra.swift"; path = "Helpers/Extensions/UIColor+Extra.swift"; sourceTree = "<group>"; };
 		65449D1519F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTAllSessionsCollectionViewHeader.swift; path = Hedaer/RMTAllSessionsCollectionViewHeader.swift; sourceTree = "<group>"; };
+		65449D1819F2CA6A00F3DE6D /* NSAttributedString+AllSessions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+AllSessions.swift"; path = "Helpers/NSAttributedString+AllSessions.swift"; sourceTree = "<group>"; };
 		65A2A66019F155B300314FB9 /* RMTWindowError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowError.swift; path = Common/Dialogs/Error/RMTWindowError.swift; sourceTree = "<group>"; };
 		65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewController.swift; path = Common/Dialogs/Error/RMTWindowErrorViewController.swift; sourceTree = "<group>"; };
 		65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewContent.swift; path = Common/Dialogs/Error/RMTWindowErrorViewContent.swift; sourceTree = "<group>"; };
@@ -399,6 +401,14 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
+		65449D1719F2CA4B00F3DE6D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				65449D1819F2CA6A00F3DE6D /* NSAttributedString+AllSessions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		65A2A65F19F1553900314FB9 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +525,7 @@
 		65D248A919E1668000F37C78 /* AllSessions */ = {
 			isa = PBXGroup;
 			children = (
+				65449D1719F2CA4B00F3DE6D /* Helpers */,
 				65D248AA19E1668000F37C78 /* Datasource */,
 				65D248AB19E1668000F37C78 /* ViewController */,
 				65D248AC19E1668000F37C78 /* Views */,
@@ -718,6 +729,7 @@
 				65F4B96A19E9589600205595 /* RMTRating+CloudKit.swift in Sources */,
 				650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */,
 				65A4362119E81B6C00A1BC0A /* RMTSessionCollectionViewCell.swift in Sources */,
+				65449D1919F2CA6A00F3DE6D /* NSAttributedString+AllSessions.swift in Sources */,
 				65D248B219E1676100F37C78 /* RMTGUIManager.swift in Sources */,
 				65A2A66519F156FA00314FB9 /* RMTWindowErrorViewContent.swift in Sources */,
 				650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */,
