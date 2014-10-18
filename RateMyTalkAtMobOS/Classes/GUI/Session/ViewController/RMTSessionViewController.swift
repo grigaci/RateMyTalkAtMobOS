@@ -26,7 +26,6 @@ class RMTSessionViewController: UICollectionViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         let layout = UICollectionViewFlowLayout()
         self.flowLayout = layout
-        self.session = nil
         super.init(collectionViewLayout: layout)
     }
 
@@ -36,20 +35,11 @@ class RMTSessionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
-        self.collectionView?.alwaysBounceVertical = true
+
         self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView!, session: self.session!)
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
+        self.collectionView?.alwaysBounceVertical = true
         self.collectionView?.addSubview(self.refreshControl!)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
+        self.collectionView?.backgroundColor = UIColor(fullRed: 247.0, fullGreen: 247.0, fullBlue: 247.0)
     }
 
     func updateData() {
@@ -58,4 +48,15 @@ class RMTSessionViewController: UICollectionViewController {
         })
     }
 
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        self.flowLayout.invalidateLayout()
+    }
+
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            let width = CGRectGetWidth(self.collectionView!.bounds)
+            return CGSizeMake(width, 120.0)
+    }
 }
