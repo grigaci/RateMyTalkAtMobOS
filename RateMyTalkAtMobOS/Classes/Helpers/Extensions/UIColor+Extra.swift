@@ -9,6 +9,11 @@
 import UIKit
 
 extension UIColor {
+    
+    class func appBackgroundColor() -> UIColor {
+        return UIColor(fullRed: 247.0, fullGreen: 247.0, fullBlue: 247.0)
+    }
+
     convenience init(fullRed: Float, fullGreen: Float, fullBlue: Float) {
         let divider: CGFloat = 255.0
         let red : CGFloat = CGFloat(fullRed) / divider

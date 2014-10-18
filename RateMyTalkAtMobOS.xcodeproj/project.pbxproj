@@ -31,6 +31,7 @@
 		65449D0F19F2536C00F3DE6D /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D0E19F2536C00F3DE6D /* UIScreen+Size.swift */; };
 		65449D1119F2649700F3DE6D /* NSError+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1019F2649700F3DE6D /* NSError+App.swift */; };
 		65449D1319F29C4600F3DE6D /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1219F29C4600F3DE6D /* UIColor+Extra.swift */; };
+		65449D1619F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449D1519F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift */; };
 		65A2A66119F155B300314FB9 /* RMTWindowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66019F155B300314FB9 /* RMTWindowError.swift */; };
 		65A2A66319F1560C00314FB9 /* RMTWindowErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */; };
 		65A2A66519F156FA00314FB9 /* RMTWindowErrorViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */; };
@@ -100,6 +101,7 @@
 		65449D0E19F2536C00F3DE6D /* UIScreen+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+Size.swift"; path = "Helpers/Extensions/UIScreen+Size.swift"; sourceTree = "<group>"; };
 		65449D1019F2649700F3DE6D /* NSError+App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSError+App.swift"; path = "Helpers/Extensions/NSError+App.swift"; sourceTree = "<group>"; };
 		65449D1219F29C4600F3DE6D /* UIColor+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extra.swift"; path = "Helpers/Extensions/UIColor+Extra.swift"; sourceTree = "<group>"; };
+		65449D1519F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTAllSessionsCollectionViewHeader.swift; path = Hedaer/RMTAllSessionsCollectionViewHeader.swift; sourceTree = "<group>"; };
 		65A2A66019F155B300314FB9 /* RMTWindowError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowError.swift; path = Common/Dialogs/Error/RMTWindowError.swift; sourceTree = "<group>"; };
 		65A2A66219F1560C00314FB9 /* RMTWindowErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewController.swift; path = Common/Dialogs/Error/RMTWindowErrorViewController.swift; sourceTree = "<group>"; };
 		65A2A66419F156FA00314FB9 /* RMTWindowErrorViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTWindowErrorViewContent.swift; path = Common/Dialogs/Error/RMTWindowErrorViewContent.swift; sourceTree = "<group>"; };
@@ -389,6 +391,14 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		65449D1419F2B02900F3DE6D /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				65449D1519F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
 		65A2A65F19F1553900314FB9 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +541,7 @@
 		65D248AC19E1668000F37C78 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				65449D1419F2B02900F3DE6D /* Header */,
 				65D248AD19E1668000F37C78 /* Cell */,
 			);
 			path = Views;
@@ -738,6 +749,7 @@
 				65D248A219E1327400F37C78 /* RMTRatingCategory+CloudKit.swift in Sources */,
 				430B65BB19DDD143001CD271 /* _RMTSession.swift in Sources */,
 				430B65C419DDD152001CD271 /* RMTRatingCategory.swift in Sources */,
+				65449D1619F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift in Sources */,
 				65D248B619E1704900F37C78 /* RMTAllSessionsDatasource.swift in Sources */,
 				430B65B819DDD143001CD271 /* _RMTParent.swift in Sources */,
 				430B658719DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld in Sources */,

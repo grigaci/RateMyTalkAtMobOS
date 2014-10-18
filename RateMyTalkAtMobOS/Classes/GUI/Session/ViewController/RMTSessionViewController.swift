@@ -39,7 +39,7 @@ class RMTSessionViewController: UICollectionViewController {
         self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView!, session: self.session!)
         self.collectionView?.alwaysBounceVertical = true
         self.collectionView?.addSubview(self.refreshControl!)
-        self.collectionView?.backgroundColor = UIColor(fullRed: 247.0, fullGreen: 247.0, fullBlue: 247.0)
+        self.collectionView?.backgroundColor = UIColor.appBackgroundColor()
     }
 
     func updateData() {

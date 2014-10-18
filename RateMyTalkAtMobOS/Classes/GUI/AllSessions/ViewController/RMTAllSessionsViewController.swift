@@ -25,23 +25,14 @@ class RMTAllSessionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
-        self.collectionView?.delegate = self
+        self.collectionView?.backgroundColor = UIColor.appBackgroundColor()
         self.collectionView?.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
-        
-        self.addSaveButton()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         downloadDataIfNeeded()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView!.frame), 120.0)
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -51,9 +42,23 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
-    private func addSaveButton() {
-        let barButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "saveButtonPressed")
-        self.navigationItem.rightBarButtonItem = barButton
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        self.flowLayout.invalidateLayout()
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            let width = CGRectGetWidth(self.collectionView!.bounds)
+            return CGSizeMake(width, 120.0)
+    }
+
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int) -> CGSize {
+            let width = CGRectGetWidth(self.collectionView!.bounds)
+            return CGSizeMake(width, 80.0)
     }
 
     private func downloadDataIfNeeded() {
@@ -64,17 +69,6 @@ class RMTAllSessionsViewController: UICollectionViewController {
 
         MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
         RMTCloudKitManager.sharedInstance.downloadAll { (error) -> Void in
-            if error != nil {
-                RMTWindowError.ErrorWindow(error!).show()
-            }
-            MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
-        }
-    }
-
-    func saveButtonPressed() {
-        MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
-        RMTSession.saveAllMyRatings()
-        RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
             if error != nil {
                 RMTWindowError.ErrorWindow(error!).show()
             }
