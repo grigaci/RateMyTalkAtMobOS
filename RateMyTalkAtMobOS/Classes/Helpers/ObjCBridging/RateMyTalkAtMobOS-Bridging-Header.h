@@ -8,3 +8,4 @@
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <Reachability/Reachability.H>
