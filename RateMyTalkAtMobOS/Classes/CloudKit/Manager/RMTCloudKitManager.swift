@@ -25,8 +25,14 @@ class RMTCloudKitManager {
         return Static.instance!
     }
 
-    func downloadAll(finishedCallback: () -> Void) {
-        
+    func downloadAll(finishedCallback: (error: NSError?) -> Void) {
+
+        let reachability = Reachability.reachabilityForInternetConnection()
+        if !reachability.isReachable() {
+            finishedCallback(error: NSError.internetConnectionError())
+            return
+        }
+    
         let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
             RMTSession.calculateAllGeneralRatings()
@@ -34,7 +40,7 @@ class RMTCloudKitManager {
             moc.MR_saveToPersistentStoreAndWait()
 
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                finishedCallback()
+                finishedCallback(error: nil)
             })
         }
     }
@@ -62,6 +68,22 @@ class RMTCloudKitManager {
         publicDB.addOperation(downloadOperation)
     }
 
+    func syncRatings(finishedCallback: (error: NSError?) -> Void) {
+        let reachability = Reachability.reachabilityForInternetConnection()
+        if !reachability.isReachable() {
+            finishedCallback(error: NSError.internetConnectionError())
+            return
+        }
+        
+        self.downloadAllRatings { () -> Void in
+            self.uploadAllMyRatings({ () -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    finishedCallback(error: nil)
+                })
+            })
+        }
+    }
+
     func downloadAllRatings(finishedCallback: () -> Void) {
         
         let allTypes = [RMTRating.ckRecordName]
@@ -69,10 +91,7 @@ class RMTCloudKitManager {
             RMTSession.calculateAllGeneralRatings()
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
-
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                finishedCallback()
-            })
+            finishedCallback()
         }
     }
 

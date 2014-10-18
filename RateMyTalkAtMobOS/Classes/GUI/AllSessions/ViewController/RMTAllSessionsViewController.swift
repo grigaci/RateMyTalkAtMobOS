@@ -61,22 +61,24 @@ class RMTAllSessionsViewController: UICollectionViewController {
         if allSession != 0 {
             return
         }
-        
+
         MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
-        RMTCloudKitManager.sharedInstance.downloadAll { () -> Void in
-            // Need to catch the result, otherwise we get an error
-            let result = MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
+        RMTCloudKitManager.sharedInstance.downloadAll { (error) -> Void in
+            if error != nil {
+                RMTWindowError.ErrorWindow(error!).show()
+            }
+            MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
         }
     }
-    
+
     func saveButtonPressed() {
         MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
         RMTSession.saveAllMyRatings()
-        RMTCloudKitManager.sharedInstance.uploadAllMyRatings { () -> Void in
-            RMTCloudKitManager.sharedInstance.downloadAllRatings { () -> Void in
-                // Need to catch the result, otherwise we get an error
-                let result = MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
+        RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
+            if error != nil {
+                RMTWindowError.ErrorWindow(error!).show()
             }
+            MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
         }
     }
 }

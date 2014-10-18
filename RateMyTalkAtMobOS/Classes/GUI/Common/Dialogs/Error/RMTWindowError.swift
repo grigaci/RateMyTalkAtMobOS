@@ -10,6 +10,12 @@ import UIKit
 
 class RMTWindowError : RMTWindowBase {
     
+    class func ErrorWindow(error: NSError) -> RMTWindowError {
+        let window = RMTWindowError()
+        window.displayedError = error
+        return window
+    }
+
     private lazy var errorViewController: RMTWindowErrorViewController = {
         var viewController = RMTWindowErrorViewController(nibName: nil, bundle: nil)
         viewController.buttonTapped = {
