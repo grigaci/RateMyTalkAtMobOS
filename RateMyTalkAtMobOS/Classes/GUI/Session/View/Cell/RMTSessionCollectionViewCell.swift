@@ -13,7 +13,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     var ratingCategory: RMTRatingCategory? {
         didSet{
             let title = (ratingCategory?.title != nil) ? ratingCategory?.title : ""
-            self.titleLabel.text = title
+            self.titleLabel.attributedText = NSAttributedString.ratingCategoryAttributedString(title!)
             self.updateRating()
         }
     }
