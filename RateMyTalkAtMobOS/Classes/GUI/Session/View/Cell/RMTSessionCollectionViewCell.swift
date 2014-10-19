@@ -13,16 +13,19 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     var ratingCategory: RMTRatingCategory? {
         didSet{
             let title = (ratingCategory?.title != nil) ? ratingCategory?.title : ""
-            self.titleLabel.attributedText = NSAttributedString.ratingCategoryAttributedString(title!)
+            self.textView.attributedText = NSAttributedString.ratingCategoryAttributedString(title!)
             self.updateRating()
         }
     }
 
-    lazy var titleLabel: UILabel = {
-        let label = UILabel(frame: CGRectZero)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        return label
-        }()
+    lazy var textView: UITextView = {
+        let textView = UITextView(frame: CGRectZero)
+        textView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        textView.userInteractionEnabled = false
+        textView.backgroundColor = UIColor.clearColor()
+        textView.contentInset = UIEdgeInsetsMake(-8.0, 0.0, 0.0, 0.0)
+        return textView
+    }()
     
     lazy var ratingView: RMTEditRatingView = {
         let ratingView = RMTEditRatingView(frame: CGRectZero)
@@ -44,7 +47,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.textView)
         self.contentView.addSubview(self.ratingView)
         self.contentView.addSubview(self.lineView)
         setupConstraints()
@@ -56,14 +59,18 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints() {
-        let viewsDictionary = ["titleLabel":titleLabel,
+        let viewsDictionary = ["textView":self.textView,
                                "ratingView":self.ratingView,
                                "lineView":self.lineView]
         let screenSize = UIScreen.mainScreen().fixedScreenSize
-        let ratingViewWidth = (screenSize.width - (2.0 * self.spaceHorizontally)) / 2.0
+        let ratingViewWidth = (screenSize.width - self.spaceHorizontally) / 2.0
         let sizeDictionary = ["spaceH" : self.spaceHorizontally, "ratingViewWidth" : ratingViewWidth]
 
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(spaceH)-[titleLabel]-[ratingView(==ratingViewWidth)]-(spaceH)-|",
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(spaceH)-[textView]-(spaceH)-|",
+            options: NSLayoutFormatOptions(0), metrics: sizeDictionary, views: viewsDictionary)
+        self.contentView.addConstraints(constraints)
+
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[ratingView(==ratingViewWidth)]-(spaceH)-|",
             options: NSLayoutFormatOptions(0), metrics: sizeDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
 
@@ -71,12 +78,9 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
             options: NSLayoutFormatOptions(0), metrics: sizeDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
 
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel]-[lineView(==1)]|",
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(1@700)-[textView][ratingView]-[lineView(==1)]|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
-
-        let constraintRatingViewV = NSLayoutConstraint(item: self.titleLabel, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.ratingView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
-        self.contentView.addConstraint(constraintRatingViewV)
     }
 
     private func updateRating() {
