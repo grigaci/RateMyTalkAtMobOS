@@ -19,6 +19,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
                 self.topicNameTextView.attributedText = NSAttributedString.topicAttributedString(topic!)
 
                 self.ratingView.highlightStars(sessionObj.generalRating!.floatValue)
+                self.textSeparator.backgroundColor = sessionObj.speaker?.color()
             }
         }
     }
