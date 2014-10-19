@@ -51,7 +51,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             let width = CGRectGetWidth(self.collectionView!.bounds)
-            return CGSizeMake(width, 160.0)
+            return CGSizeMake(width, 120.0)
     }
 
     func collectionView(collectionView: UICollectionView,

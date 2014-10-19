@@ -53,6 +53,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     lazy var topicNameTextView: UITextView = {
         let textView = UITextView(frame: CGRectZero)
         textView.backgroundColor = UIColor.clearColor()
+        textView.contentInset = UIEdgeInsetsMake(-5.0, -2.0, 0.0, 0.0)
         textView.userInteractionEnabled = false
         textView.setTranslatesAutoresizingMaskIntoConstraints(false)
         return textView
@@ -130,10 +131,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         constraint = NSLayoutConstraint(item: self.topicInfoLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerInfoLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerInfoLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -5.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 5.0)
+        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
         self.contentView.addConstraint(constraint)
 
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(spaceH)-[speaker]-[separator(==4)]",
@@ -146,10 +147,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraintsSessionValues() {
-        let spaceV = 15.0
+        let spaceV = 8.0
         let spaceDictionary = ["spaceV" : spaceV, "spaceH" : self.spaceHorizontally]
         let viewsDictionary = ["speakerName": self.speakerNameLabel, "topicName":self.topicNameTextView]
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(spaceV)-[speakerName(>=30)]-[topicName(>=30)]",
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(spaceV)-[speakerName(>=20)][topicName(>=20)]",
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
@@ -167,7 +168,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[topicName]-[arrowRight]-|",
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[topicName][arrowRight]-|",
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
@@ -182,7 +183,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         let spaceV = 15.0
         let spaceDictionary = ["spaceV" : spaceV, "spaceH" : self.spaceHorizontally]
         let viewsDictionary = ["ratingLabel": self.ratingTextLabel, "ratingView":self.ratingView, "topicName" : self.topicNameTextView]
-        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[topicName]-[ratingView(==20)]",
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[topicName][ratingView(==20)]",
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
