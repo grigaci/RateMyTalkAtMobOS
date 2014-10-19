@@ -21,7 +21,9 @@
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RMTSession" inverseName="ratingCategories" inverseEntity="RMTSession" syncable="YES"/>
     </entity>
     <entity name="RMTSession" representedClassName="RMTSession" parentEntity="RMTCloudKit" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" defaultDateTimeInterval="-978307200" defaultValueString="1970-01-01 00:00:00 +0000" syncable="YES"/>
         <attribute name="generalRating" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" defaultDateTimeInterval="-978307200" defaultValueString="1970-01-01 00:00:00 +0000" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ratingCategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RMTRatingCategory" inverseName="session" inverseEntity="RMTRatingCategory" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RMTSpeaker" inverseName="sessions" inverseEntity="RMTSpeaker" syncable="YES"/>
@@ -35,7 +37,7 @@
         <element name="RMTParent" positionX="-54" positionY="0" width="128" height="90"/>
         <element name="RMTRating" positionX="0" positionY="72" width="128" height="88"/>
         <element name="RMTRatingCategory" positionX="-18" positionY="54" width="128" height="120"/>
-        <element name="RMTSession" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="RMTSession" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="RMTSpeaker" positionX="-36" positionY="36" width="128" height="73"/>
     </elements>
 </model>

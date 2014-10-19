@@ -4,7 +4,9 @@
 import CoreData
 
 enum RMTSessionAttributes: String {
+    case endDate = "endDate"
     case generalRating = "generalRating"
+    case startDate = "startDate"
     case title = "title"
 }
 
@@ -40,9 +42,19 @@ class _RMTSession: RMTCloudKit {
     // MARK: - Properties
 
     @NSManaged
+    var endDate: NSDate?
+
+    // func validateEndDate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var generalRating: NSNumber?
 
     // func validateGeneralRating(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var startDate: NSDate?
+
+    // func validateStartDate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var title: String?

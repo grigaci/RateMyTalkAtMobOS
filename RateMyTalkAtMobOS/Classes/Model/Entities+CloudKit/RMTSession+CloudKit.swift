@@ -11,6 +11,8 @@ import CloudKit
 
 enum RMTSessionCKAttributes: NSString {
     case title = "title"
+    case startDate = "startDate"
+    case endDate = "endDate"
 }
 
 enum RMTSessionCKRelations: NSString {
@@ -32,7 +34,13 @@ extension RMTSession {
 
         let title = record.valueForKey(RMTSessionCKAttributes.title.toRaw()) as? NSString
         session.title = title
-
+        
+        let startDate = record.valueForKey(RMTSessionCKAttributes.startDate.toRaw()) as? NSDate
+        session.startDate = startDate
+        
+        let endDate = record.valueForKey(RMTSessionCKAttributes.endDate.toRaw()) as? NSDate
+        session.endDate = endDate
+        
         let sessionToSpeakerReference = record.objectForKey(RMTSessionCKRelations.speaker.toRaw()) as? CKReference
         if sessionToSpeakerReference != nil {
             let speakerRecordID = sessionToSpeakerReference?.recordID.recordName
