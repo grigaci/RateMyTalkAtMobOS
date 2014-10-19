@@ -76,6 +76,14 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         return ratingView
     }()
 
+    lazy var arrowRightImageView : UIImageView = {
+        let imageView = UIImageView(frame: CGRectZero)
+        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let image = UIImage(named: "arrow_right")
+        imageView.image = image
+        return imageView
+    }()
+    
     lazy var cellSeparator: UIView = {
         let view = UIView(frame: CGRectZero)
         view.backgroundColor = UIColor(fullRed: 205.0, fullGreen: 205.0, fullBlue: 205.0)
@@ -90,6 +98,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.textSeparator)
         self.contentView.addSubview(self.speakerNameLabel)
         self.contentView.addSubview(self.topicNameTextView)
+        self.contentView.addSubview(self.arrowRightImageView)
         self.contentView.addSubview(self.ratingTextLabel)
         self.contentView.addSubview(self.ratingView)
         self.contentView.addSubview(self.cellSeparator)
@@ -103,6 +112,7 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     private func setupConstraints() {
         self.setupConstraintsInfos()
         self.setupConstraintsSessionValues()
+        self.setupConstraintsArrow()
         self.setupConstraintsRating()
         self.setupConstraintsCellSeparator()
     }
@@ -146,13 +156,27 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         self.contentView.addConstraint(constraint)
         
         constraint = NSLayoutConstraint(item: self.topicNameTextView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerNameLabel, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        self.contentView.addConstraint(constraint)
-        
-        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[topicName]-|",
-            options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
-        self.contentView.addConstraints(constraints)
+        self.contentView.addConstraint(constraint)        
     }
     
+    private func setupConstraintsArrow() {
+        let spaceDictionary = ["spaceH" : self.spaceHorizontally]
+        let viewsDictionary = ["arrowRight": self.arrowRightImageView, "speakerName": self.speakerNameLabel, "topicName":self.topicNameTextView]
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[speakerName]-[arrowRight]",
+            options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
+        self.contentView.addConstraints(constraints)
+        
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[topicName]-[arrowRight]-|",
+            options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
+        self.contentView.addConstraints(constraints)
+        
+        var constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        self.contentView.addConstraint(constraint)
+
+        constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.arrowRightImageView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
+        self.contentView.addConstraint(constraint)
+    }
+
     private func setupConstraintsRating() {
         let spaceV = 15.0
         let spaceDictionary = ["spaceV" : spaceV, "spaceH" : self.spaceHorizontally]
