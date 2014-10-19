@@ -14,7 +14,8 @@ class RMTAllSessionsCollectionViewHeader: UICollectionReusableView {
     lazy var syncImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRectZero)
         imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        imageView.image = UIImage(named: "star_none")
+        imageView.image = UIImage(named: "sync")
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
         return imageView
     }()
     
@@ -51,7 +52,7 @@ class RMTAllSessionsCollectionViewHeader: UICollectionReusableView {
         constraintH = NSLayoutConstraint(item: self.syncTextLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.syncImageView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraintH)
 
-        let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[imageview(==30)]-[label]-|",
+        let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[imageview]-[label]-|",
             options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
         self.addConstraints(constraintsV)
     }
