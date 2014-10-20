@@ -17,12 +17,6 @@ class RMTSessionViewController: UICollectionViewController {
         }
     }
 
-    lazy var refreshControl: UIRefreshControl? = {
-       let view = UIRefreshControl(frame: CGRectZero)
-        view.addTarget(self, action:"updateData", forControlEvents: .ValueChanged)
-        return view
-    }()
-
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         let layout = UICollectionViewFlowLayout()
         self.flowLayout = layout
@@ -38,14 +32,7 @@ class RMTSessionViewController: UICollectionViewController {
 
         self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView!, session: self.session!)
         self.collectionView?.alwaysBounceVertical = true
-        self.collectionView?.addSubview(self.refreshControl!)
         self.collectionView?.backgroundColor = UIColor.appBackgroundColor()
-    }
-
-    func updateData() {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5000000000), dispatch_get_main_queue(), {
-            let ret: Void? = self.refreshControl?.endRefreshing()
-        })
     }
 
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
