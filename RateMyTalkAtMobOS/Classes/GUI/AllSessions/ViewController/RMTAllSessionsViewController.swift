@@ -67,12 +67,12 @@ class RMTAllSessionsViewController: UICollectionViewController {
             return
         }
 
-        MBProgressHUD.showHUDAddedTo(self.collectionView!, animated: true)
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         RMTCloudKitManager.sharedInstance.downloadAll { (error) -> Void in
             if error != nil {
                 RMTWindowError.ErrorWindow(error!).show()
             }
-            MBProgressHUD.hideAllHUDsForView(self.collectionView!, animated: true)
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }
     }
 }

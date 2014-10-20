@@ -42,13 +42,13 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
     }
 
     private func handletHeaderTap() {
-        MBProgressHUD.showHUDAddedTo(self.collectionView, animated: true)
+        MBProgressHUD.showHUDAddedTo(self.collectionView.superview!, animated: true)
         RMTSession.saveAllMyRatings()
         RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
             if error != nil {
                 RMTWindowError.ErrorWindow(error!).show()
             }
-            MBProgressHUD.hideAllHUDsForView(self.collectionView, animated: true)
+            MBProgressHUD.hideAllHUDsForView(self.collectionView.superview!, animated: true)
         }
     }
 
