@@ -21,6 +21,7 @@ class RMTRatingCategory: _RMTRatingCategory {
         rating.userUUID = userUUID
         rating.ratingCategory = self
 
+        self.addRatingsObject(rating)
         moc.MR_saveOnlySelfAndWait()
         return rating
     }

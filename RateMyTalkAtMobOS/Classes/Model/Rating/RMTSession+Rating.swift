@@ -31,6 +31,8 @@ extension RMTSession {
         var totalRating: Float = 0.0
         let allRatingCategories = self.ratingCategories
         let allRatingCategoriesCount = allRatingCategories.count
+        var countValidRatedCategories: Float = 0.0
+
         if allRatingCategoriesCount == 0 {
             self.generalRating = NSNumber(float: 0.0)
             return
@@ -39,11 +41,16 @@ extension RMTSession {
         for index in 0...allRatingCategoriesCount - 1 {
             let ratingCategory = allRatingCategories.objectAtIndex(index) as RMTRatingCategory
             let ratingCategoryTotalStars = ratingCategory.totalRating()
-            totalRating += ratingCategoryTotalStars
+            if ratingCategoryTotalStars > 0.0 {
+                totalRating += ratingCategoryTotalStars
+                countValidRatedCategories += 1.0
+            }
         }
 
-        totalRating = totalRating / Float(allRatingCategoriesCount)
-        totalRating = totalRating.roundStars()
+        if (countValidRatedCategories > 0.0) {
+            totalRating = totalRating / countValidRatedCategories
+            totalRating = totalRating.roundStars()
+        }
         self.generalRating = NSNumber(float: totalRating)
     }
 }

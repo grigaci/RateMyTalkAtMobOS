@@ -75,12 +75,12 @@ class RMTCloudKitManager {
             return
         }
         
-        self.downloadAllRatings { () -> Void in
-            self.uploadAllMyRatings({ () -> Void in
+        self.uploadAllMyRatings { () -> Void in
+            self.downloadAllRatings { () -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     finishedCallback(error: nil)
                 })
-            })
+            }
         }
     }
 
