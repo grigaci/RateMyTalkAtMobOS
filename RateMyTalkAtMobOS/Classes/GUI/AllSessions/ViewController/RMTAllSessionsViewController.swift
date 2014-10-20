@@ -14,6 +14,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsetsMake(0.0, 0.0, 10.0, 0.0)
         self.flowLayout = layout
         super.init(collectionViewLayout: layout)
         self.title = "MOBOS"
