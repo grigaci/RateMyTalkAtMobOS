@@ -16,8 +16,9 @@ protocol RMTStarterItem {
 class RMTStarterFactory {
     var allStarters: [NSString]
     init () {
-        allStarters = []
-        addStarter(NSStringFromClass(RMTStarterCoreData.self))
+        self.allStarters = []
+        self.addStarter(NSStringFromClass(RMTStarterCoreData.self))
+        self.addStarter(NSStringFromClass(RMTStarterUICustomization.self))
     }
 
     func addStarter(starter: NSString) {

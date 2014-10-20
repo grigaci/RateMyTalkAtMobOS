@@ -30,9 +30,10 @@ class RMTGUIManager {
     var window: UIWindow? {
         didSet {
             window?.rootViewController = navigationController
+            window?.tintColor = UIColor.blackColor()
         }
     }
-    
+
     init () {
         self.window = nil
     }
