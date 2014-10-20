@@ -34,35 +34,43 @@ class RMTCloudKitManager {
         }
     
         let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
-        downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
+        downloadRecursive(allTypes, currentIndex: 0) { (error: NSError?) -> Void in
             RMTSession.calculateAllGeneralRatings()
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
 
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                finishedCallback(error: nil)
+                finishedCallback(error: error)
             })
         }
     }
 
-    func downloadRecursive(allTypes: [NSString], currentIndex: Int, finishedCallback: () -> Void) {
+    func downloadRecursive(allTypes: [NSString], currentIndex: Int, finishedCallback: (error: NSError?) -> Void) {
         if currentIndex == allTypes.count {
-            finishedCallback()
+            finishedCallback(error: nil)
             return
         }
 
         let currentType = allTypes[currentIndex] as NSString
-        downloadRecordType(currentType, finishedCallback: { (successul : Bool) -> Void in
-            self.downloadRecursive(allTypes, currentIndex: currentIndex + 1, finishedCallback: finishedCallback)
+        downloadRecordType(currentType, finishedCallback: { (error: NSError?) -> Void in
+            if error != nil {
+                finishedCallback(error: error)
+            } else {
+                self.downloadRecursive(allTypes, currentIndex: currentIndex + 1, finishedCallback: finishedCallback)
+            }
         })
     }
 
-    func downloadRecordType(type: NSString, finishedCallback: (Bool) -> Void) {
+    func downloadRecordType(type: NSString, finishedCallback: (error: NSError?) -> Void) {
         let downloadOperation = RMTCloudKitOperationDownloadAll.downloadAll(type)
 
         downloadOperation.queryCompletionBlock = { (cursor : CKQueryCursor!, error : NSError!) in
             println("Download all for \(type) with error \(error)")
-            finishedCallback((error != nil))
+            var appError: NSError?
+            if error != nil {
+                appError = NSError.cloudKitConnectionError()
+            }
+            finishedCallback(error: appError)
         }
 
         publicDB.addOperation(downloadOperation)
@@ -75,35 +83,45 @@ class RMTCloudKitManager {
             return
         }
         
-        self.uploadAllMyRatings { () -> Void in
-            self.downloadAllRatings { () -> Void in
+        self.uploadAllMyRatings { (errorUpload: NSError?) -> Void in
+            if errorUpload != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    finishedCallback(error: nil)
+                    finishedCallback(error: errorUpload)
                 })
+            } else {
+                self.downloadAllRatings { (errorDownload: NSError?) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        finishedCallback(error: errorDownload)
+                    })
+                }
             }
         }
     }
 
-    func downloadAllRatings(finishedCallback: () -> Void) {
+    func downloadAllRatings(finishedCallback: (error: NSError?) -> Void) {
         
         let allTypes = [RMTRating.ckRecordName]
-        downloadRecursive(allTypes, currentIndex: 0) { () -> Void in
-            RMTSession.calculateAllGeneralRatings()
-            let moc = NSManagedObjectContext.MR_defaultContext()
-            moc.MR_saveToPersistentStoreAndWait()
-            finishedCallback()
+        downloadRecursive(allTypes, currentIndex: 0) { (error: NSError?) -> Void in
+            if error != nil {
+                RMTSession.calculateAllGeneralRatings()
+                let moc = NSManagedObjectContext.MR_defaultContext()
+                moc.MR_saveToPersistentStoreAndWait()
+            }
+            finishedCallback(error: error)
         }
     }
 
-    func uploadAllMyRatings(finishedCallback: () -> Void) {
+    func uploadAllMyRatings(finishedCallback: (error: NSError?) -> Void) {
         
         let uploadOperation = RMTCloudKitOperationUploadRatings.uploadAllMyRatings()
         
         uploadOperation.modifyRecordsCompletionBlock = { (saved: [AnyObject]!, deleted: [AnyObject]!, error: NSError!) in
             println ("Upload all my ratings complited with error \(error)")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                finishedCallback()
-            })
+            var appError: NSError?
+            if error != nil {
+                appError = NSError.cloudKitConnectionError()
+            }
+            finishedCallback(error: appError)
         }
 
         self.publicDB.addOperation(uploadOperation)

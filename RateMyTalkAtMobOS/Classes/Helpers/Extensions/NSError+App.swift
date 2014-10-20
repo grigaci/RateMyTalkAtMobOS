@@ -56,4 +56,12 @@ extension NSError {
         let error = NSError(domain: NSError.appDomain, code: 0, userInfo: userInfo)
         return error
     }
+    
+    class func cloudKitConnectionError() -> NSError {
+        let title = "CloudKit error"
+        let description = "Please make sure that you are logged into your iCloud account."
+        var userInfo = [NSError.titleKey : title, NSError.descriptionKey : description]
+        let error = NSError(domain: NSError.appDomain, code: 0, userInfo: userInfo)
+        return error
+    }
 }
