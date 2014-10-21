@@ -71,7 +71,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         RMTCloudKitManager.sharedInstance.downloadAll { (error) -> Void in
             if error != nil {
-                RMTWindowError.ErrorWindow(error!).show()
+                UIAlertView.showAppError(error!)
             }
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }

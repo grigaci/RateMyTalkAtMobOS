@@ -21,6 +21,7 @@
 		430B65C419DDD152001CD271 /* RMTRatingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65BF19DDD152001CD271 /* RMTRatingCategory.swift */; };
 		430B65C519DDD152001CD271 /* RMTSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C019DDD152001CD271 /* RMTSession.swift */; };
 		430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65C119DDD152001CD271 /* RMTSpeaker.swift */; };
+		4318903519F6ECA5003E0A67 /* UIAlertView+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4318903419F6ECA5003E0A67 /* UIAlertView+Extra.swift */; };
 		4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */; };
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
 		6504586A19F3C92A00934BCF /* RMTSpeaker+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504586919F3C92A00934BCF /* RMTSpeaker+Color.swift */; };
@@ -102,6 +103,7 @@
 		430B65C019DDD152001CD271 /* RMTSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTSession.swift; sourceTree = "<group>"; };
 		430B65C119DDD152001CD271 /* RMTSpeaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTSpeaker.swift; sourceTree = "<group>"; };
 		430B65CC19DDDF37001CD271 /* RateMyTalkAtMobOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RateMyTalkAtMobOS-Bridging-Header.h"; path = "Helpers/ObjCBridging/RateMyTalkAtMobOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		4318903419F6ECA5003E0A67 /* UIAlertView+Extra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertView+Extra.swift"; path = "Helpers/Extensions/UIAlertView+Extra.swift"; sourceTree = "<group>"; };
 		4383B89619DEE92600CE0120 /* RMTStarterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterFactory.swift; path = Helpers/Starters/RMTStarterFactory.swift; sourceTree = "<group>"; };
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
 		6504586919F3C92A00934BCF /* RMTSpeaker+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTSpeaker+Color.swift"; path = "Helpers/RMTSpeaker+Color.swift"; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				65449D1019F2649700F3DE6D /* NSError+App.swift */,
 				65449D1219F29C4600F3DE6D /* UIColor+Extra.swift */,
 				6504587819F3EC8A00934BCF /* UIFont+Aller.swift */,
+				4318903419F6ECA5003E0A67 /* UIAlertView+Extra.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				65D248A219E1327400F37C78 /* RMTRatingCategory+CloudKit.swift in Sources */,
 				430B65BB19DDD143001CD271 /* _RMTSession.swift in Sources */,
 				430B65C419DDD152001CD271 /* RMTRatingCategory.swift in Sources */,
+				4318903519F6ECA5003E0A67 /* UIAlertView+Extra.swift in Sources */,
 				65449D1619F2B08300F3DE6D /* RMTAllSessionsCollectionViewHeader.swift in Sources */,
 				65D248B619E1704900F37C78 /* RMTAllSessionsDatasource.swift in Sources */,
 				430B65B819DDD143001CD271 /* _RMTParent.swift in Sources */,

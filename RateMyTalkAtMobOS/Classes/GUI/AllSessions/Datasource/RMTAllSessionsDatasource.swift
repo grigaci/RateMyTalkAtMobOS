@@ -46,7 +46,7 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
         RMTSession.saveAllMyRatings()
         RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
             if error != nil {
-                RMTWindowError.ErrorWindow(error!).show()
+                UIAlertView.showAppError(error!)
             }
             MBProgressHUD.hideAllHUDsForView(self.collectionView.superview!, animated: true)
         }
