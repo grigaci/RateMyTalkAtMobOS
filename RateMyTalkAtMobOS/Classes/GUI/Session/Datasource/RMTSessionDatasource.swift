@@ -11,9 +11,9 @@ import Foundation
 class RMTSessionDatasource: RMTBaseCollectionViewDatasource {
  
     init(collectionView: UICollectionView, session: RMTSession) {
-        let predicate = NSPredicate(format: "self.%K == %@", RMTRatingCategoryRelationships.session.toRaw(), session)
+        let predicate = NSPredicate(format: "self.%K == %@", RMTRatingCategoryRelationships.session.rawValue, session)
         let fetchedResultsController = RMTRatingCategory.MR_fetchAllGroupedBy(nil, withPredicate: predicate,
-            sortedBy: RMTRatingCategoryAttributes.title.toRaw(), ascending: true)
+            sortedBy: RMTRatingCategoryAttributes.title.rawValue, ascending: true)
         super.init(collectionView: collectionView, fetchedResultsController: fetchedResultsController)
     }
 

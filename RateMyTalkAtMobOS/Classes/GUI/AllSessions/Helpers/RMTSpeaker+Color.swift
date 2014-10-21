@@ -20,7 +20,7 @@ let gSpeakerDefaultColor = UIColor.purpleColor()
 extension RMTSpeaker {
     func color() -> UIColor {
         let moc = NSManagedObjectContext.MR_defaultContext()
-        let allSpeakers = RMTSpeaker.MR_findAllSortedBy(RMTSpeakerAttributes.name.toRaw(), ascending: true, inContext: moc)
+        let allSpeakers = RMTSpeaker.MR_findAllSortedBy(RMTSpeakerAttributes.name.rawValue, ascending: true, inContext: moc)
         var speakerIndex = NSNotFound
         for (index, speakerObj) in enumerate(allSpeakers) {
             let speaker = speakerObj as RMTSpeaker

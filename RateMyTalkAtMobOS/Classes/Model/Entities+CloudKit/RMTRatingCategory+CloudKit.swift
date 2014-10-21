@@ -31,13 +31,13 @@ extension RMTRatingCategory {
         let ratingCategory = RMTRatingCategory(entity: RMTRatingCategory.entity(moc), insertIntoManagedObjectContext: moc)
         ratingCategory.ckRecordID = record.recordID.recordName
         
-        let title = record.objectForKey(RMTRatingCategoryCKAttributes.title.toRaw()) as? NSString
+        let title = record.objectForKey(RMTRatingCategoryCKAttributes.title.rawValue) as? NSString
         ratingCategory.title = title
         
-        let detail = record.objectForKey(RMTRatingCategoryCKAttributes.detail.toRaw()) as? NSString
+        let detail = record.objectForKey(RMTRatingCategoryCKAttributes.detail.rawValue) as? NSString
         ratingCategory.detail = detail
 
-        let ratingCategoryToSessionRelation = record.objectForKey(RMTRatingCategoryCKRelation.session.toRaw()) as? CKReference
+        let ratingCategoryToSessionRelation = record.objectForKey(RMTRatingCategoryCKRelation.session.rawValue) as? CKReference
         if ratingCategoryToSessionRelation != nil {
             let sessionRecordID = ratingCategoryToSessionRelation?.recordID.recordName
             let session: RMTSession? = RMTSession.sessionWithRecordID(sessionRecordID!)
@@ -59,7 +59,7 @@ extension RMTRatingCategory {
 
     class func ratingCategoryWithRecordID(recordID: NSString) -> RMTRatingCategory? {
         let moc = NSManagedObjectContext.MR_defaultContext()
-        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
+        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
         let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRatingCategory
         return existingObject
     }

@@ -23,26 +23,26 @@ enum UIFontAller: String {
 extension UIFont {
 
     class func fontAllerLightRegular(size: Float) -> UIFont {
-        return UIFont(name: UIFontAllerLight.Regular.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAllerLight.Regular.rawValue, size: CGFloat(size))!
     }
     
     class func fontAllerLightItalic(size: Float) -> UIFont {
-        return UIFont(name: UIFontAllerLight.LightItalic.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAllerLight.LightItalic.rawValue, size: CGFloat(size))!
     }
     
     class func fontAllerRegular(size: Float) -> UIFont {
-        return UIFont(name: UIFontAller.Regular.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAller.Regular.rawValue, size: CGFloat(size))!
     }
 
     class func fontAllerItalic(size: Float) -> UIFont {
-        return UIFont(name: UIFontAller.Italic.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAller.Italic.rawValue, size: CGFloat(size))!
     }
 
     class func fontAllerBold(size: Float) -> UIFont {
-        return UIFont(name: UIFontAller.Bold.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAller.Bold.rawValue, size: CGFloat(size))!
     }
 
     class func fontAllerBoldItalic(size: Float) -> UIFont {
-        return UIFont(name: UIFontAller.BoldItalic.toRaw(), size: CGFloat(size))
+        return UIFont(name: UIFontAller.BoldItalic.rawValue, size: CGFloat(size))!
     }
 }

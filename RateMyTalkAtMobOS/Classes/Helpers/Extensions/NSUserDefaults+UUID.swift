@@ -14,7 +14,7 @@ extension NSUserDefaults {
         {
             let uuid = self.objectForKey("userUUID") as? String
             if uuid == nil {
-                let newUUID = NSUUID.UUID().UUIDString
+                let newUUID = NSUUID().UUIDString
                 self.setObject(newUUID, forKey: "userUUID")
                 self.synchronize()
                 return newUUID

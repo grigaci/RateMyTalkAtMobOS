@@ -22,7 +22,7 @@ extension RMTRatingCategory {
         for index in 0...allRatingsCount - 1 {
             let rating = allRatings.objectAtIndex(index) as RMTRating
             if let starsNumber = rating.stars {
-                if starsNumber > 0 {
+                if starsNumber.floatValue > 0 {
                     totalRating += starsNumber.floatValue
                     countValidRatings += 1.0
                 }

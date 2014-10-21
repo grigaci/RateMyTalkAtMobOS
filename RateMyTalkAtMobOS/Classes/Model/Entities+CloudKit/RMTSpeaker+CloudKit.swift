@@ -27,7 +27,7 @@ extension RMTSpeaker {
         
         speaker.ckRecordID = record.recordID.recordName
         
-        let name: AnyObject! = record.valueForKey(RMTSpeakerCKAttributes.name.toRaw())
+        let name: AnyObject! = record.valueForKey(RMTSpeakerCKAttributes.name.rawValue)
         speaker.name = name  as NSString
 
         return speaker;
@@ -35,7 +35,7 @@ extension RMTSpeaker {
     
     class func speakerWithRecordID(recordID: NSString) -> RMTSpeaker? {
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.toRaw(), recordID)
+        let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
         var existingObject: RMTSpeaker? = RMTSpeaker.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTSpeaker
         return existingObject
     }

@@ -16,13 +16,14 @@ class RMTWindowError : RMTWindowBase {
         return window
     }
 
-    private lazy var errorViewController: RMTWindowErrorViewController = {
-        var viewController = RMTWindowErrorViewController(nibName: nil, bundle: nil)
-        viewController.buttonTapped = {
-            self.hide()
+    private var errorViewController: RMTWindowErrorViewController {
+
+        didSet {
+            errorViewController.buttonTapped = {
+                self.hide()
+            }
         }
-       return viewController
-    }()
+    }
 
     var displayedError: NSError? {
         didSet {
@@ -33,7 +34,9 @@ class RMTWindowError : RMTWindowBase {
     }
 
     init() {
-        super.init(viewController:self.errorViewController)
+        var viewController = RMTWindowErrorViewController(nibName: nil, bundle: nil)
+        self.errorViewController = viewController
+        super.init(viewController:viewController)
     }
 
     required init(coder aDecoder: NSCoder) {

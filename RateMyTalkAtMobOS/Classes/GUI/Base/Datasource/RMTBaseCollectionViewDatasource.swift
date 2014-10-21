@@ -45,7 +45,7 @@ class RMTBaseCollectionViewDatasource: NSObject, NSFetchedResultsControllerDeleg
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         var change: NSMutableDictionary = NSMutableDictionary()
-        let typeNumber: NSNumber = NSNumber(unsignedLong: type.toRaw())
+        let typeNumber: NSNumber = NSNumber(unsignedLong: type.rawValue)
         switch type {
         case .Insert:
             change.setObject([newIndexPath!], forKey: typeNumber)
@@ -74,7 +74,7 @@ class RMTBaseCollectionViewDatasource: NSObject, NSFetchedResultsControllerDeleg
                 let change: NSMutableDictionary = changeObj as NSMutableDictionary
                 let allKeys = change.allKeys as [UInt]
                 for numberObj in allKeys {
-                    let key: NSFetchedResultsChangeType = NSFetchedResultsChangeType.fromRaw(numberObj) as NSFetchedResultsChangeType!
+                    let key: NSFetchedResultsChangeType = NSFetchedResultsChangeType(rawValue: numberObj) as NSFetchedResultsChangeType!
                     let indexPaths = change.objectForKey(numberObj) as [NSIndexPath]
                     switch key {
                     case .Insert:

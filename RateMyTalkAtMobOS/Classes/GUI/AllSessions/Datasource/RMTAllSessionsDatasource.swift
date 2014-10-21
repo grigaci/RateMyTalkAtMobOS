@@ -15,7 +15,7 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
     }()
 
     init(collectionView: UICollectionView) {
-        let fetchedResultsController = RMTSession.MR_fetchAllGroupedBy(nil, withPredicate: nil, sortedBy: RMTSessionAttributes.startDate.toRaw(), ascending: true)
+        let fetchedResultsController = RMTSession.MR_fetchAllGroupedBy(nil, withPredicate: nil, sortedBy: RMTSessionAttributes.startDate.rawValue, ascending: true)
         super.init(collectionView: collectionView, fetchedResultsController: fetchedResultsController)
 
         self.collectionView.registerClass(RMTAllSessionsCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerIdentifier)
