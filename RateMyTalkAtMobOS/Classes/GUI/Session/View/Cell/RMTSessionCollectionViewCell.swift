@@ -75,7 +75,7 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
                                "ratingView":self.ratingView,
                                "lineView":self.lineView]
         let screenSize = UIScreen.mainScreen().fixedScreenSize
-        let ratingViewWidth = (screenSize.width - self.spaceHorizontally) / 2.0
+        let ratingViewWidth = (screenSize.width - (2 * self.spaceHorizontally)) / 2.0
         let sizeDictionary = ["spaceH" : self.spaceHorizontally, "ratingViewWidth" : ratingViewWidth]
 
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(spaceH)-[textView]-(spaceH)-|",
