@@ -102,7 +102,7 @@ class RMTCloudKitManager {
         
         let allTypes = [RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { (error: NSError?) -> Void in
-            if error != nil {
+            if error == nil {
                 RMTSession.calculateAllGeneralRatings()
                 let moc = NSManagedObjectContext.MR_defaultContext()
                 moc.MR_saveToPersistentStoreAndWait()
