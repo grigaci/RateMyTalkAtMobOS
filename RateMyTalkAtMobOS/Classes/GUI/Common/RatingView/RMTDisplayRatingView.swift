@@ -10,11 +10,13 @@ import UIKit
 
 class RMTDisplayRatingView: UIView {
     
+    var highlightedStars: Float
     lazy var imageViews: [UIImageView] = {
         return [UIImageView]()
     }()
 
     override init(frame: CGRect) {
+        self.highlightedStars = 0.0
         super.init(frame: frame)
         self.addImageViews()
         self.setupConstraints()
@@ -25,6 +27,7 @@ class RMTDisplayRatingView: UIView {
     }
 
     func highlightStars(countHighlightedStars: Float) {
+        self.highlightedStars = countHighlightedStars
         let countHighlightedStarsInt = Int(countHighlightedStars)
         let countAllStars = self.imageViews.count
         assert(countHighlightedStars > 0 || countHighlightedStarsInt >= 0, "Should be >= 0")

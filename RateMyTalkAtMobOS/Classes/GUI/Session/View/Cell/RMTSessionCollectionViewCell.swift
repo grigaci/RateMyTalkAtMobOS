@@ -50,15 +50,27 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.textView)
         self.contentView.addSubview(self.ratingView)
         self.contentView.addSubview(self.lineView)
-        setupConstraints()
-        setupRatingListener()
+        self.setupConstraints()
+        self.registerListeners()
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupConstraints() {
+
+     deinit {
+        self.unregisterListeners()
+    }
+
+    func saveCurrentRating() {
+        let countStars = self.ratingView.highlightedStars
+        if countStars > 0.0 && self.ratingCategory?.myLocalRating?.floatValue != countStars {
+            self.ratingCategory?.myLocalRating = NSNumber(float: countStars)
+            NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
+        }
+    }
+
+    private func setupConstraints() {
         let viewsDictionary = ["textView":self.textView,
                                "ratingView":self.ratingView,
                                "lineView":self.lineView]
@@ -97,13 +109,12 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         
         self.ratingView.highlightStars(defaultStars)
     }
+    
+    private func registerListeners() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveCurrentRating", name: kNotificationSessionSaveCurrentRatings, object: nil)
+    }
 
-    private func setupRatingListener() {
-        self.ratingView.valueChangedCallback = {(newValue: Float) -> () in
-            if self.ratingCategory?.myLocalRating?.floatValue != newValue {
-                self.ratingCategory?.myLocalRating = NSNumber(float: newValue)
-                NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
-            }
-        }
+    private func unregisterListeners() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

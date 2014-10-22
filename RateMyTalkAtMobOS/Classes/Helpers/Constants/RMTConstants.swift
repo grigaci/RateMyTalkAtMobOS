@@ -13,3 +13,4 @@ func RMTLogError(message: String, function: String = __FUNCTION__, line: Int = _
         println("Error \"\(message)\" in  \(function) at line \(line))")
 }
 
+let kNotificationSessionSaveCurrentRatings = "saveRatings"

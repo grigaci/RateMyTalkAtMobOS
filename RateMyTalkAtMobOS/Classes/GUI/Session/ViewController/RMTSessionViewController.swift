@@ -36,6 +36,11 @@ class RMTSessionViewController: UICollectionViewController {
         self.collectionView.backgroundColor = UIColor.appBackgroundColor()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSessionSaveCurrentRatings, object: nil)
+    }
+
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         self.flowLayout.invalidateLayout()
