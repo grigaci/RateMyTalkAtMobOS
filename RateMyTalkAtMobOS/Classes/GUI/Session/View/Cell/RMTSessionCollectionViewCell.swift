@@ -28,7 +28,11 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var ratingView: RMTEditRatingView = {
-        let ratingView = RMTEditRatingView(frame: CGRectZero)
+        var ratingView = RMTEditRatingView(frame: CGRectZero)
+        ratingView.valueChangedCallback = {
+            self.ratingCategory!.temporaryRating = $0
+        }
+
         return ratingView
         }()
     
@@ -99,19 +103,20 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
 
     private func updateRating() {
         var defaultStars: Float = 0.0
-        if let myStars = self.ratingCategory?.myLocalRating?.floatValue {
+        
+        if let myStars = self.ratingCategory?.temporaryRating {
             defaultStars = myStars
         }
         else if let myRating = self.ratingCategory?.myRating() {
             if let stars = myRating.stars?.floatValue {
                 defaultStars = stars
                 self.ratingCategory?.myLocalRating = NSNumber(float: stars)
+                self.ratingCategory?.temporaryRating = defaultStars
             }
         }
-        
         self.ratingView.highlightStars(defaultStars)
     }
-    
+
     private func registerListeners() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveCurrentRating", name: kNotificationSessionSaveCurrentRatings, object: nil)
     }

@@ -1,6 +1,6 @@
 @objc(RMTRatingCategory)
 class RMTRatingCategory: _RMTRatingCategory {
-    
+
     func myRating() -> RMTRating? {
         let userUUID = NSUserDefaults.standardUserDefaults().userUUID
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
@@ -33,6 +33,16 @@ class RMTRatingCategory: _RMTRatingCategory {
             NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
         } else {
             println("Category \(self.title!) not rated")
+        }
+    }
+    
+    var temporaryRating: Float? {
+        set {
+            NSUserDefaults.standardUserDefaults().setFloat(newValue!, forKey: self.ckRecordID!)
+        }
+        get {
+            let rating = NSUserDefaults.standardUserDefaults().floatForKey(self.ckRecordID!)
+            return rating
         }
     }
 }

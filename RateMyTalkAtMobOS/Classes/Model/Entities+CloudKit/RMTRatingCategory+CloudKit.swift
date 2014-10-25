@@ -37,6 +37,8 @@ extension RMTRatingCategory {
         let detail = record.objectForKey(RMTRatingCategoryCKAttributes.detail.rawValue) as? NSString
         ratingCategory.detail = detail
 
+        ratingCategory.ckRecordID = record.recordID.recordName
+
         let ratingCategoryToSessionRelation = record.objectForKey(RMTRatingCategoryCKRelation.session.rawValue) as? CKReference
         if ratingCategoryToSessionRelation != nil {
             let sessionRecordID = ratingCategoryToSessionRelation?.recordID.recordName
