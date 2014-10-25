@@ -8,12 +8,13 @@
 
 import UIKit
 
-let gSpeakerColors = [UIColor(fullRed: 199.0, fullGreen: 121.0, fullBlue: 176.0),
-UIColor(fullRed: 128.0, fullGreen: 171.0, fullBlue: 178.0),
-UIColor(fullRed: 94.0, fullGreen: 162.0, fullBlue: 220.0),
-UIColor(fullRed: 220.0, fullGreen: 122.0, fullBlue: 122.0),
-UIColor.magentaColor(),
-UIColor.greenColor()]
+let gSpeakerColors = [
+    UIColor(fullRed: 85.0,  fullGreen: 186.0, fullBlue: 239.0),
+    UIColor(fullRed: 99.0,  fullGreen: 218.0, fullBlue: 185.0),
+    UIColor(fullRed: 240.0, fullGreen: 130.0, fullBlue: 139.0),
+    UIColor(fullRed: 159.0, fullGreen: 96.0,  fullBlue: 186.0),
+    UIColor(fullRed: 71.0,  fullGreen: 160.0, fullBlue: 134.0),
+    UIColor(fullRed: 88.0,  fullGreen: 132.0, fullBlue: 190.0)]
 
 let gSpeakerDefaultColor = UIColor.purpleColor()
 

@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set root view controller
         RMTGUIManager.sharedInstance.window = window
 
-        UIFont.printAll()
         return true
     }
 
