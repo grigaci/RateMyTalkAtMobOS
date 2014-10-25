@@ -59,7 +59,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int) -> CGSize {
             let width = CGRectGetWidth(self.collectionView.bounds)
-            return CGSizeMake(width, 60.0)
+            return CGSizeMake(width, 80.0)
     }
 
     private func downloadDataIfNeeded() {
