@@ -12,7 +12,7 @@ import UIKit
 class RMTStarterUICustomization: NSObject, RMTStarterItem {
     
     func start() {
-        let font = UIFont.fontAllerRegular(20.0)
+        let font = UIFont.fontLatoRegular(20.0)
         let textAttributes = [NSFontAttributeName : font]
         UINavigationBar.appearance().titleTextAttributes = textAttributes
     }
