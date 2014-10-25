@@ -50,4 +50,30 @@ extension NSAttributedString {
         return attributedString
     }
 
+    class func noConnectionAttributedString() -> NSAttributedString {
+        let title = NSAttributedString.noConnectionTitleAttributedString()
+        let detail = NSAttributedString.noConnectionDetailAttributedString()
+        let mutableText = NSMutableAttributedString(attributedString: title)
+        mutableText.appendAttributedString(detail)
+        return NSAttributedString(attributedString: mutableText)
+    }
+
+    class func noConnectionTitleAttributedString() -> NSAttributedString {
+        let string = "Cannot connect to iCloud\n\n"
+        let font = UIFont.fontLatoBold(18.0)
+        let color = UIColor(fullRed: 67.0, fullGreen: 67.0, fullBlue: 67.0)
+        let dictionary = [NSForegroundColorAttributeName : color, NSFontAttributeName : font]
+        let attributedString = NSAttributedString(string: string, attributes: dictionary)
+        return attributedString
+    }
+
+    class func noConnectionDetailAttributedString() -> NSAttributedString {
+        let string = "Please make sure that you have internet access and that you signed into your iCloud account."
+        let font = UIFont.fontLatoRegular(14.0)
+        let color = UIColor(fullRed: 67.0, fullGreen: 67.0, fullBlue: 67.0)
+        let dictionary = [NSForegroundColorAttributeName : color, NSFontAttributeName : font]
+        let attributedString = NSAttributedString(string: string, attributes: dictionary)
+        return attributedString
+    }
+
 }

@@ -30,20 +30,11 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
     override func configureCell(cell: UICollectionViewCell, indexPath: NSIndexPath) {
         let cellSession = cell as RMTAllSessionsCollectionViewCell
         let session = self.fetchedResultsController.objectAtIndexPath(indexPath) as RMTSession
-        cellSession.session = session
-        
-        if self.sectionHeader?.hidden == true {
-           self.sectionHeader?.hidden = false
-        }
+        cellSession.session = session        
     }
 
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         self.sectionHeader = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: self.headerIdentifier, forIndexPath: indexPath) as? RMTAllSessionsCollectionViewHeader
-
-        if self.collectionView.numberOfItemsInSection(indexPath.section) == 0 {
-            self.sectionHeader?.hidden = true
-        }
-
         return self.sectionHeader!
     }
 

@@ -51,7 +51,7 @@ extension NSError {
 
     class func internetConnectionError() -> NSError {
         let title = "No connection"
-        let description = "Please check the Internet connection or try again later."
+        let description = "Please check your internet connection."
         var userInfo = [NSError.titleKey : title, NSError.descriptionKey : description]
         let error = NSError(domain: NSError.appDomain, code: 0, userInfo: userInfo)
         return error
