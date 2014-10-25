@@ -14,6 +14,16 @@ extension UIColor {
         return UIColor(fullRed: 247.0, fullGreen: 247.0, fullBlue: 247.0)
     }
 
+    class func allSessionsBackgroungColor() -> UIColor {
+        let image = UIImage(named: "allSessionsBackgroundPattern")
+        return UIColor(patternImage: image!)
+    }
+
+    class func sessionBackgroungColor() -> UIColor {
+        let image = UIImage(named: "sessionBackgroundPattern")
+        return UIColor(patternImage: image!)
+    }
+
     convenience init(fullRed: Float, fullGreen: Float, fullBlue: Float) {
         let divider: CGFloat = 255.0
         let red : CGFloat = CGFloat(fullRed) / divider

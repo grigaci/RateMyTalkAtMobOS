@@ -26,7 +26,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.backgroundColor = UIColor(fullRed: 243.0, fullGreen: 243.0, fullBlue: 243.0)
+        self.collectionView.backgroundColor = UIColor.allSessionsBackgroungColor()
         self.collectionView.alwaysBounceVertical = true
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView)
     }
