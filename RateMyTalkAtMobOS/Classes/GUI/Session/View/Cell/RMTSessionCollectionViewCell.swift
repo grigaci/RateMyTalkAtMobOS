@@ -63,11 +63,13 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     }
 
     func saveCurrentRating() {
-        let countStars = self.ratingView.highlightedStars
-        if countStars > 0.0 && self.ratingCategory?.myLocalRating?.floatValue != countStars {
-            self.ratingCategory?.myLocalRating = NSNumber(float: countStars)
-            NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            let countStars = self.ratingView.highlightedStars
+            if countStars > 0.0 && self.ratingCategory?.myLocalRating?.floatValue != countStars {
+                self.ratingCategory?.myLocalRating = NSNumber(float: countStars)
+                NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
+            }
+        })
     }
 
     private func setupConstraints() {
