@@ -12,6 +12,12 @@ class RMTAllSessionsViewController: UICollectionViewController {
     let flowLayout: UICollectionViewFlowLayout
     var sessionDatasource : RMTAllSessionsDatasource?
 
+    lazy var refreshControl: UIRefreshControl? = {
+        let view = UIRefreshControl(frame: CGRectZero)
+        view.addTarget(self, action:"updateData", forControlEvents: .ValueChanged)
+        return view
+        }()
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(0.0, 0.0, 10.0, 0.0)
@@ -28,6 +34,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         super.viewDidLoad()
         self.collectionView.backgroundColor = UIColor.allSessionsBackgroungColor()
         self.collectionView.alwaysBounceVertical = true
+        self.collectionView.addSubview(self.refreshControl!)
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView)
     }
 
@@ -79,6 +86,16 @@ class RMTAllSessionsViewController: UICollectionViewController {
                 UIAlertView.showAppError(error!)
             }
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        }
+    }
+
+    func updateData() {
+        RMTSession.saveAllMyRatings()
+        RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
+            if error != nil {
+                UIAlertView.showAppError(error!)
+            }
+            self.refreshControl?.endRefreshing()
         }
     }
 }

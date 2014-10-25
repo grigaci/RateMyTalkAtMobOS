@@ -22,7 +22,7 @@ class RMTAllSessionsCollectionViewHeader: UICollectionReusableView {
     lazy var syncTextLabel: UILabel = {
         let label = UILabel(frame: CGRectZero)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.attributedText = NSAttributedString.syncTextAttributedString("Sync your ratings")
+        label.attributedText = NSAttributedString.syncTextAttributedString("Pull down to sync your ratings")
         return label
     }()
 

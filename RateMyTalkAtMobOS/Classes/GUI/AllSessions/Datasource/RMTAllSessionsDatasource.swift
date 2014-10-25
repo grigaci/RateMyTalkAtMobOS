@@ -14,6 +14,8 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
         return id
     }()
 
+    var sectionHeader: RMTAllSessionsCollectionViewHeader?
+
     init(collectionView: UICollectionView) {
         let fetchedResultsController = RMTSession.MR_fetchAllGroupedBy(nil, withPredicate: nil, sortedBy: RMTSessionAttributes.startDate.rawValue, ascending: true)
         super.init(collectionView: collectionView, fetchedResultsController: fetchedResultsController)
@@ -29,27 +31,20 @@ class RMTAllSessionsDatasource: RMTBaseCollectionViewDatasource {
         let cellSession = cell as RMTAllSessionsCollectionViewCell
         let session = self.fetchedResultsController.objectAtIndexPath(indexPath) as RMTSession
         cellSession.session = session
+        
+        if self.sectionHeader?.hidden == true {
+           self.sectionHeader?.hidden = false
+        }
     }
 
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: self.headerIdentifier, forIndexPath: indexPath) as RMTAllSessionsCollectionViewHeader
-        
-        header.tappedCallback = {
-            self.handletHeaderTap()
-        }
-        
-        return header
-    }
+        self.sectionHeader = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: self.headerIdentifier, forIndexPath: indexPath) as? RMTAllSessionsCollectionViewHeader
 
-    private func handletHeaderTap() {
-        MBProgressHUD.showHUDAddedTo(self.collectionView.superview!, animated: true)
-        RMTSession.saveAllMyRatings()
-        RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
-            if error != nil {
-                UIAlertView.showAppError(error!)
-            }
-            MBProgressHUD.hideAllHUDsForView(self.collectionView.superview!, animated: true)
+        if self.collectionView.numberOfItemsInSection(indexPath.section) == 0 {
+            self.sectionHeader?.hidden = true
         }
+
+        return self.sectionHeader!
     }
 
 }
