@@ -31,6 +31,11 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.flowLayout.invalidateLayout()
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         downloadDataIfNeeded()
