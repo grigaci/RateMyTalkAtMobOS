@@ -34,17 +34,17 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
         }
 
         return ratingView
-        }()
+    }()
     
     lazy var lineView: UIView = {
         let view = UIView(frame: CGRectZero)
         view.backgroundColor = UIColor(fullRed: 205.0, fullGreen: 205.0, fullBlue: 205.0)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         return view
-        }()
+    }()
 
     lazy var spaceHorizontally: CGFloat = {
-        let totalWidth = self.contentView.frame.size.width
+        let totalWidth = UIScreen.mainScreen().fixedScreenSize.width
         let devider = CGFloat(10.0)
         return  totalWidth / devider;
     }()
