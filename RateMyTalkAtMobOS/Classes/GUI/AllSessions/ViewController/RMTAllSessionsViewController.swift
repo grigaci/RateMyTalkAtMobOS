@@ -169,6 +169,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         self.removeNoContentTextView()
         self.sessionDatasource?.sectionHeader?.hidden = false
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.refreshControl.endRefreshing()
     }
 
     private func handleStateUploadingData() {
