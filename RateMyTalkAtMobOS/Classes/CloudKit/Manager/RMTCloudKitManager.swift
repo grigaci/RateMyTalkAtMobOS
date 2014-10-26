@@ -37,7 +37,9 @@ class RMTCloudKitManager {
             finishedCallback(error: nil)
             return
         }
-
+        
+        RMTNetworkActivityIndicator.sharedInstance.activate()
+        
         let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { (error: NSError?) -> Void in
             RMTSession.calculateAllGeneralRatings()
@@ -49,6 +51,7 @@ class RMTCloudKitManager {
 
     private func downloadAllNotifyCallback(finishedCallback: (error: NSError?) -> Void, error: NSError?) {
         NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = error == nil
+        RMTNetworkActivityIndicator.sharedInstance.deactivate()
 
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             finishedCallback(error: error)
@@ -95,21 +98,28 @@ class RMTCloudKitManager {
             return
         }
 
+        RMTNetworkActivityIndicator.sharedInstance.activate()
+
         RMTRating.deleteAllExceptMyRatings { () -> Void in
             self.uploadAllMyRatings { (errorUpload: NSError?) -> Void in
                 if errorUpload != nil {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        finishedCallback(error: errorUpload)
-                    })
+                        self.syncRatingsNotifyCallback(finishedCallback, error: errorUpload)
                 } else {
                     self.downloadAllRatings { (errorDownload: NSError?) -> Void in
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            finishedCallback(error: errorDownload)
-                        })
+                        self.syncRatingsNotifyCallback(finishedCallback, error: errorDownload)
                     }
                 }
             }
         }
+    }
+
+    private func syncRatingsNotifyCallback(finishedCallback: (error: NSError?) -> Void, error: NSError?) {
+
+        RMTNetworkActivityIndicator.sharedInstance.deactivate()
+
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            finishedCallback(error: error)
+        })
     }
 
     func downloadAllRatings(finishedCallback: (error: NSError?) -> Void) {

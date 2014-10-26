@@ -26,6 +26,7 @@
 		4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */; };
 		6504586A19F3C92A00934BCF /* RMTSpeaker+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504586919F3C92A00934BCF /* RMTSpeaker+Color.swift */; };
 		6504587919F3EC8A00934BCF /* UIFont+Aller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504587819F3EC8A00934BCF /* UIFont+Aller.swift */; };
+		6505901C19FD2BC800657FA0 /* RMTNetworkActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6505901B19FD2BC800657FA0 /* RMTNetworkActivityIndicator.swift */; };
 		650E2B9719E911EB00F61020 /* RMTDisplayRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */; };
 		650E2B9B19E9378800F61020 /* RMTRatingCategory+Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */; };
 		650E2B9E19E9395500F61020 /* Float+Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E2B9D19E9395500F61020 /* Float+Stars.swift */; };
@@ -118,6 +119,7 @@
 		4383B89819DEEDE500CE0120 /* RMTStarterCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTStarterCoreData.swift; path = Helpers/Starters/RMTStarterCoreData.swift; sourceTree = "<group>"; };
 		6504586919F3C92A00934BCF /* RMTSpeaker+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTSpeaker+Color.swift"; path = "Helpers/RMTSpeaker+Color.swift"; sourceTree = "<group>"; };
 		6504587819F3EC8A00934BCF /* UIFont+Aller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Aller.swift"; path = "Helpers/Extensions/UIFont+Aller.swift"; sourceTree = "<group>"; };
+		6505901B19FD2BC800657FA0 /* RMTNetworkActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTNetworkActivityIndicator.swift; path = Helpers/NetworkActivityIndicator/RMTNetworkActivityIndicator.swift; sourceTree = "<group>"; };
 		650E2B9619E911EB00F61020 /* RMTDisplayRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMTDisplayRatingView.swift; path = Common/RatingView/RMTDisplayRatingView.swift; sourceTree = "<group>"; };
 		650E2B9A19E9378800F61020 /* RMTRatingCategory+Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RMTRatingCategory+Rating.swift"; path = "Rating/RMTRatingCategory+Rating.swift"; sourceTree = "<group>"; };
 		650E2B9D19E9395500F61020 /* Float+Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Float+Stars.swift"; path = "Helpers/Extensions/Float+Stars.swift"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		430B65CA19DDDED9001CD271 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6505901A19FD2BA300657FA0 /* NetworkActivityIndicator */,
 				650E2B9C19E9393D00F61020 /* Extensions */,
 				65A4359D19E8155000A1BC0A /* Constants */,
 				65D248A519E140E000F37C78 /* Logger */,
@@ -387,6 +390,14 @@
 				65F33B8B19FB8A5700C05296 /* Lato */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		6505901A19FD2BA300657FA0 /* NetworkActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				6505901B19FD2BC800657FA0 /* RMTNetworkActivityIndicator.swift */,
+			);
+			name = NetworkActivityIndicator;
 			sourceTree = "<group>";
 		};
 		650E2B9519E911A500F61020 /* Common */ = {
@@ -855,6 +866,7 @@
 				4383B89919DEEDE500CE0120 /* RMTStarterCoreData.swift in Sources */,
 				65449D1119F2649700F3DE6D /* NSError+App.swift in Sources */,
 				65D248AF19E1669C00F37C78 /* RMTAllSessionsViewController.swift in Sources */,
+				6505901C19FD2BC800657FA0 /* RMTNetworkActivityIndicator.swift in Sources */,
 				65D248B419E16AF100F37C78 /* RMTAllSessionsCollectionViewCell.swift in Sources */,
 				4383B89719DEE92600CE0120 /* RMTStarterFactory.swift in Sources */,
 				6504587919F3EC8A00934BCF /* UIFont+Aller.swift in Sources */,
