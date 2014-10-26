@@ -1,5 +1,5 @@
 //
-//  NSUserDefaults+UUID.swift
+//  NSUserDefaults+Extra.swift
 //  RateMyTalkAtMobOS
 //
 //  Created by Bogdan Iusco on 10/12/14.
@@ -20,6 +20,16 @@ extension NSUserDefaults {
                 return newUUID
             }
             return uuid!
+        }
+    }
+
+    var iCloudDataDownloaded: Bool {
+        get {
+            let isDownloaded = self.boolForKey("iCloudDataDownloaded")
+            return isDownloaded
+        }
+        set {
+            self.setBool(newValue, forKey: "iCloudDataDownloaded")
         }
     }
 }

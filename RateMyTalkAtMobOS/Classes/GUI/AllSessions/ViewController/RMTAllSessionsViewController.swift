@@ -123,7 +123,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
     }
 
     private func downloadAllSesssionsIfNeeded() {
-        if RMTSession.areAllSessionsDownloaded() {
+        if NSUserDefaults.standardUserDefaults().iCloudDataDownloaded {
             return
         }
 
@@ -134,7 +134,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
     }
 
     func handlePullToRefresh() {
-        if !RMTSession.areAllSessionsDownloaded() {
+        if !NSUserDefaults.standardUserDefaults().iCloudDataDownloaded {
             self.downloadAllSesssionsIfNeeded()
             return
         }
@@ -150,7 +150,7 @@ class RMTAllSessionsViewController: UICollectionViewController {
         if error != nil {
             UIAlertView.showAppError(error!)
         }
-        if RMTSession.areAllSessionsDownloaded() {
+        if NSUserDefaults.standardUserDefaults().iCloudDataDownloaded {
             self.state = .DownloadedOrUploadedData
         } else {
             self.state = .NoData

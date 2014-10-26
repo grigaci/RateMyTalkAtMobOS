@@ -33,16 +33,26 @@ class RMTCloudKitManager {
             return
         }
     
+        if NSUserDefaults.standardUserDefaults().iCloudDataDownloaded {
+            finishedCallback(error: nil)
+            return
+        }
+
         let allTypes = [RMTSpeaker.ckRecordName, RMTSession.ckRecordName, RMTRatingCategory.ckRecordName, RMTRating.ckRecordName]
         downloadRecursive(allTypes, currentIndex: 0) { (error: NSError?) -> Void in
             RMTSession.calculateAllGeneralRatings()
             let moc = NSManagedObjectContext.MR_defaultContext()
             moc.MR_saveToPersistentStoreAndWait()
-
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                finishedCallback(error: error)
-            })
+            self.downloadAllNotifyCallback(finishedCallback, error: error)
         }
+    }
+
+    private func downloadAllNotifyCallback(finishedCallback: (error: NSError?) -> Void, error: NSError?) {
+        NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = error == nil
+
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            finishedCallback(error: error)
+        })
     }
 
     func downloadRecursive(allTypes: [NSString], currentIndex: Int, finishedCallback: (error: NSError?) -> Void) {

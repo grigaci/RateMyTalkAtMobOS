@@ -1,11 +1,6 @@
 @objc(RMTSession)
 class RMTSession: _RMTSession {
 
-    class func areAllSessionsDownloaded() -> Bool {
-        let firstSession: AnyObject! = RMTSession.MR_findFirst()
-        return firstSession != nil ? true : false
-    }
-
     func saveMyRatings() {
         let allCategoryRatings = self.ratingCategories
         let count = allCategoryRatings.count
