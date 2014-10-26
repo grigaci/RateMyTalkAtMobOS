@@ -33,7 +33,7 @@ class RMTSessionViewController: UICollectionViewController {
 
         self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView, session: self.session!)
         self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = UIColor.sessionBackgroungColor()
+        self.collectionView.backgroundColor = UIColor.sessionBackgroundColor()
     }
 
     override func viewWillDisappear(animated: Bool) {

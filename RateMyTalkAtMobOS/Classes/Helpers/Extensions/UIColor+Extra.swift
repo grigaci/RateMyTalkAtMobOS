@@ -14,12 +14,12 @@ extension UIColor {
         return UIColor(fullRed: 247.0, fullGreen: 247.0, fullBlue: 247.0)
     }
 
-    class func allSessionsBackgroungColor() -> UIColor {
+    class func allSessionsBackgroundColor() -> UIColor {
         let image = UIImage(named: "allSessionsBackgroundPattern")
         return UIColor(patternImage: image!)
     }
 
-    class func sessionBackgroungColor() -> UIColor {
+    class func sessionBackgroundColor() -> UIColor {
         let image = UIImage(named: "sessionBackgroundPattern")
         return UIColor(patternImage: image!)
     }
