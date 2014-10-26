@@ -84,17 +84,19 @@ class RMTCloudKitManager {
             finishedCallback(error: NSError.internetConnectionError())
             return
         }
-        
-        self.uploadAllMyRatings { (errorUpload: NSError?) -> Void in
-            if errorUpload != nil {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    finishedCallback(error: errorUpload)
-                })
-            } else {
-                self.downloadAllRatings { (errorDownload: NSError?) -> Void in
+
+        RMTRating.deleteAllExceptMyRatings { () -> Void in
+            self.uploadAllMyRatings { (errorUpload: NSError?) -> Void in
+                if errorUpload != nil {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        finishedCallback(error: errorDownload)
+                        finishedCallback(error: errorUpload)
                     })
+                } else {
+                    self.downloadAllRatings { (errorDownload: NSError?) -> Void in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            finishedCallback(error: errorDownload)
+                        })
+                    }
                 }
             }
         }
