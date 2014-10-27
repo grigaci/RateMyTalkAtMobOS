@@ -95,7 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		430B654A19DDBFA3001CD271 /* RateMyTalkAtMobOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyTalkAtMobOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		430B654A19DDBFA3001CD271 /* RateMyTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430B656219DDBFA3001CD271 /* RateMyTalkAtMobOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTalkAtMobOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		430B656719DDBFA3001CD271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430B656819DDBFA3001CD271 /* RateMyTalkAtMobOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTalkAtMobOSTests.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		430B654B19DDBFA3001CD271 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				430B654A19DDBFA3001CD271 /* RateMyTalkAtMobOS.app */,
+				430B654A19DDBFA3001CD271 /* RateMyTalk.app */,
 				430B656219DDBFA3001CD271 /* RateMyTalkAtMobOSTests.xctest */,
 			);
 			name = Products;
@@ -694,9 +694,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		430B654919DDBFA3001CD271 /* RateMyTalkAtMobOS */ = {
+		430B654919DDBFA3001CD271 /* RateMyTalk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 430B656C19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalkAtMobOS" */;
+			buildConfigurationList = 430B656C19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalk" */;
 			buildPhases = (
 				4AEEC6134E3895B3A987C8D1 /* Check Pods Manifest.lock */,
 				430B654619DDBFA3001CD271 /* Sources */,
@@ -708,9 +708,9 @@
 			);
 			dependencies = (
 			);
-			name = RateMyTalkAtMobOS;
+			name = RateMyTalk;
 			productName = RateMyTalkAtMobOS;
-			productReference = 430B654A19DDBFA3001CD271 /* RateMyTalkAtMobOS.app */;
+			productReference = 430B654A19DDBFA3001CD271 /* RateMyTalk.app */;
 			productType = "com.apple.product-type.application";
 		};
 		430B656119DDBFA3001CD271 /* RateMyTalkAtMobOSTests */ = {
@@ -768,7 +768,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				430B654919DDBFA3001CD271 /* RateMyTalkAtMobOS */,
+				430B654919DDBFA3001CD271 /* RateMyTalk */,
 				430B656119DDBFA3001CD271 /* RateMyTalkAtMobOSTests */,
 			);
 		};
@@ -917,7 +917,7 @@
 /* Begin PBXTargetDependency section */
 		430B656419DDBFA3001CD271 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 430B654919DDBFA3001CD271 /* RateMyTalkAtMobOS */;
+			target = 430B654919DDBFA3001CD271 /* RateMyTalk */;
 			targetProxy = 430B656319DDBFA3001CD271 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1084,7 +1084,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		430B656C19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalkAtMobOS" */ = {
+		430B656C19DDBFA3001CD271 /* Build configuration list for PBXNativeTarget "RateMyTalk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				430B656D19DDBFA3001CD271 /* Debug */,
