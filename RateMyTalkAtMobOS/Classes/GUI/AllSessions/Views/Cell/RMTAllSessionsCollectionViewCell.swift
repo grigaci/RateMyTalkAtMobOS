@@ -31,7 +31,8 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     lazy var speakerInfoLabel: UILabel = {
         let label = UILabel(frame: CGRectZero)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.attributedText = NSAttributedString.infoAttributedString("Speaker")
+        let text = NSLocalizedString("Speaker", comment: "Displayed before the speaker's name")
+        label.attributedText = NSAttributedString.infoAttributedString(text)
         label.textAlignment = NSTextAlignment.Right
         return label
     }()
@@ -39,7 +40,8 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     lazy var topicInfoLabel: UILabel = {
         let label = UILabel(frame: CGRectZero)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.attributedText = NSAttributedString.infoAttributedString("Topic")
+        let text = NSLocalizedString("Topic", comment: "Displayed before the topic name")
+        label.attributedText = NSAttributedString.infoAttributedString(text)
         label.textAlignment = NSTextAlignment.Right
         return label
     }()
@@ -69,7 +71,8 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
     lazy var ratingTextLabel: UILabel = {
         let label = UILabel(frame: CGRectZero)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.attributedText = NSAttributedString.averageRatingAttributedString("Average rating")
+        let text = NSLocalizedString("Average rating", comment: "Average rating description")
+        label.attributedText = NSAttributedString.averageRatingAttributedString(text)
         return label
     }()
 

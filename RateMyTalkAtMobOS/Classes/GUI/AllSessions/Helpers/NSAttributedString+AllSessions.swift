@@ -59,7 +59,7 @@ extension NSAttributedString {
     }
 
     class func noConnectionTitleAttributedString() -> NSAttributedString {
-        let string = "Cannot connect to iCloud\n\n"
+        let string = NSLocalizedString("Cannot connect to iCloud\n\n", comment: "Error message title.")
         let font = UIFont.fontLatoBold(18.0)
         let color = UIColor(fullRed: 67.0, fullGreen: 67.0, fullBlue: 67.0)
         let dictionary = [NSForegroundColorAttributeName : color, NSFontAttributeName : font]
@@ -68,7 +68,7 @@ extension NSAttributedString {
     }
 
     class func noConnectionDetailAttributedString() -> NSAttributedString {
-        let string = "Please make sure that you have internet access and that you signed into your iCloud account."
+        let string = NSLocalizedString("Please make sure that you have internet access and that you signed into your iCloud account.", comment: "Error message description")
         let font = UIFont.fontLatoRegular(14.0)
         let color = UIColor(fullRed: 67.0, fullGreen: 67.0, fullBlue: 67.0)
         let dictionary = [NSForegroundColorAttributeName : color, NSFontAttributeName : font]
