@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  RMTAppDelegate.swift
 //  RateMyTalkAtMobOS
 //
 //  Created by bogdan on 02/10/14.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class RMTAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
