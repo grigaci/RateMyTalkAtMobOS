@@ -128,16 +128,16 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
         let viewsDictionary = ["speaker": self.speakerInfoLabel, "topic":self.topicInfoLabel,
             "separator" : self.textSeparator]
 
-        var constraint = NSLayoutConstraint(item: self.speakerInfoLabel, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerNameLabel, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: -1.0)
+        var constraint = NSLayoutConstraint(item: self.speakerInfoLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.speakerNameLabel, attribute: .CenterY, multiplier: 1.0, constant: -1.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.topicInfoLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
+        constraint = NSLayoutConstraint(item: self.topicInfoLabel, attribute: .Top, relatedBy: .Equal, toItem: self.topicNameTextView, attribute: .Top, multiplier: 1.0, constant: 5.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerInfoLabel, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -5.0)
+        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: .Top, relatedBy: .Equal, toItem: self.speakerInfoLabel, attribute: .Top, multiplier: 1.0, constant: -5.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        constraint = NSLayoutConstraint(item: self.textSeparator, attribute: .Bottom, relatedBy: .Equal, toItem: self.topicNameTextView, attribute: .Bottom, multiplier: 1.0, constant: -5.0)
         self.contentView.addConstraint(constraint)
 
         var constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(spaceH)-[speaker]-[separator(==4)]",
@@ -157,10 +157,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
-        var constraint = NSLayoutConstraint(item: self.speakerNameLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.textSeparator, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: CGFloat(self.spaceHorizontally))
+        var constraint = NSLayoutConstraint(item: self.speakerNameLabel, attribute: .Left, relatedBy: .Equal, toItem: self.textSeparator, attribute: .Right, multiplier: 1.0, constant: CGFloat(self.spaceHorizontally))
         self.contentView.addConstraint(constraint)
         
-        constraint = NSLayoutConstraint(item: self.topicNameTextView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.speakerNameLabel, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.topicNameTextView, attribute: .Left, relatedBy: .Equal, toItem: self.speakerNameLabel, attribute: .Left, multiplier: 1.0, constant: 0.0)
         self.contentView.addConstraint(constraint)        
     }
     
@@ -175,10 +175,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
-        var constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        var constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self.contentView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         self.contentView.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.arrowRightImageView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.arrowRightImageView, attribute: .Width, relatedBy: .Equal, toItem: self.arrowRightImageView, attribute: .Height, multiplier: 1.0, constant: 0.0)
         self.contentView.addConstraint(constraint)
     }
 
@@ -190,10 +190,10 @@ class RMTAllSessionsCollectionViewCell: UICollectionViewCell {
             options: NSLayoutFormatOptions(0), metrics: spaceDictionary, views: viewsDictionary)
         self.contentView.addConstraints(constraints)
         
-        var constraint = NSLayoutConstraint(item: self.ratingTextLabel, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.ratingView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        var constraint = NSLayoutConstraint(item: self.ratingTextLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.ratingView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         self.contentView.addConstraint(constraint)
         
-        constraint = NSLayoutConstraint(item: self.ratingTextLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.topicNameTextView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.ratingTextLabel, attribute: .Left, relatedBy: .Equal, toItem: self.topicNameTextView, attribute: .Left, multiplier: 1.0, constant: 0.0)
         self.contentView.addConstraint(constraint)
         
         constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[ratingLabel]-[ratingView]",

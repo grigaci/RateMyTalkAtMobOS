@@ -78,10 +78,10 @@ class RMTWindowErrorViewContent: UIView {
         
         let sizeDictionary = ["width" : contentWidth]
         
-        constraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.contentView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
 
-        constraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.contentView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
 
         let constraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[contentView(==width)]", options: NSLayoutFormatOptions(0), metrics: sizeDictionary, views: viewsDictionary)
@@ -100,10 +100,10 @@ class RMTWindowErrorViewContent: UIView {
         let viewsDictionary = ["title" : self.titleTextView, "description" : self.descriptionTextView]
         var constraint: NSLayoutConstraint
 
-        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.descriptionTextView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: .CenterX, relatedBy: .Equal, toItem: self.descriptionTextView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
         
-        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.descriptionTextView, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: .Width, relatedBy: .Equal, toItem: self.descriptionTextView, attribute: .Width, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
 
         let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:[title]-10-[description]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
@@ -114,10 +114,10 @@ class RMTWindowErrorViewContent: UIView {
         let viewsDictionary = ["button" : self.button, "description" : self.descriptionTextView]
         var constraint: NSLayoutConstraint
         
-        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.button, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: .CenterX, relatedBy: .Equal, toItem: self.button, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
         
-        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.button, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0)
+        constraint = NSLayoutConstraint(item: self.titleTextView, attribute: .Width, relatedBy: .Equal, toItem: self.button, attribute: .Width, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)
         
         let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:[description]-20-[button]-25-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)

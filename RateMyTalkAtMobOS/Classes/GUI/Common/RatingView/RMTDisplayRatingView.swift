@@ -118,7 +118,7 @@ class RMTDisplayRatingView: UIView {
     }
 
     private func addSizeConstraintsForImageView(imageView: UIImageView) {
-        var constraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0.0);
+        var constraint = NSLayoutConstraint(item: imageView, attribute: .Height, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 0.0);
         self.addConstraint(constraint)
     }
     

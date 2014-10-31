@@ -47,10 +47,10 @@ class RMTAllSessionsCollectionViewHeader: UICollectionReusableView {
 
     private func setupConstraints() {
         let viewsDictionary = ["imageview": self.syncImageView, "label": self.syncTextLabel]
-        var constraintH = NSLayoutConstraint(item: self.syncImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        var constraintH = NSLayoutConstraint(item: self.syncImageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraintH)
 
-        constraintH = NSLayoutConstraint(item: self.syncTextLabel, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.syncImageView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+        constraintH = NSLayoutConstraint(item: self.syncTextLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self.syncImageView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraintH)
 
         let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[imageview]-[label]-|",
