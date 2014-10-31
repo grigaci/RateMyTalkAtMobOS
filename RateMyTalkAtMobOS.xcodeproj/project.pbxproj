@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		430B656919DDBFA3001CD271 /* RateMyTalkAtMobOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B656819DDBFA3001CD271 /* RateMyTalkAtMobOSTests.swift */; };
-		430B658519DDC14C001CD271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B657F19DDC14C001CD271 /* AppDelegate.swift */; };
+		430B658519DDC14C001CD271 /* RMTAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B657F19DDC14C001CD271 /* RMTAppDelegate.swift */; };
 		430B658719DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 430B658319DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodeld */; };
 		430B659019DDC16B001CD271 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430B658A19DDC16B001CD271 /* Images.xcassets */; };
 		430B65B819DDD143001CD271 /* _RMTParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B65B319DDD143001CD271 /* _RMTParent.swift */; };
@@ -99,7 +99,7 @@
 		430B656219DDBFA3001CD271 /* RateMyTalkAtMobOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTalkAtMobOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		430B656719DDBFA3001CD271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430B656819DDBFA3001CD271 /* RateMyTalkAtMobOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTalkAtMobOSTests.swift; sourceTree = "<group>"; };
-		430B657F19DDC14C001CD271 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		430B657F19DDC14C001CD271 /* RMTAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTAppDelegate.swift; sourceTree = "<group>"; };
 		430B658419DDC14C001CD271 /* RateMyTalkAtMobOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RateMyTalkAtMobOS.xcdatamodel; sourceTree = "<group>"; };
 		430B658A19DDC16B001CD271 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		430B659419DDC1B3001CD271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 		430B657E19DDC14C001CD271 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				430B657F19DDC14C001CD271 /* AppDelegate.swift */,
+				430B657F19DDC14C001CD271 /* RMTAppDelegate.swift */,
 				65D2489119E1301A00F37C78 /* CloudKit */,
 				430B658019DDC14C001CD271 /* GUI */,
 				430B658219DDC14C001CD271 /* Model */,
@@ -881,7 +881,7 @@
 				430B65BC19DDD143001CD271 /* _RMTSpeaker.swift in Sources */,
 				65D2489B19E1319D00F37C78 /* RMTCloudKitManager.swift in Sources */,
 				65D2489C19E1319D00F37C78 /* RMTCloudKitOperationDownloadAll.swift in Sources */,
-				430B658519DDC14C001CD271 /* AppDelegate.swift in Sources */,
+				430B658519DDC14C001CD271 /* RMTAppDelegate.swift in Sources */,
 				65D248A419E1327400F37C78 /* RMTSpeaker+CloudKit.swift in Sources */,
 				65CCE2DA19EA812F0002C675 /* RMTCloudKitOperationUploadRatings.swift in Sources */,
 				430B65C619DDD152001CD271 /* RMTSpeaker.swift in Sources */,
