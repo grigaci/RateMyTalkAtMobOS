@@ -25,9 +25,8 @@ extension RMTRating {
         get { return "RMTRating"}
     }
     
-    class func create(record: CKRecord) -> RMTRating {
-        let moc = NSManagedObjectContext.MR_defaultContext()
-        let rating = RMTRating(entity: RMTRating.entity(moc), insertIntoManagedObjectContext: moc)
+    class func create(record: CKRecord, managedObjectContext: NSManagedObjectContext) -> RMTRating {
+        let rating = RMTRating(entity: RMTRating.entity(managedObjectContext), insertIntoManagedObjectContext: managedObjectContext)
         rating.ckRecordID = record.recordID.recordName
         
         let starsFloat = record.objectForKey(RMTRatingCKAttributes.stars.rawValue) as? Float
@@ -40,7 +39,7 @@ extension RMTRating {
         let ratingToRatingCategoryRelation = record.objectForKey(RMTRatingCKRelations.ratingCategory.rawValue) as? CKReference
         if ratingToRatingCategoryRelation != nil {
             let ratingCategoryID = ratingToRatingCategoryRelation?.recordID.recordName
-            let ratingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(ratingCategoryID!)
+            let ratingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(ratingCategoryID!, managedObjectContext: managedObjectContext)
             if ratingCategory != nil {
                 ratingCategory!.addRatingsObject(rating)
                 rating.ratingCategory = ratingCategory
@@ -82,10 +81,9 @@ extension RMTRating {
         return ckRecord;
     }
 
-    class func ratingWithRecordID(recordID: NSString) -> RMTRating? {
-        let moc = NSManagedObjectContext.MR_defaultContext()
+    class func ratingWithRecordID(recordID: NSString, managedObjectContext: NSManagedObjectContext) -> RMTRating? {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
-        let existingObject = RMTRating.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRating
+        let existingObject = RMTRating.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRating
         return existingObject
     }
 

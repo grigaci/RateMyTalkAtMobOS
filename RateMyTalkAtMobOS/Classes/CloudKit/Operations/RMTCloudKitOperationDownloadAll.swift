@@ -13,6 +13,10 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
 
     let recordType: NSString!
 
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        return NSManagedObjectContext.MR_contextForCurrentThread();
+    }()
+
     init(query: CKQuery, type: NSString) {
         super.init()
         self.query = query
@@ -44,30 +48,30 @@ class RMTCloudKitOperationDownloadAll: CKQueryOperation {
     }
 
     private func handleRecordSpeaker(record: CKRecord) {
-        let existingSpeaker: RMTSpeaker? = RMTSpeaker.speakerWithRecordID(record.recordID.recordName)
+        let existingSpeaker: RMTSpeaker? = RMTSpeaker.speakerWithRecordID(record.recordID.recordName, managedObjectContext: self.managedObjectContext)
         if existingSpeaker == nil {
-            RMTSpeaker.create(record)
+            RMTSpeaker.create(record, managedObjectContext: self.managedObjectContext)
         }
     }
     
     private func handleRecordSession(record: CKRecord) {
-        let existingSession: RMTSession? = RMTSession.sessionWithRecordID(record.recordID.recordName)
+        let existingSession: RMTSession? = RMTSession.sessionWithRecordID(record.recordID.recordName, managedObjectContext: self.managedObjectContext)
         if existingSession == nil {
-            RMTSession.create(record)
+            RMTSession.create(record, managedObjectContext: self.managedObjectContext)
         }
     }
-    
+
     private func handleRecordRatingCategory(record: CKRecord) {
-        let existingRatingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(record.recordID.recordName)
+        let existingRatingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(record.recordID.recordName, managedObjectContext: self.managedObjectContext)
         if existingRatingCategory == nil {
-            RMTRatingCategory.create(record)
+            RMTRatingCategory.create(record, managedObjectContext: self.managedObjectContext)
         }
     }
 
     private func handleRecordRating(record: CKRecord) {
-        let existingRating: RMTRating? = RMTRating.ratingWithRecordID(record.recordID.recordName)
+        let existingRating: RMTRating? = RMTRating.ratingWithRecordID(record.recordID.recordName, managedObjectContext: self.managedObjectContext)
         if existingRating == nil {
-            RMTRating.create(record)
+            RMTRating.create(record, managedObjectContext: self.managedObjectContext)
         } else {
             existingRating?.updateCK(record)
         }

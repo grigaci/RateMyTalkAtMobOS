@@ -69,8 +69,6 @@ class RMTCloudKitManager {
             if error != nil {
                 finishedCallback(error: error)
             } else {
-                let moc = NSManagedObjectContext.MR_defaultContext()
-                moc.MR_saveToPersistentStoreAndWait()
                 self.downloadRecursive(allTypes, currentIndex: currentIndex + 1, finishedCallback: finishedCallback)
             }
         })
@@ -84,6 +82,9 @@ class RMTCloudKitManager {
             var appError: NSError?
             if error != nil {
                 appError = NSError.cloudKitConnectionError()
+            } else {
+                let moc = downloadOperation.managedObjectContext
+                moc.MR_saveToPersistentStoreAndWait()
             }
             finishedCallback(error: appError)
         }

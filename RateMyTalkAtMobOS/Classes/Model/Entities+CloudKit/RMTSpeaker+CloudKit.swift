@@ -20,10 +20,9 @@ extension RMTSpeaker {
         get { return "RMTSpeaker"}
     }
 
-    class func create(record: CKRecord) -> RMTSpeaker {
+    class func create(record: CKRecord, managedObjectContext: NSManagedObjectContext) -> RMTSpeaker {
         
-        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        var speaker: RMTSpeaker = RMTSpeaker(entity: RMTSpeaker.entity(moc), insertIntoManagedObjectContext: moc)
+        var speaker: RMTSpeaker = RMTSpeaker(entity: RMTSpeaker.entity(managedObjectContext), insertIntoManagedObjectContext: managedObjectContext)
         
         speaker.ckRecordID = record.recordID.recordName
         
@@ -33,10 +32,9 @@ extension RMTSpeaker {
         return speaker;
     }
     
-    class func speakerWithRecordID(recordID: NSString) -> RMTSpeaker? {
-        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+    class func speakerWithRecordID(recordID: NSString, managedObjectContext: NSManagedObjectContext) -> RMTSpeaker? {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
-        var existingObject: RMTSpeaker? = RMTSpeaker.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTSpeaker
+        var existingObject: RMTSpeaker? = RMTSpeaker.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTSpeaker
         return existingObject
     }
 

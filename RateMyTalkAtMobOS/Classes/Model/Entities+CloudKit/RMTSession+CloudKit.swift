@@ -26,10 +26,9 @@ extension RMTSession {
         get { return "RMTSession"}
     }
     
-    class func create(record: CKRecord) -> RMTSession {
+    class func create(record: CKRecord, managedObjectContext: NSManagedObjectContext) -> RMTSession {
         
-        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        let session: RMTSession = RMTSession(entity: RMTSession.entity(moc), insertIntoManagedObjectContext: moc)
+        let session: RMTSession = RMTSession(entity: RMTSession.entity(managedObjectContext), insertIntoManagedObjectContext: managedObjectContext)
         session.ckRecordID = record.recordID.recordName
 
         let title = record.valueForKey(RMTSessionCKAttributes.title.rawValue) as? NSString
@@ -44,17 +43,16 @@ extension RMTSession {
         let sessionToSpeakerReference = record.objectForKey(RMTSessionCKRelations.speaker.rawValue) as? CKReference
         if sessionToSpeakerReference != nil {
             let speakerRecordID = sessionToSpeakerReference?.recordID.recordName
-            let speaker = RMTSpeaker.speakerWithRecordID(speakerRecordID!)
+            let speaker = RMTSpeaker.speakerWithRecordID(speakerRecordID!, managedObjectContext: managedObjectContext)
             session.speaker = speaker
         }
 
         return session;
     }
-    
-    class func sessionWithRecordID(recordID: NSString) -> RMTSession? {
-        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+
+    class func sessionWithRecordID(recordID: NSString, managedObjectContext: NSManagedObjectContext) -> RMTSession? {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
-        let existingObject = RMTSession.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTSession
+        let existingObject = RMTSession.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTSession
         return existingObject
     }
 

@@ -26,9 +26,8 @@ extension RMTRatingCategory {
     }
     
     
-    class func create(record: CKRecord) -> RMTRatingCategory {
-        let moc = NSManagedObjectContext.MR_defaultContext()
-        let ratingCategory = RMTRatingCategory(entity: RMTRatingCategory.entity(moc), insertIntoManagedObjectContext: moc)
+    class func create(record: CKRecord, managedObjectContext: NSManagedObjectContext) -> RMTRatingCategory {
+        let ratingCategory = RMTRatingCategory(entity: RMTRatingCategory.entity(managedObjectContext), insertIntoManagedObjectContext: managedObjectContext)
         ratingCategory.ckRecordID = record.recordID.recordName
         
         let title = record.objectForKey(RMTRatingCategoryCKAttributes.title.rawValue) as? NSString
@@ -42,7 +41,7 @@ extension RMTRatingCategory {
         let ratingCategoryToSessionRelation = record.objectForKey(RMTRatingCategoryCKRelation.session.rawValue) as? CKReference
         if ratingCategoryToSessionRelation != nil {
             let sessionRecordID = ratingCategoryToSessionRelation?.recordID.recordName
-            let session: RMTSession? = RMTSession.sessionWithRecordID(sessionRecordID!)
+            let session: RMTSession? = RMTSession.sessionWithRecordID(sessionRecordID!, managedObjectContext: managedObjectContext)
             if session != nil {
                 session?.addRatingCategoriesObject(ratingCategory)
             }
@@ -59,10 +58,9 @@ extension RMTRatingCategory {
         return ckRecord;
     }
 
-    class func ratingCategoryWithRecordID(recordID: NSString) -> RMTRatingCategory? {
-        let moc = NSManagedObjectContext.MR_defaultContext()
+    class func ratingCategoryWithRecordID(recordID: NSString, managedObjectContext: NSManagedObjectContext) -> RMTRatingCategory? {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
-        let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRatingCategory
+        let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRatingCategory
         return existingObject
     }
 }
