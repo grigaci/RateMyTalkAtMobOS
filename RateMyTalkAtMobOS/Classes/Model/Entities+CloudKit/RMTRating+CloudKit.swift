@@ -51,10 +51,12 @@ extension RMTRating {
 
     func ckRecord() -> CKRecord? {
 
-        if self.stars == nil || self.stars?.floatValue == 0.0 {
-            return nil
+        if let stars = self.stars {
+            if !stars.floatValue.isRatingValid() {
+                return nil
+            }
         }
-    
+
         var ckRecord: CKRecord
         self.createCKRecordIDIfNeeded()
 
@@ -98,7 +100,7 @@ extension RMTRating {
             self.stars = NSNumber(float: stars)
             
             if self.userUUID == NSUserDefaults.standardUserDefaults().userUUID {
-                self.ratingCategory?.myLocalRating = NSNumber(float: stars)
+                self.temporaryRating = stars
             }
         }
     }

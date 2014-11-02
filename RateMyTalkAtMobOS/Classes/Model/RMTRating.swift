@@ -20,4 +20,30 @@ class RMTRating: _RMTRating {
             })
         })
     }
+
+    class func createUserRatingsIfNeeded() {
+        let context = NSManagedObjectContext.MR_defaultContext()
+        let allRatingCategories = RMTRatingCategory.MR_findAllInContext(context) as [RMTRatingCategory]
+        for ratingCategory in allRatingCategories {
+            ratingCategory.createMyRatingIfNeeded()
+        }
+    }
+    
+    var temporaryRating: Float {
+        set {
+            NSUserDefaults.standardUserDefaults().setFloat(newValue, forKey: self.ckRecordID!)
+        }
+        get {
+            let rating = NSUserDefaults.standardUserDefaults().floatForKey(self.ckRecordID!)
+            return rating
+        }
+    }
+    
+    func saveTemporaryRatingAsStars() {
+        if self.temporaryRating.isRatingValid() {
+            self.stars = NSNumber(float: self.temporaryRating)
+            self.managedObjectContext?.MR_saveOnlySelfAndWait()
+        }
+    }
+    
 }

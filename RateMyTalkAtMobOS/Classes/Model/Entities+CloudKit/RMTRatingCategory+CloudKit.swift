@@ -32,9 +32,6 @@ extension RMTRatingCategory {
         
         let title = record.objectForKey(RMTRatingCategoryCKAttributes.title.rawValue) as? NSString
         ratingCategory.title = title
-        
-        let detail = record.objectForKey(RMTRatingCategoryCKAttributes.detail.rawValue) as? NSString
-        ratingCategory.detail = detail
 
         ratingCategory.ckRecordID = record.recordID.recordName
 
