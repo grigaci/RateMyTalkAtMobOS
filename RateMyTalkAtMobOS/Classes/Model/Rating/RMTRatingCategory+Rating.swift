@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 extension RMTRatingCategory {
+
     func totalRating() -> Float {
         var totalRating: Float = 0.0
         let allRatings = self.ratings
@@ -35,4 +36,32 @@ extension RMTRatingCategory {
         }
         return totalRating
     }
+    
+    func myRating() -> RMTRating? {
+        let userUUID = NSUserDefaults.standardUserDefaults().userUUID
+        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+        let predicate = NSPredicate(format: "%K == %@ AND %K == %@", RMTRatingRelationships.ratingCategory.rawValue, self,
+            RMTRatingAttributes.userUUID.rawValue, userUUID)
+        var existingObject: RMTRating? = RMTRating.MR_findFirstWithPredicate(predicate, inContext: moc) as? RMTRating
+        return existingObject
+    }
+
+    func createMyRatingIfNeeded() -> RMTRating {
+        if let existingRating = self.myRating() {
+            return existingRating
+        }
+        
+        let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
+        var rating: RMTRating = RMTRating(entity: RMTRating.entity(moc), insertIntoManagedObjectContext: moc)
+        let userUUID = NSUserDefaults.standardUserDefaults().userUUID
+        
+        rating.userUUID = userUUID
+        rating.ratingCategory = self
+        self.addRatingsObject(rating)
+        rating.createCKRecordIDIfNeeded()
+
+        moc.MR_saveOnlySelfAndWait()
+        return rating
+    }
+
 }

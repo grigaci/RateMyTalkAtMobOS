@@ -10,14 +10,6 @@ import Foundation
 import CoreData
 
 extension RMTSession {
-    
-    class func saveAllMyRatings() {
-        if let allSessions = RMTSession.MR_findAllInContext(NSManagedObjectContext.MR_defaultContext()) as? [RMTSession] {
-            for session in allSessions {
-                session.saveMyRatings()
-            }
-        }
-    }
 
     class func calculateAllGeneralRatings() {
         if let allSessions = RMTSession.MR_findAllInContext(NSManagedObjectContext.MR_defaultContext()) as? [RMTSession] {
@@ -38,7 +30,7 @@ extension RMTSession {
             return
         }
 
-        for index in 0...allRatingCategoriesCount - 1 {
+        for index in 0..<allRatingCategoriesCount {
             let ratingCategory = allRatingCategories.objectAtIndex(index) as RMTRatingCategory
             let ratingCategoryTotalStars = ratingCategory.totalRating()
             if ratingCategoryTotalStars > 0.0 {

@@ -53,6 +53,9 @@ class RMTCloudKitManager {
         NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = error == nil
         RMTNetworkActivityIndicator.sharedInstance.deactivate()
 
+        // Create empty user ratings
+        RMTRating.createUserRatingsIfNeeded()
+
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             finishedCallback(error: error)
         })

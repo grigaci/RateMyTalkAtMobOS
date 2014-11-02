@@ -140,7 +140,6 @@ class RMTAllSessionsViewController: UICollectionViewController {
         }
 
         self.state = .UploadingData
-        RMTSession.saveAllMyRatings()
         RMTCloudKitManager.sharedInstance.syncRatings { (error) -> Void in
             self.cloudOperationsDidFinish(error)
         }

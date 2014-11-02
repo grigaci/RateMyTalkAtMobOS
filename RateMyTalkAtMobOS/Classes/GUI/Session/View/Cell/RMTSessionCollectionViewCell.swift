@@ -30,7 +30,9 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     lazy var ratingView: RMTEditRatingView = {
         var ratingView = RMTEditRatingView(frame: CGRectZero)
         ratingView.valueChangedCallback = {
-            self.ratingCategory!.temporaryRating = $0
+            if let myRating = self.ratingCategory!.myRating() {
+                myRating.temporaryRating = $0
+            }
         }
 
         return ratingView
@@ -68,10 +70,8 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
 
     func saveCurrentRating() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-            let countStars = self.ratingView.highlightedStars
-            if countStars > 0.0 && self.ratingCategory?.myLocalRating?.floatValue != countStars {
-                self.ratingCategory?.myLocalRating = NSNumber(float: countStars)
-                NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
+            if let myRating = self.ratingCategory?.myRating() {
+                myRating.saveTemporaryRatingAsStars()
             }
         })
     }
@@ -104,14 +104,13 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     private func updateRating() {
         var defaultStars: Float = 0.0
         
-        if let myStars = self.ratingCategory?.temporaryRating {
+        if let myStars = self.ratingCategory?.myRating()?.temporaryRating {
             defaultStars = myStars
         }
         else if let myRating = self.ratingCategory?.myRating() {
             if let stars = myRating.stars?.floatValue {
                 defaultStars = stars
-                self.ratingCategory?.myLocalRating = NSNumber(float: stars)
-                self.ratingCategory?.temporaryRating = defaultStars
+                self.ratingCategory?.myRating()?.temporaryRating = defaultStars
             }
         }
         self.ratingView.highlightStars(defaultStars)

@@ -56,14 +56,11 @@ extension RMTRating {
         }
     
         var ckRecord: CKRecord
-        if let recordIDString = self.ckRecordID {
-            let recordID = CKRecordID(recordName: recordIDString)
-            ckRecord = CKRecord(recordType: RMTRating.ckRecordName, recordID: recordID)
-        } else {
-            ckRecord = CKRecord(recordType: RMTRating.ckRecordName)
-            self.ckRecordID = ckRecord.recordID.recordName
-            NSManagedObjectContext.MR_defaultContext().MR_saveOnlySelfAndWait()
-        }
+        self.createCKRecordIDIfNeeded()
+
+        let recordIDString = self.ckRecordID!
+        let recordID = CKRecordID(recordName: recordIDString)
+        ckRecord = CKRecord(recordType: RMTRating.ckRecordName, recordID: recordID)
 
         if let stars = self.stars {
             ckRecord.setValue(stars.doubleValue, forKey: RMTRatingCKAttributes.stars.rawValue)
@@ -79,6 +76,14 @@ extension RMTRating {
         ckRecord.setObject(ratingToRatingCategoryReference, forKey: RMTRatingCKRelations.ratingCategory.rawValue)
 
         return ckRecord;
+    }
+
+    func createCKRecordIDIfNeeded() {
+        if self.ckRecordID == nil {
+            let ckRecord = CKRecord(recordType: RMTRating.ckRecordName)
+            self.ckRecordID = ckRecord.recordID.recordName
+            NSManagedObjectContext.MR_contextForCurrentThread().MR_saveOnlySelfAndWait()
+        }
     }
 
     class func ratingWithRecordID(recordID: NSString, managedObjectContext: NSManagedObjectContext) -> RMTRating? {
