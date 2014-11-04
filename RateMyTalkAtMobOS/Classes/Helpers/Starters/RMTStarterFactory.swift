@@ -18,6 +18,7 @@ class RMTStarterFactory {
     init () {
         self.allStarters = []
         self.addStarter(NSStringFromClass(RMTStarterCoreData.self))
+        self.addStarter(NSStringFromClass(RMTStarterDataImporter.self))
         self.addStarter(NSStringFromClass(RMTStarterUICustomization.self))
     }
 
