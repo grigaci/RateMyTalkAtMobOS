@@ -30,7 +30,7 @@ class RMTCloudKitOperationUploadRatings: CKModifyRecordsOperation {
     class func allMyRatings() -> [RMTRating] {
         let userUUID = NSUserDefaults.standardUserDefaults().userUUID
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        let predicate = NSPredicate(format: "%K == %@ AND %K > 0", RMTRatingAttributes.userUUID.rawValue, userUUID, RMTRatingAttributes.stars.rawValue)
+        let predicate = NSPredicate(format: "%K == %@", RMTRatingAttributes.userUUID.rawValue, userUUID)
         let allMyRatingsNSArray: [RMTRating] = RMTRating.MR_findAllWithPredicate(predicate, inContext: moc)  as [RMTRating]
         return allMyRatingsNSArray
     }

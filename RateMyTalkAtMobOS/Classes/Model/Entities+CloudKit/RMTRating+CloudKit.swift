@@ -48,10 +48,8 @@ extension RMTRating {
 
     func ckRecord() -> CKRecord? {
 
-        if let stars = self.stars {
-            if !stars.floatValue.isRatingValid() {
-                return nil
-            }
+        if !self.temporaryRating.isRatingValid() {
+            return nil
         }
 
         var ckRecord: CKRecord
@@ -61,9 +59,7 @@ extension RMTRating {
         let recordID = CKRecordID(recordName: recordIDString)
         ckRecord = CKRecord(recordType: RMTRating.ckRecordName, recordID: recordID)
 
-        if let stars = self.stars {
-            ckRecord.setValue(stars.doubleValue, forKey: RMTRatingCKAttributes.stars.rawValue)
-        }
+        ckRecord.setValue(self.temporaryRating, forKey: RMTRatingCKAttributes.stars.rawValue)
 
         if let userUUID = self.userUUID {
             ckRecord.setValue(userUUID, forKey: RMTRatingCKAttributes.userUUID.rawValue)
@@ -87,5 +83,11 @@ extension RMTRating {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
         let existingObject = RMTRating.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRating
         return existingObject
+    }
+    
+    func updateCK(ckRecord: CKRecord) {
+        if let starsFloat = ckRecord.objectForKey(RMTRatingCKAttributes.stars.rawValue) as? Float {
+            self.stars = NSNumber(float: starsFloat)
+        }
     }
 }

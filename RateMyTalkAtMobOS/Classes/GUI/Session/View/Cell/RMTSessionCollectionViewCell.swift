@@ -69,11 +69,13 @@ class RMTSessionCollectionViewCell: UICollectionViewCell {
     }
 
     func saveCurrentRating() {
+/** Temporary workaround
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
             if let myRating = self.ratingCategory?.myRating() {
                 myRating.saveTemporaryRatingAsStars()
             }
         })
+*/
     }
 
     private func setupConstraints() {

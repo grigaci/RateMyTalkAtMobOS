@@ -54,8 +54,12 @@ class RMTRating: _RMTRating {
     
     func saveTemporaryRatingAsStars() {
         if self.temporaryRating.isRatingValid() {
-            self.stars = NSNumber(float: self.temporaryRating)
-            self.managedObjectContext?.MR_saveOnlySelfAndWait()
+            let savedStars = self.stars
+            let currentStars = NSNumber(float: self.temporaryRating)
+            if savedStars?.compare(currentStars) != NSComparisonResult.OrderedSame {
+                self.stars = NSNumber(float: self.temporaryRating)
+                self.managedObjectContext?.MR_saveOnlySelfAndWait()
+            }
         }
     }
     
