@@ -12,7 +12,9 @@ import CloudKit
 class RMTCloudKitManager {
     
     // Our own custom container
-    private let publicDB = CKContainer(identifier: "iCloud.RateMyTalkAtMobOS").publicCloudDatabase
+    private lazy var publicDB: CKDatabase = {
+        return CKContainer(identifier: "iCloud.RateMyTalkAtMobOS").publicCloudDatabase
+    }()
 
     class var sharedInstance : RMTCloudKitManager {
     struct Static {
@@ -135,7 +137,9 @@ class RMTCloudKitManager {
                 let moc = NSManagedObjectContext.MR_defaultContext()
                 moc.MR_saveToPersistentStoreAndWait()
             }
-            finishedCallback(error: error)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                finishedCallback(error: error)
+            })
         }
     }
 
