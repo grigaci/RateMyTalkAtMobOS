@@ -1,6 +1,19 @@
 @objc(RMTRating)
 class RMTRating: _RMTRating {
 
+    class func insertInContext(context: NSManagedObjectContext) -> RMTRating {
+        let rating = RMTRating(managedObjectContext: context)
+        rating.uuid = NSUUID().UUIDString
+        rating.createdAt = NSDate()
+        rating.updatedAt = NSDate()
+        
+        let userUUID = NSUserDefaults.standardUserDefaults().userUUID
+        rating.userUUID = userUUID
+        rating.createCKRecordIDIfNeeded()
+
+        return rating
+    }
+
     class func deleteAllExceptMyRatings(finishedCallback: () -> Void) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in

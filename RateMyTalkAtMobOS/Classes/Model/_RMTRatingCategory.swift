@@ -4,8 +4,7 @@
 import CoreData
 
 enum RMTRatingCategoryAttributes: String {
-    case detail = "detail"
-    case myLocalRating = "myLocalRating"
+    case ratingCategoryID = "ratingCategoryID"
     case title = "title"
 }
 
@@ -41,14 +40,9 @@ class _RMTRatingCategory: RMTCloudKit {
     // MARK: - Properties
 
     @NSManaged
-    var detail: String?
+    var ratingCategoryID: NSNumber?
 
-    // func validateDetail(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var myLocalRating: NSNumber?
-
-    // func validateMyLocalRating(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateRatingCategoryID(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var title: String?

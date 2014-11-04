@@ -11,14 +11,13 @@ import CoreData
 @objc(RMTStarterDataImporter)
 class RMTStarterDataImporter: NSObject, RMTStarterItem {
 
+    private var ratingCategoryIDCounter: Int = 0
     func start() {
         if isFirstRun() {
             self.loadFromPlist()
 
             // Create empty user ratings
             RMTRating.createUserRatingsIfNeeded()
-
-            NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = true
         }
     }
 
@@ -38,7 +37,7 @@ class RMTStarterDataImporter: NSObject, RMTStarterItem {
 
     private func createSession(dictionary: NSDictionary) {
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        var session: RMTSession = RMTSession(entity: RMTSession.entity(moc), insertIntoManagedObjectContext: moc)
+        var session: RMTSession = RMTSession.insertInContext(moc)
     
         // Set title
         session.title = dictionary.objectForKey("title") as NSString
@@ -73,7 +72,7 @@ class RMTStarterDataImporter: NSObject, RMTStarterItem {
         let speakerName = dictionary.objectForKey("name") as NSString
         var speaker = RMTSpeaker.MR_findFirstByAttribute(RMTSpeakerAttributes.name.rawValue, withValue: speakerName) as? RMTSpeaker
         if speaker == nil {
-            speaker = RMTSpeaker(entity: RMTSpeaker.entity(moc), insertIntoManagedObjectContext: moc)
+            speaker = RMTSpeaker.insertInContext(moc)
             speaker!.name = speakerName
         }
         session.speaker = speaker
@@ -81,55 +80,15 @@ class RMTStarterDataImporter: NSObject, RMTStarterItem {
 
     private func createRatingCategory(session: RMTSession, dictionary: NSDictionary) {
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        var ratingCategory: RMTRatingCategory = RMTRatingCategory(entity: RMTRatingCategory.entity(moc), insertIntoManagedObjectContext: moc)
+        var ratingCategory: RMTRatingCategory = RMTRatingCategory.insertInContext(moc)
 
         ratingCategory.title = dictionary.objectForKey("title") as NSString
+
+        // In order to ahve the same ID across all devices
+        ratingCategory.ratingCategoryID = NSNumber(integer: self.ratingCategoryIDCounter)
+        self.ratingCategoryIDCounter += 1
+
         session.addRatingCategoriesObject(ratingCategory)
     }
 
-    private func printAllSessions() {
-        var allSessions: NSArray = RMTSession.MR_findAll()
-        for sessionObj in allSessions {
-            let session: RMTSession = sessionObj as RMTSession
-            println("=====================\(session.title?)=====================")
-            println("start date: \(session.startDate)")
-            println("end date: \(session.endDate)")
-            printSpeaker(session.speaker)
-            let allRatingCategories:NSOrderedSet = session.ratingCategories
-            let count = allRatingCategories.count - 1
-            if count > 0 {
-                for i in 0...count {
-                    let ratingCategory: RMTRatingCategory = allRatingCategories.objectAtIndex(i) as RMTRatingCategory
-                    printRatingCategory(ratingCategory)
-                }
-            }
-            println("==========================================")
-        }
-    }
-
-    private func printSpeaker(speaker: RMTSpeaker?) {
-        if let name = speaker?.name {
-            println("speaker: \(name)")
-        }
-    }
-    
-    private func printRatingCategory(ratingCategory: RMTRatingCategory?) {
-        if let title = ratingCategory?.title {
-            println("\t title: \(title)")
-        }
-        let allRatings = ratingCategory?.ratings
-        let allRatingsCount = allRatings?.count
-        if allRatingsCount == 0 {
-            return
-        }
-        
-        for index in 0...allRatingsCount! - 1 {
-            let rating = allRatings?.objectAtIndex(index) as RMTRating!
-            self.printRating(rating)
-        }
-    }
-
-    private func printRating(rating: RMTRating?) {
-        println("\t\t stars: \(rating!.stars!.doubleValue)")
-    }
 }

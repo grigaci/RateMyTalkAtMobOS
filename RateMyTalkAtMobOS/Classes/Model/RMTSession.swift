@@ -1,6 +1,14 @@
 @objc(RMTSession)
 class RMTSession: _RMTSession {
 
+    class func insertInContext(context: NSManagedObjectContext) -> RMTSession {
+        let session = RMTSession(managedObjectContext: context)
+        session.uuid = NSUUID().UUIDString
+        session.createdAt = NSDate()
+        session.updatedAt = NSDate()
+        return session
+    }
+
     class func calculateAllGeneralRatings() {
         if let allSessions = RMTSession.MR_findAllInContext(NSManagedObjectContext.MR_defaultContext()) as? [RMTSession] {
             for session in allSessions {

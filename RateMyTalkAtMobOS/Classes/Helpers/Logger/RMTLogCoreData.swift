@@ -36,9 +36,9 @@ class RMTLogCoreData {
 
     class func printRatingCategory(ratingCategory: RMTRatingCategory?) {
         println("title: \(ratingCategory?.title)")
-        println("detail: \(ratingCategory?.detail)")
+        println("ID: \(ratingCategory?.ratingCategoryID)")
     }
-    
+
     class func printAllSpeakers() {
         var allSpeakers: NSArray = RMTSpeaker.MR_findAll()
         for sessionObj in allSpeakers {

@@ -11,6 +11,8 @@ import CloudKit
 
 enum RMTRatingCKAttributes: NSString {
     case stars = "stars"
+    case ratingCategoryID = "ratingCategoryID"
+    case userUUID = "userUUID"
 }
 
 enum RMTRatingCKRelations: NSString {
@@ -69,13 +71,11 @@ extension RMTRating {
         }
 
         if let userUUID = self.userUUID {
-            ckRecord.setValue(userUUID, forKey: RMTRatingAttributes.userUUID.rawValue)
+            ckRecord.setValue(userUUID, forKey: RMTRatingCKAttributes.userUUID.rawValue)
         }
 
         let ratingCategory = self.ratingCategory!
-        let ratingCategoryCK = ratingCategory.createdCKRecord()
-        let ratingToRatingCategoryReference = CKReference(record: ratingCategoryCK, action: CKReferenceAction.None)
-        ckRecord.setObject(ratingToRatingCategoryReference, forKey: RMTRatingCKRelations.ratingCategory.rawValue)
+        ckRecord.setValue(ratingCategory.ratingCategoryID!.stringValue, forKey: RMTRatingCKAttributes.ratingCategoryID.rawValue)
 
         return ckRecord;
     }

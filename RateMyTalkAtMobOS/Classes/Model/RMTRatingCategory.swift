@@ -1,6 +1,14 @@
 @objc(RMTRatingCategory)
 class RMTRatingCategory: _RMTRatingCategory {
 
+    class func insertInContext(context: NSManagedObjectContext) -> RMTRatingCategory {
+        let ratingCategory = RMTRatingCategory(managedObjectContext: context)
+        ratingCategory.uuid = NSUUID().UUIDString
+        ratingCategory.createdAt = NSDate()
+        ratingCategory.updatedAt = NSDate()
+        return ratingCategory
+    }
+
     func totalRating() -> Float {
         var totalRating: Float = 0.0
         let allRatings = self.ratings
@@ -42,14 +50,11 @@ class RMTRatingCategory: _RMTRatingCategory {
         }
         
         let moc: NSManagedObjectContext = NSManagedObjectContext.MR_defaultContext()
-        var rating: RMTRating = RMTRating(entity: RMTRating.entity(moc), insertIntoManagedObjectContext: moc)
-        let userUUID = NSUserDefaults.standardUserDefaults().userUUID
-        
-        rating.userUUID = userUUID
+        var rating: RMTRating = RMTRating.insertInContext(moc)
+
         rating.ratingCategory = self
         self.addRatingsObject(rating)
-        rating.createCKRecordIDIfNeeded()
-        
+
         moc.MR_saveOnlySelfAndWait()
         return rating
     }
