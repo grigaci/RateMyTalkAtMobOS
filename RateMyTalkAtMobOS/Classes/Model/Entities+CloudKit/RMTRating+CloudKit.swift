@@ -28,26 +28,21 @@ extension RMTRating {
     }
     
     class func create(record: CKRecord, managedObjectContext: NSManagedObjectContext) -> RMTRating {
-        let rating = RMTRating(entity: RMTRating.entity(managedObjectContext), insertIntoManagedObjectContext: managedObjectContext)
+        let rating = RMTRating.insertInContext(managedObjectContext)
         rating.ckRecordID = record.recordID.recordName
-        
+
         let starsFloat = record.objectForKey(RMTRatingCKAttributes.stars.rawValue) as? Float
         let stars = starsFloat != nil ? starsFloat : 0.0
         rating.stars = NSNumber(float: stars!)
-        if let userUUID = record.objectForKey(RMTRatingAttributes.userUUID.rawValue) as? String {
+        if let userUUID = record.objectForKey(RMTRatingCKAttributes.userUUID.rawValue) as? String {
             rating.userUUID = userUUID
         }
-
-        let ratingToRatingCategoryRelation = record.objectForKey(RMTRatingCKRelations.ratingCategory.rawValue) as? CKReference
-        if ratingToRatingCategoryRelation != nil {
-            let ratingCategoryID = ratingToRatingCategoryRelation?.recordID.recordName
-            let ratingCategory: RMTRatingCategory? = RMTRatingCategory.ratingCategoryWithRecordID(ratingCategoryID!, managedObjectContext: managedObjectContext)
-            if ratingCategory != nil {
-                ratingCategory!.addRatingsObject(rating)
-                rating.ratingCategory = ratingCategory
-            }
+        
+        if let ratingCategoryIDString = record.objectForKey(RMTRatingCKAttributes.ratingCategoryID.rawValue) as? String {
+            let ratingCategory = RMTRatingCategory.ratingCategoryWithID(ratingCategoryIDString, managedObjectContext: managedObjectContext)
+            ratingCategory?.addRatingsObject(rating)
+            rating.ratingCategory = ratingCategory
         }
-
         return rating
     }
 
@@ -92,16 +87,5 @@ extension RMTRating {
         let predicate = NSPredicate(format: "%K == %@", RMTCloudKitAttributes.ckRecordID.rawValue, recordID)
         let existingObject = RMTRating.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRating
         return existingObject
-    }
-
-    func updateCK(ckRecord: CKRecord) {
-        let starsFloat = ckRecord.objectForKey(RMTRatingCKAttributes.stars.rawValue) as? Float
-        if let stars = starsFloat {
-            self.stars = NSNumber(float: stars)
-            
-            if self.userUUID == NSUserDefaults.standardUserDefaults().userUUID {
-                self.temporaryRating = stars
-            }
-        }
     }
 }

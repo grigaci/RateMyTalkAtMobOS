@@ -60,4 +60,11 @@ extension RMTRatingCategory {
         let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRatingCategory
         return existingObject
     }
+    
+    class func ratingCategoryWithID(ratingCategoryID: String, managedObjectContext: NSManagedObjectContext) -> RMTRatingCategory? {
+        let predicate = NSPredicate(format: "%K == %@", RMTRatingCategoryAttributes.ratingCategoryID.rawValue, ratingCategoryID)
+        let existingObject = RMTRatingCategory.MR_findFirstWithPredicate(predicate, inContext: managedObjectContext) as? RMTRatingCategory
+        return existingObject
+    }
+
 }
