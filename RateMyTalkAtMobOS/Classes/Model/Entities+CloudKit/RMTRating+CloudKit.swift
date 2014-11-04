@@ -52,6 +52,8 @@ extension RMTRating {
             return nil
         }
 
+        self.saveTemporaryRatingAsStars()
+
         var ckRecord: CKRecord
         self.createCKRecordIDIfNeeded()
 
