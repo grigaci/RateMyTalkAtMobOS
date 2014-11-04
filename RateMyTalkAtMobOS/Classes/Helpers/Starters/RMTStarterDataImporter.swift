@@ -13,11 +13,13 @@ class RMTStarterDataImporter: NSObject, RMTStarterItem {
 
     func start() {
         if isFirstRun() {
-            loadFromPlist()
-        }
+            self.loadFromPlist()
 
-        NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = true
-        printAllSessions()
+            // Create empty user ratings
+            RMTRating.createUserRatingsIfNeeded()
+
+            NSUserDefaults.standardUserDefaults().iCloudDataDownloaded = true
+        }
     }
 
     private func isFirstRun() -> Bool {
