@@ -59,7 +59,7 @@ extension NSError {
 
     class func cloudKitConnectionError() -> NSError {
         let title = NSLocalizedString("CloudKit error", comment: "Cloudkit error title")
-        let description = NSLocalizedString("Please make sure that you are logged into your iCloud account and iCloud Drive is enabled.", comment: "Cloudkit error description")
+        let description = NSLocalizedString("Cannot sync your ratings. Please make sure that you are logged into your iCloud account and iCloud Drive is enabled.", comment: "Cloudkit error description")
         var userInfo = [NSError.titleKey : title, NSError.descriptionKey : description]
         let error = NSError(domain: NSError.appDomain, code: 0, userInfo: userInfo)
         return error
