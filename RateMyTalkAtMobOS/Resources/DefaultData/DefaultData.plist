@@ -33,14 +33,14 @@
 		<key>speaker</key>
 		<dict>
 			<key>name</key>
-			<string>Boris Bugling</string>
+			<string>Sam Davies</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-20T07:00:00Z</date>
+		<date>2015-02-19T07:00:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-20T08:00:00Z</date>
+		<date>2015-02-19T08:00:00Z</date>
 		<key>title</key>
-		<string>Swift runtime</string>
+		<string>To drawRect or not to drawRect: an overview of graphics on iOS</string>
 	</dict>
 	<dict>
 		<key>ratingCategories</key>
@@ -73,94 +73,14 @@
 		<key>speaker</key>
 		<dict>
 			<key>name</key>
-			<string>Jorge Arenas</string>
+			<string>Jorge Jordán</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-20T08:00:00Z</date>
+		<date>2015-02-19T08:00:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-20T09:00:00Z</date>
+		<date>2015-02-19T09:00:00Z</date>
 		<key>title</key>
 		<string>Game frameworks (SpriteKit and SceneKit) and analyze the potential of both libraries comparing them with UnitG</string>
-	</dict>
-	<dict>
-		<key>ratingCategories</key>
-		<array>
-			<dict>
-				<key>title</key>
-				<string>Ability to answer to audience’s questions</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Proficiency of the trainer for this course</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Capacity to engage the participants and make the class interactive</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Content organized and easy to follow</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Visuals supported the training</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Relevant examples for the presentation</string>
-			</dict>
-		</array>
-		<key>speaker</key>
-		<dict>
-			<key>name</key>
-			<string>Tom Maes</string>
-		</dict>
-		<key>startDate</key>
-		<date>2014-11-20T09:30:00Z</date>
-		<key>endDate</key>
-		<date>2014-11-20T10:30:00Z</date>
-		<key>title</key>
-		<string>Your app and the world – thinking globally every step of the way</string>
-	</dict>
-	<dict>
-		<key>ratingCategories</key>
-		<array>
-			<dict>
-				<key>title</key>
-				<string>Ability to answer to audience’s questions</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Proficiency of the trainer for this course</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Capacity to engage the participants and make the class interactive</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Content organized and easy to follow</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Visuals supported the training</string>
-			</dict>
-			<dict>
-				<key>title</key>
-				<string>Relevant examples for the presentation</string>
-			</dict>
-		</array>
-		<key>speaker</key>
-		<dict>
-			<key>name</key>
-			<string>Bogdan Iusco</string>
-		</dict>
-		<key>startDate</key>
-		<date>2014-11-20T12:00:00Z</date>
-		<key>endDate</key>
-		<date>2014-11-20T13:00:00Z</date>
-		<key>title</key>
-		<string>Autolayout &amp; CloudKit</string>
 	</dict>
 	<dict>
 		<key>ratingCategories</key>
@@ -196,9 +116,9 @@
 			<string>Mircea Vasiliniuc</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-20T13:00:00Z</date>
+		<date>2015-02-19T09:30:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-20T14:00:00Z</date>
+		<date>2015-02-19T10:15:00Z</date>
 		<key>title</key>
 		<string>Crash report systems and app analytics tools</string>
 	</dict>
@@ -233,14 +153,14 @@
 		<key>speaker</key>
 		<dict>
 			<key>name</key>
-			<string>Boris Bugling</string>
+			<string>Tom Maes</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-21T07:00:00Z</date>
+		<date>2015-02-19T10:15:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-21T12:00:00Z</date>
+		<date>2015-02-19T11:00:00Z</date>
 		<key>title</key>
-		<string>Extending Xcode</string>
+		<string>Your app and the world – thinking globally every step of the way</string>
 	</dict>
 	<dict>
 		<key>ratingCategories</key>
@@ -273,12 +193,132 @@
 		<key>speaker</key>
 		<dict>
 			<key>name</key>
-			<string>Jorge Arenas</string>
+			<string>Horea Herteg</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-21T12:00:00Z</date>
+		<date>2015-02-19T12:30:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-21T17:00:00Z</date>
+		<date>2015-02-19T13:15:00Z</date>
+		<key>title</key>
+		<string>Overcoming challenges in the last year as iOS developers</string>
+	</dict>
+	<dict>
+		<key>ratingCategories</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Ability to answer to audience’s questions</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Proficiency of the trainer for this course</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Capacity to engage the participants and make the class interactive</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Content organized and easy to follow</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Visuals supported the training</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Relevant examples for the presentation</string>
+			</dict>
+		</array>
+		<key>speaker</key>
+		<dict>
+			<key>name</key>
+			<string>Bogdan Iusco</string>
+		</dict>
+		<key>startDate</key>
+		<date>2015-02-19T13:15:00Z</date>
+		<key>endDate</key>
+		<date>2015-02-19T14:00:00Z</date>
+		<key>title</key>
+		<string>CloudKit</string>
+	</dict>
+	<dict>
+		<key>ratingCategories</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Ability to answer to audience’s questions</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Proficiency of the trainer for this course</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Capacity to engage the participants and make the class interactive</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Content organized and easy to follow</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Visuals supported the training</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Relevant examples for the presentation</string>
+			</dict>
+		</array>
+		<key>speaker</key>
+		<dict>
+			<key>name</key>
+			<string>Sam Davies</string>
+		</dict>
+		<key>startDate</key>
+		<date>2015-02-20T07:00:00Z</date>
+		<key>endDate</key>
+		<date>2015-02-20T10:30:00Z</date>
+		<key>title</key>
+		<string>Adaptive Layout in iOS8</string>
+	</dict>
+	<dict>
+		<key>ratingCategories</key>
+		<array>
+			<dict>
+				<key>title</key>
+				<string>Ability to answer to audience’s questions</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Proficiency of the trainer for this course</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Capacity to engage the participants and make the class interactive</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Content organized and easy to follow</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Visuals supported the training</string>
+			</dict>
+			<dict>
+				<key>title</key>
+				<string>Relevant examples for the presentation</string>
+			</dict>
+		</array>
+		<key>speaker</key>
+		<dict>
+			<key>name</key>
+			<string>Jorge Jordán</string>
+		</dict>
+		<key>startDate</key>
+		<date>2015-02-20T12:00:00Z</date>
+		<key>endDate</key>
+		<date>2015-02-20T15:30:00Z</date>
 		<key>title</key>
 		<string>How to translate a game or an app from Objective-C to Swift</string>
 	</dict>
@@ -316,9 +356,9 @@
 			<string>Organizing team</string>
 		</dict>
 		<key>startDate</key>
-		<date>2014-11-21T17:00:00Z</date>
+		<date>2015-02-20T17:00:00Z</date>
 		<key>endDate</key>
-		<date>2014-11-21T18:00:00Z</date>
+		<date>2015-02-20T18:00:00Z</date>
 		<key>title</key>
 		<string>Overall impression of the event</string>
 	</dict>
