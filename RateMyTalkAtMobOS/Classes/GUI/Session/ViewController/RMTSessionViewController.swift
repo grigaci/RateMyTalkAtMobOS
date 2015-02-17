@@ -31,9 +31,9 @@ class RMTSessionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView, session: self.session!)
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = UIColor.sessionBackgroundColor()
+        self.sessionDatasource = RMTSessionDatasource(collectionView: self.collectionView!, session: self.session!)
+        self.collectionView!.alwaysBounceVertical = true
+        self.collectionView!.backgroundColor = UIColor.sessionBackgroundColor()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -49,7 +49,7 @@ class RMTSessionViewController: UICollectionViewController {
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let width = CGRectGetWidth(self.collectionView.bounds)
+            let width = CGRectGetWidth(self.collectionView!.bounds)
             return CGSizeMake(width, 100.0)
     }
 }

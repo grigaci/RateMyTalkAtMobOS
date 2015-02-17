@@ -14,7 +14,8 @@ let gSpeakerColors = [
     UIColor(fullRed: 240.0, fullGreen: 130.0, fullBlue: 139.0),
     UIColor(fullRed: 159.0, fullGreen: 96.0,  fullBlue: 186.0),
     UIColor(fullRed: 71.0,  fullGreen: 160.0, fullBlue: 134.0),
-    UIColor(fullRed: 88.0,  fullGreen: 132.0, fullBlue: 190.0)]
+    UIColor(fullRed: 88.0,  fullGreen: 132.0, fullBlue: 190.0),
+    UIColor(fullRed: 253.0, fullGreen: 127.0, fullBlue: 247.0)]
 
 let gSpeakerDefaultColor = UIColor.purpleColor()
 

@@ -12,6 +12,9 @@ import Foundation
 class RMTStarterCoreData: NSObject, RMTStarterItem {
 
     func start() {
-        MagicalRecord.setupCoreDataStack()
+        let appName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as String
+        let versionNumber = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        let storeName = appName + "-" + versionNumber
+        MagicalRecord.setupCoreDataStackWithStoreNamed(storeName)
     }
 }

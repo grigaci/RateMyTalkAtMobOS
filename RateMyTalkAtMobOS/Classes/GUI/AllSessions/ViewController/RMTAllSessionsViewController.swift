@@ -52,10 +52,10 @@ class RMTAllSessionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.backgroundColor = UIColor.allSessionsBackgroundColor()
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.addSubview(self.refreshControl)
-        self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView)
+        self.collectionView!.backgroundColor = UIColor.allSessionsBackgroundColor()
+        self.collectionView!.alwaysBounceVertical = true
+        self.collectionView!.addSubview(self.refreshControl)
+        self.sessionDatasource = RMTAllSessionsDatasource(collectionView: self.collectionView!)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -78,14 +78,14 @@ class RMTAllSessionsViewController: UICollectionViewController {
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let width = CGRectGetWidth(self.collectionView.bounds)
+            let width = CGRectGetWidth(self.collectionView!.bounds)
             return CGSizeMake(width, 130.0)
     }
 
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int) -> CGSize {
-            let width = CGRectGetWidth(self.collectionView.bounds)
+            let width = CGRectGetWidth(self.collectionView!.bounds)
             return CGSizeMake(width, 80.0)
     }
 
